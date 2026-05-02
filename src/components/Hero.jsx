@@ -21,15 +21,15 @@ const Hero = () => {
             transition={{ delay: 0.1 }}
             className="text-6xl lg:text-8xl font-black text-[#06141B] leading-none mb-6"
           >
-            Velnora <span className="text-[#4A5C6A]">System</span>
+            Velnora <span className="text-[#4A5C6A]">Software</span>
           </motion.h1>
           <motion.p
-             initial={{ opacity: 0, y: 20 }}
-             animate={{ opacity: 1, y: 0 }}
-             transition={{ delay: 0.2 }}
-             className="text-lg text-[#666666] max-w-2xl mb-10"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="text-lg text-[#666666] max-w-2xl mb-10"
           >
-            A variety of scalable options are available for your business to 
+            A variety of scalable options are available for your business to
             thrive in the future digital landscape. Certified Enterprise Grade.
           </motion.p>
           <div className="flex space-x-4">
@@ -46,12 +46,12 @@ const Hero = () => {
             transition={{ duration: 1 }}
             className="relative rounded-[3rem] overflow-hidden bg-white shadow-2xl border border-white"
           >
-            <img 
-              src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=2426" 
-              alt="Dashboard Showcase" 
+            <img
+              src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=2426"
+              alt="Dashboard Showcase"
               className="w-full h-auto opacity-80"
             />
-            
+
             {/* Hotspots */}
             <Hotspot x="20%" y="40%" label="AI Integration" />
             <Hotspot x="45%" y="60%" label="Real-time Analytics" />
@@ -59,7 +59,7 @@ const Hero = () => {
           </motion.div>
 
           {/* Floating Spec Cards */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.5 }}
@@ -80,11 +80,11 @@ const Hero = () => {
 
         {/* Bottom Feature Grid */}
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 mt-20">
-          <SpecCard icon={<Users size={20}/>} label="Capacity" value="Unlimited" />
-          <SpecCard icon={<Layers size={20}/>} label="Engine" value="Turbo AI" />
-          <SpecCard icon={<Shield size={20}/>} label="Power" value="Secure V8" />
-          <SpecCard icon={<Globe size={20}/>} label="Network" value="Global" />
-          <SpecCard icon={<ArrowRight size={20}/>} label="Speed" value="0.1 sec" />
+          <SpecCard icon={<Users size={20} />} label="Capacity" value="Unlimited" />
+          <SpecCard icon={<Layers size={20} />} label="Engine" value="Turbo AI" />
+          <SpecCard icon={<Shield size={20} />} label="Power" value="Secure V8" />
+          <SpecCard icon={<Globe size={20} />} label="Network" value="Global" />
+          <SpecCard icon={<ArrowRight size={20} />} label="Speed" value="0.1 sec" />
         </div>
       </div>
     </section>
@@ -92,7 +92,7 @@ const Hero = () => {
 };
 
 const Hotspot = ({ x, y, label }) => (
-  <motion.div 
+  <motion.div
     style={{ left: x, top: y }}
     className="absolute group z-10"
   >
