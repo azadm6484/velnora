@@ -4,23 +4,53 @@ import { Landmark, HeartPulse, ShoppingCart, GraduationCap, Truck, Home } from '
 
 const Industries = () => {
   const industries = [
-    { name: 'Fintech', icon: <Landmark size={32} /> },
-    { name: 'Healthcare', icon: <HeartPulse size={32} /> },
-    { name: 'E-commerce', icon: <ShoppingCart size={32} /> },
-    { name: 'Education', icon: <GraduationCap size={32} /> },
-    { name: 'Logistics', icon: <Truck size={32} /> },
-    { name: 'Real Estate', icon: <Home size={32} /> },
+    { 
+      name: 'Fintech', 
+      icon: <Landmark className="text-white" size={24} />,
+      image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=2000&auto=format&fit=crop"
+    },
+    { 
+      name: 'Healthcare', 
+      icon: <HeartPulse className="text-white" size={24} />,
+      image: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=2000&auto=format&fit=crop"
+    },
+    { 
+      name: 'E-commerce', 
+      icon: <ShoppingCart className="text-white" size={24} />,
+      image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=2000&auto=format&fit=crop"
+    },
+    { 
+      name: 'Education', 
+      icon: <GraduationCap className="text-white" size={24} />,
+      image: "https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=2000&auto=format&fit=crop"
+    },
+    { 
+      name: 'Logistics', 
+      icon: <Truck className="text-white" size={24} />,
+      image: "https://images.unsplash.com/photo-1580674285054-bed31e145f59?q=80&w=2000&auto=format&fit=crop"
+    },
+    { 
+      name: 'Real Estate', 
+      icon: <Home className="text-white" size={24} />,
+      image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=2000&auto=format&fit=crop"
+    },
   ];
 
   return (
-    <section className="py-24" id="industries">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-24 bg-[#11212D] relative overflow-hidden" id="industries">
+      {/* Background elements */}
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none opacity-20">
+        <div className="absolute top-[-10%] right-[-5%] w-[40%] h-[40%] bg-[#4A5C6A] rounded-full blur-[120px]" />
+        <div className="absolute bottom-[-10%] left-[-5%] w-[40%] h-[40%] bg-[#06141B] rounded-full blur-[120px]" />
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl font-bold mb-4">Industries <span className="text-[#4A5C6A]">We Serve</span></h2>
-          <p className="text-[#9BA8AB]">Expertise across diverse sectors to deliver specialized solutions.</p>
+          <h2 className="text-4xl lg:text-5xl font-bold mb-4 text-white">Industries <span className="text-[#4A5C6A]">We Serve</span></h2>
+          <p className="text-[#9BA8AB] max-w-2xl mx-auto">Expertise across diverse sectors to deliver specialized solutions tailored to unique industry demands.</p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {industries.map((industry, index) => (
             <motion.div
               key={index}
@@ -28,13 +58,22 @@ const Industries = () => {
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ delay: index * 0.05 }}
               viewport={{ once: true }}
-              whileHover={{ scale: 1.05 }}
-              className="glass-card p-6 flex flex-col items-center justify-center text-center group cursor-pointer hover:border-[#4A5C6A]/50"
+              whileHover={{ y: -10 }}
+              className="group relative h-64 rounded-3xl overflow-hidden cursor-pointer"
             >
-              <div className="mb-4 text-[#9BA8AB] group-hover:text-white transition-colors">
-                {industry.icon}
+              <img 
+                src={industry.image} 
+                alt={industry.name} 
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#06141B] via-[#06141B]/40 to-transparent transition-opacity duration-300 group-hover:opacity-80" />
+              
+              <div className="absolute bottom-0 left-0 w-full p-6 flex items-center justify-between z-10">
+                <span className="text-xl font-bold text-white">{industry.name}</span>
+                <div className="w-12 h-12 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center border border-white/30 group-hover:bg-[#4A5C6A] transition-colors">
+                  {industry.icon}
+                </div>
               </div>
-              <span className="font-semibold">{industry.name}</span>
             </motion.div>
           ))}
         </div>

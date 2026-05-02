@@ -41,16 +41,30 @@ const WhyChooseUs = () => {
             viewport={{ once: true }}
             className="relative"
           >
-            <div className="glass-card aspect-square flex items-center justify-center p-12 overflow-hidden">
-              <div className="grid grid-cols-2 gap-8 w-full h-full">
-                <div className="bg-white/5 rounded-3xl animate-pulse" />
-                <div className="bg-[#4A5C6A]/20 rounded-3xl" />
-                <div className="bg-[#666666]/30 rounded-3xl" />
-                <div className="bg-white/5 rounded-3xl animate-pulse delay-75" />
+            <div className="glass-card aspect-square relative p-6 lg:p-10 overflow-hidden shadow-xl">
+              <div className="grid grid-cols-2 grid-rows-2 gap-4 lg:gap-6 w-full h-full">
+                <div className="relative overflow-hidden rounded-3xl shadow-sm group">
+                  <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800&auto=format&fit=crop" className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:rotate-3" alt="Team" />
+                  <div className="absolute inset-0 bg-[#06141B]/10 group-hover:bg-transparent transition-colors duration-500" />
+                </div>
+                <div className="relative overflow-hidden rounded-3xl shadow-sm group">
+                  <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=800&auto=format&fit=crop" className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:-rotate-3" alt="Strategy" />
+                  <div className="absolute inset-0 bg-[#06141B]/10 group-hover:bg-transparent transition-colors duration-500" />
+                </div>
+                <div className="relative overflow-hidden rounded-3xl shadow-sm group">
+                  <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=800&auto=format&fit=crop" className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:-rotate-3" alt="Workspace" />
+                  <div className="absolute inset-0 bg-[#06141B]/10 group-hover:bg-transparent transition-colors duration-500" />
+                </div>
+                <div className="relative overflow-hidden rounded-3xl shadow-sm group">
+                  <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=800&auto=format&fit=crop" className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:rotate-3" alt="Collaboration" />
+                  <div className="absolute inset-0 bg-[#06141B]/10 group-hover:bg-transparent transition-colors duration-500" />
+                </div>
               </div>
-              <div className="absolute inset-0 flex items-center justify-center">
-                 <div className="w-32 h-32 glass-nav rounded-full flex items-center justify-center shadow-[0_0_50px_rgba(74,92,106,0.5)]">
-                    <span className="text-3xl font-bold">VT</span>
+              
+              {/* Center VT Logo */}
+              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                 <div className="w-24 h-24 lg:w-32 lg:h-32 bg-white/95 backdrop-blur-md border-4 border-white rounded-full flex items-center justify-center shadow-[0_0_40px_rgba(74,92,106,0.3)] z-10 transition-transform duration-500 hover:scale-105 pointer-events-auto cursor-pointer">
+                    <span className="text-3xl lg:text-4xl font-black text-[#06141B]">VT</span>
                  </div>
               </div>
             </div>
