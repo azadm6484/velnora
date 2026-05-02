@@ -10,6 +10,9 @@ import PortfolioPage from './pages/PortfolioPage';
 import AboutPage from './pages/AboutPage';
 import HireDevelopersPage from './pages/HireDevelopersPage';
 import ContactPage from './pages/ContactPage';
+import ServiceDetailPage from './pages/ServiceDetailPage';
+import IndustryDetailPage from './pages/IndustryDetailPage';
+import DeveloperDetailPage from './pages/DeveloperDetailPage';
 
 // Simple Router Context
 export const RouterContext = createContext(null);
@@ -41,7 +44,23 @@ function App() {
     return () => window.removeEventListener('popstate', handlePopState);
   }, []);
 
-  const PageComponent = routes[currentPath] || Home;
+  let PageComponent = routes[currentPath];
+
+  if (!PageComponent && currentPath.startsWith('/services/')) {
+    PageComponent = ServiceDetailPage;
+  }
+  
+  if (!PageComponent && currentPath.startsWith('/industries/')) {
+    PageComponent = IndustryDetailPage;
+  }
+  
+  if (!PageComponent && currentPath.startsWith('/hire-developers/')) {
+    PageComponent = DeveloperDetailPage;
+  }
+
+  if (!PageComponent) {
+    PageComponent = Home; // Fallback
+  }
 
   return (
     <RouterContext.Provider value={{ currentPath, navigate }}>

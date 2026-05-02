@@ -1,17 +1,21 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Code, Server, Palette, Smartphone, Database, Cloud } from 'lucide-react';
+import { useRouter } from '../App';
 
 const roles = [
-  { title: 'React Developers', icon: <Code size={36} />, skills: ['React.js', 'Next.js', 'TypeScript', 'Tailwind CSS'], rate: 'From $25/hr', desc: 'Expert frontend engineers building fast, accessible UIs.' },
-  { title: 'Node.js Developers', icon: <Server size={36} />, skills: ['Node.js', 'Express', 'REST APIs', 'GraphQL'], rate: 'From $25/hr', desc: 'Backend engineers specializing in scalable server solutions.' },
-  { title: 'UI/UX Designers', icon: <Palette size={36} />, skills: ['Figma', 'Adobe XD', 'Prototyping', 'Design Systems'], rate: 'From $20/hr', desc: 'Creative designers crafting intuitive user experiences.' },
-  { title: 'Mobile Developers', icon: <Smartphone size={36} />, skills: ['React Native', 'Flutter', 'iOS', 'Android'], rate: 'From $25/hr', desc: 'Cross-platform mobile experts delivering native-like apps.' },
-  { title: 'Backend / DevOps', icon: <Database size={36} />, skills: ['Python', 'Django', 'PostgreSQL', 'Docker'], rate: 'From $30/hr', desc: 'Full-stack engineers managing infrastructure and databases.' },
-  { title: 'Cloud Architects', icon: <Cloud size={36} />, skills: ['AWS', 'GCP', 'Azure', 'Kubernetes'], rate: 'From $35/hr', desc: 'Cloud specialists designing cost-optimized infrastructure.' },
+  { title: 'React Developers', slug: 'react-developers', icon: <Code size={36} />, skills: ['React.js', 'Next.js', 'TypeScript', 'Tailwind CSS'], desc: 'Expert frontend engineers building fast, accessible UIs.' },
+  { title: 'Node.js Developers', slug: 'node-js-developers', icon: <Server size={36} />, skills: ['Node.js', 'Express', 'REST APIs', 'GraphQL'], desc: 'Backend engineers specializing in scalable server solutions.' },
+  { title: 'UI/UX Designers', slug: 'ui-ux-designers', icon: <Palette size={36} />, skills: ['Figma', 'Adobe XD', 'Prototyping', 'Design Systems'], desc: 'Creative designers crafting intuitive user experiences.' },
+  { title: 'Mobile Developers', slug: 'mobile-developers', icon: <Smartphone size={36} />, skills: ['React Native', 'Flutter', 'iOS', 'Android'], desc: 'Cross-platform mobile experts delivering native-like apps.' },
+  { title: 'Backend / DevOps', slug: 'backend-devops', icon: <Database size={36} />, skills: ['Python', 'Django', 'PostgreSQL', 'Docker'], desc: 'Full-stack engineers managing infrastructure and databases.' },
+  { title: 'Cloud Architects', slug: 'cloud-architects', icon: <Cloud size={36} />, skills: ['AWS', 'GCP', 'Azure', 'Kubernetes'], desc: 'Cloud specialists designing cost-optimized infrastructure.' },
 ];
 
-const HireDevelopersPage = () => (
+const HireDevelopersPage = () => {
+  const { navigate } = useRouter();
+
+  return (
   <section className="relative pt-40 pb-24 min-h-screen overflow-hidden bg-[#06141B]">
     {/* Background Image */}
     <div className="absolute inset-0 z-0">
@@ -39,7 +43,8 @@ const HireDevelopersPage = () => (
         {roles.map((role, i) => (
           <motion.div key={i} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: i * 0.1 }} viewport={{ once: true }}
-            className="bg-[#11212D]/60 backdrop-blur-sm p-8 rounded-3xl border border-white/5 shadow-sm hover:border-white/20 transition-all group flex flex-col">
+            onClick={() => navigate(`/hire-developers/${role.slug}`)}
+            className="cursor-pointer bg-[#11212D]/60 backdrop-blur-sm p-8 rounded-3xl border border-white/5 shadow-sm hover:border-white/20 transition-all group flex flex-col">
             <div className="mb-5 text-gray-300 group-hover:scale-110 transition-transform">{role.icon}</div>
             <h3 className="text-xl font-black text-white mb-2">{role.title}</h3>
             <p className="text-sm text-gray-400 leading-relaxed mb-4">{role.desc}</p>
@@ -48,15 +53,15 @@ const HireDevelopersPage = () => (
                 <span key={s} className="text-xs font-semibold bg-white/10 border border-white/10 text-gray-300 px-3 py-1 rounded-full">{s}</span>
               ))}
             </div>
-            <div className="mt-auto flex items-center justify-between">
-              <span className="text-sm font-bold text-white">{role.rate}</span>
-              <button className="bg-white text-[#06141B] text-xs font-bold px-5 py-2 rounded-full hover:bg-gray-200 transition-all">Hire Now</button>
+            <div className="mt-auto flex items-center justify-end">
+              <button className="bg-white text-[#06141B] text-xs font-bold px-6 py-2.5 rounded-full hover:bg-gray-200 transition-all">View Details</button>
             </div>
           </motion.div>
         ))}
       </div>
     </div>
   </section>
-);
+  );
+};
 
 export default HireDevelopersPage;

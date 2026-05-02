@@ -1,36 +1,44 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Landmark, HeartPulse, ShoppingCart, GraduationCap, Truck, Home } from 'lucide-react';
+import { useRouter } from '../App';
 
 const Industries = () => {
+  const { navigate } = useRouter();
   const industries = [
     { 
       name: 'Fintech', 
+      slug: 'fintech',
       icon: <Landmark className="text-white" size={24} />,
       image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=2000&auto=format&fit=crop"
     },
     { 
       name: 'Healthcare', 
+      slug: 'healthcare',
       icon: <HeartPulse className="text-white" size={24} />,
       image: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=2000&auto=format&fit=crop"
     },
     { 
       name: 'E-commerce', 
+      slug: 'e-commerce',
       icon: <ShoppingCart className="text-white" size={24} />,
       image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=2000&auto=format&fit=crop"
     },
     { 
       name: 'Education', 
+      slug: 'education',
       icon: <GraduationCap className="text-white" size={24} />,
       image: "https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=2000&auto=format&fit=crop"
     },
     { 
       name: 'Logistics', 
+      slug: 'logistics',
       icon: <Truck className="text-white" size={24} />,
       image: "https://images.unsplash.com/photo-1580674285054-bed31e145f59?q=80&w=2000&auto=format&fit=crop"
     },
     { 
       name: 'Real Estate', 
+      slug: 'real-estate',
       icon: <Home className="text-white" size={24} />,
       image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=2000&auto=format&fit=crop"
     },
@@ -60,6 +68,7 @@ const Industries = () => {
               <motion.div
                 key={index}
                 whileHover={{ y: -10 }}
+                onClick={() => navigate(`/industries/${industry.slug}`)}
                 className="group relative w-80 h-64 flex-shrink-0 rounded-3xl overflow-hidden cursor-pointer"
               >
                 <img 

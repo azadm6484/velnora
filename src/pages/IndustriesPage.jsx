@@ -1,17 +1,21 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Landmark, HeartPulse, ShoppingCart, GraduationCap, Truck, Home } from 'lucide-react';
+import { useRouter } from '../App';
 
 const industries = [
-  { name: 'Fintech', icon: <Landmark size={40} />, desc: 'Banking, payments, and financial technology solutions that are secure and scalable.' },
-  { name: 'Healthcare', icon: <HeartPulse size={40} />, desc: 'Digital health platforms, patient management, and telemedicine applications.' },
-  { name: 'E-commerce', icon: <ShoppingCart size={40} />, desc: 'Online retail platforms, inventory management, and seamless checkout systems.' },
-  { name: 'Education', icon: <GraduationCap size={40} />, desc: 'E-learning platforms, LMS systems, and interactive educational tools.' },
-  { name: 'Logistics', icon: <Truck size={40} />, desc: 'Supply chain, fleet management, and real-time tracking solutions.' },
-  { name: 'Real Estate', icon: <Home size={40} />, desc: 'Property listing platforms, virtual tours, and CRM for real estate agents.' },
+  { name: 'Fintech', slug: 'fintech', icon: <Landmark size={40} />, desc: 'Banking, payments, and financial technology solutions that are secure and scalable.' },
+  { name: 'Healthcare', slug: 'healthcare', icon: <HeartPulse size={40} />, desc: 'Digital health platforms, patient management, and telemedicine applications.' },
+  { name: 'E-commerce', slug: 'e-commerce', icon: <ShoppingCart size={40} />, desc: 'Online retail platforms, inventory management, and seamless checkout systems.' },
+  { name: 'Education', slug: 'education', icon: <GraduationCap size={40} />, desc: 'E-learning platforms, LMS systems, and interactive educational tools.' },
+  { name: 'Logistics', slug: 'logistics', icon: <Truck size={40} />, desc: 'Supply chain, fleet management, and real-time tracking solutions.' },
+  { name: 'Real Estate', slug: 'real-estate', icon: <Home size={40} />, desc: 'Property listing platforms, virtual tours, and CRM for real estate agents.' },
 ];
 
-const IndustriesPage = () => (
+const IndustriesPage = () => {
+  const { navigate } = useRouter();
+
+  return (
   <section className="relative pt-40 pb-24 min-h-screen overflow-hidden bg-[#06141B]" id="industries">
     {/* Background Image */}
     <div className="absolute inset-0 z-0">
@@ -42,7 +46,8 @@ const IndustriesPage = () => (
           <motion.div key={index}
             initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.1 }} viewport={{ once: true }} whileHover={{ y: -8 }}
-            className="bg-[#11212D]/60 backdrop-blur-sm p-8 rounded-3xl border border-white/5 shadow-sm hover:border-white/20 transition-all duration-300 group text-center">
+            onClick={() => navigate(`/industries/${item.slug}`)}
+            className="cursor-pointer bg-[#11212D]/60 backdrop-blur-sm p-8 rounded-3xl border border-white/5 shadow-sm hover:border-white/20 transition-all duration-300 group text-center">
             <div className="mb-5 text-gray-300 flex justify-center group-hover:scale-110 transition-transform">
               {item.icon}
             </div>
@@ -53,6 +58,7 @@ const IndustriesPage = () => (
       </div>
     </div>
   </section>
-);
+  );
+};
 
 export default IndustriesPage;

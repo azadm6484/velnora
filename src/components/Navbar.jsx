@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ChevronDown, Globe, Laptop, Smartphone, Palette, Code, Server } from 'lucide-react';
+import { Menu, X, ChevronDown, Globe, Laptop, Smartphone, Palette, Code, Server, Layers, Shield, Landmark, HeartPulse, ShoppingCart, GraduationCap, Truck, Home, Database, Cloud } from 'lucide-react';
 import { useRouter } from '../App';
 
 const Navbar = () => {
@@ -26,29 +26,35 @@ const Navbar = () => {
     {
       name: 'Services', path: '/services', mega: true,
       items: [
-        { name: 'Website Development', icon: <Globe size={17} />, desc: 'Custom web solutions', path: '/services' },
-        { name: 'Mobile App Development', icon: <Smartphone size={17} />, desc: 'iOS & Android apps', path: '/services' },
-        { name: 'SaaS / Software Solutions', icon: <Laptop size={17} />, desc: 'Scalable cloud software', path: '/services' },
-        { name: 'UI/UX Design', icon: <Palette size={17} />, desc: 'Modern user interfaces', path: '/services' },
+        { name: 'Website Development', icon: <Globe size={17} />, desc: 'Custom web solutions', path: '/services/website-development' },
+        { name: 'Mobile App Development', icon: <Smartphone size={17} />, desc: 'iOS & Android apps', path: '/services/mobile-app-development' },
+        { name: 'SaaS / Software Solutions', icon: <Laptop size={17} />, desc: 'Scalable cloud software', path: '/services/saas-software-solutions' },
+        { name: 'UI/UX Design', icon: <Palette size={17} />, desc: 'Modern user interfaces', path: '/services/ui-ux-design' },
+        { name: 'Custom Software', icon: <Layers size={17} />, desc: 'Bespoke business tools', path: '/services/custom-software' },
+        { name: 'Security & QA', icon: <Shield size={17} />, desc: 'Robust testing & audit', path: '/services/security-qa' },
       ]
     },
     {
       name: 'Industries', path: '/industries', mega: true,
       items: [
-        { name: 'Fintech', desc: 'Banking & Finance', path: '/industries' },
-        { name: 'Healthcare', desc: 'Medical Tech', path: '/industries' },
-        { name: 'E-commerce', desc: 'Online Retail', path: '/industries' },
-        { name: 'Logistics', desc: 'Supply Chain', path: '/industries' },
+        { name: 'Fintech', icon: <Landmark size={17} />, desc: 'Banking & Finance', path: '/industries/fintech' },
+        { name: 'Healthcare', icon: <HeartPulse size={17} />, desc: 'Medical Tech', path: '/industries/healthcare' },
+        { name: 'E-commerce', icon: <ShoppingCart size={17} />, desc: 'Online Retail', path: '/industries/e-commerce' },
+        { name: 'Logistics', icon: <Truck size={17} />, desc: 'Supply Chain', path: '/industries/logistics' },
+        { name: 'Education', icon: <GraduationCap size={17} />, desc: 'EdTech Solutions', path: '/industries/education' },
+        { name: 'Real Estate', icon: <Home size={17} />, desc: 'Property & PropTech', path: '/industries/real-estate' },
       ]
     },
     { name: 'Portfolio', path: '/portfolio' },
     {
       name: 'Hire Developers', path: '/hire-developers', mega: true,
       items: [
-        { name: 'React Developers', desc: 'Frontend experts', icon: <Code size={17} />, path: '/hire-developers' },
-        { name: 'Node.js Developers', desc: 'Backend engineers', icon: <Server size={17} />, path: '/hire-developers' },
-        { name: 'UI/UX Designers', desc: 'Creative designers', icon: <Palette size={17} />, path: '/hire-developers' },
-        { name: 'Mobile Developers', desc: 'iOS & Android', icon: <Smartphone size={17} />, path: '/hire-developers' },
+        { name: 'React Developers', desc: 'Frontend experts', icon: <Code size={17} />, path: '/hire-developers/react-developers' },
+        { name: 'Node.js Developers', desc: 'Backend engineers', icon: <Server size={17} />, path: '/hire-developers/node-js-developers' },
+        { name: 'UI/UX Designers', desc: 'Creative designers', icon: <Palette size={17} />, path: '/hire-developers/ui-ux-designers' },
+        { name: 'Mobile Developers', desc: 'iOS & Android', icon: <Smartphone size={17} />, path: '/hire-developers/mobile-developers' },
+        { name: 'Backend / DevOps', desc: 'Infrastructure', icon: <Database size={17} />, path: '/hire-developers/backend-devops' },
+        { name: 'Cloud Architects', desc: 'Cloud strategy', icon: <Cloud size={17} />, path: '/hire-developers/cloud-architects' },
       ]
     },
     { name: 'Contact', path: '/contact' },
