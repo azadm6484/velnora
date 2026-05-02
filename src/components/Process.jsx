@@ -22,7 +22,7 @@ const Process = () => {
         <div className="absolute inset-0 bg-gradient-to-t from-[#06141B] via-transparent to-[#06141B] pointer-events-none" />
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-20">
           <h2 className="text-4xl lg:text-5xl font-bold mb-4 text-white">Our <span className="text-[#4A5C6A]">Process</span></h2>
           <p className="text-[#9BA8AB] max-w-2xl mx-auto text-lg">A systematic approach to building excellence.</p>

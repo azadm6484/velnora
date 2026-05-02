@@ -54,7 +54,7 @@ const Services = () => {
         <div className="absolute inset-0 bg-gradient-to-t from-[#06141B] via-transparent to-[#06141B] pointer-events-none" />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 w-full mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}

@@ -1,8 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ExternalLink } from 'lucide-react';
+import { useRouter } from '../App';
 
 const Portfolio = () => {
+  const { navigate } = useRouter();
+
   const projects = [
     {
       title: 'FinEdge Banking',
@@ -23,13 +26,13 @@ const Portfolio = () => {
 
   return (
     <section className="py-24 bg-[#11212D]/30" id="portfolio">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="w-full mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-end mb-16">
           <div>
             <h2 className="text-4xl lg:text-5xl font-bold mb-4">Our <span className="text-[#4A5C6A]">Portfolio</span></h2>
             <p className="text-[#9BA8AB]">Showcasing our best work across various industries.</p>
           </div>
-          <button className="hidden md:block px-6 py-2 border border-white/10 rounded-full hover:bg-white/5 transition-all text-sm font-semibold">
+          <button onClick={() => navigate('/portfolio')} className="hidden md:block px-6 py-2 border border-white/10 rounded-full hover:bg-white/5 transition-all text-sm font-semibold">
             View All Projects
           </button>
         </div>
@@ -42,7 +45,8 @@ const Portfolio = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="group relative overflow-hidden rounded-2xl glass-card border-0"
+              className="group relative overflow-hidden rounded-2xl glass-card border-0 cursor-pointer"
+              onClick={() => navigate('/portfolio')}
             >
               <div className="aspect-video overflow-hidden">
                 <img 

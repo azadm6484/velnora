@@ -58,7 +58,7 @@ const Navbar = () => {
 
   return (
     <nav className={`fixed w-full z-50 transition-all duration-500 ${scrolled ? 'py-3' : 'py-5'}`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="w-full mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center bg-white/85 backdrop-blur-xl border border-gray-200/60 rounded-full px-5 py-2.5 shadow-lg shadow-black/5">
 
           {/* Logo */}

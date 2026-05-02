@@ -21,7 +21,7 @@ const Stats = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-[#06141B] via-transparent to-[#06141B] pointer-events-none" />
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           {stats.map((stat, index) => (
             <motion.div

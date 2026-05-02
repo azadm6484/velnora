@@ -44,38 +44,40 @@ const Industries = () => {
         <div className="absolute bottom-[-10%] left-[-5%] w-[40%] h-[40%] bg-[#06141B] rounded-full blur-[120px]" />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+      <div className="relative z-10 w-full py-4">
+        <div className="text-center mb-16 px-4 sm:px-6 lg:px-8">
           <h2 className="text-4xl lg:text-5xl font-bold mb-4 text-white">Industries <span className="text-[#4A5C6A]">We Serve</span></h2>
           <p className="text-[#9BA8AB] max-w-2xl mx-auto">Expertise across diverse sectors to deliver specialized solutions tailored to unique industry demands.</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {industries.map((industry, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ delay: index * 0.05 }}
-              viewport={{ once: true }}
-              whileHover={{ y: -10 }}
-              className="group relative h-64 rounded-3xl overflow-hidden cursor-pointer"
-            >
-              <img 
-                src={industry.image} 
-                alt={industry.name} 
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#06141B] via-[#06141B]/40 to-transparent transition-opacity duration-300 group-hover:opacity-80" />
-              
-              <div className="absolute bottom-0 left-0 w-full p-6 flex items-center justify-between z-10">
-                <span className="text-xl font-bold text-white">{industry.name}</span>
-                <div className="w-12 h-12 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center border border-white/30 group-hover:bg-[#4A5C6A] transition-colors">
-                  {industry.icon}
+        <div className="relative w-full overflow-hidden flex">
+          <motion.div 
+            className="flex space-x-6 px-6"
+            animate={{ x: ["0%", "-33.333333%"] }}
+            transition={{ repeat: Infinity, ease: "linear", duration: 25 }}
+          >
+            {[...industries, ...industries, ...industries].map((industry, index) => (
+              <motion.div
+                key={index}
+                whileHover={{ y: -10 }}
+                className="group relative w-80 h-64 flex-shrink-0 rounded-3xl overflow-hidden cursor-pointer"
+              >
+                <img 
+                  src={industry.image} 
+                  alt={industry.name} 
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#06141B] via-[#06141B]/40 to-transparent transition-opacity duration-300 group-hover:opacity-80" />
+                
+                <div className="absolute bottom-0 left-0 w-full p-6 flex items-center justify-between z-10">
+                  <span className="text-xl font-bold text-white">{industry.name}</span>
+                  <div className="w-12 h-12 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center border border-white/30 group-hover:bg-[#4A5C6A] transition-colors flex-shrink-0">
+                    {industry.icon}
+                  </div>
                 </div>
-              </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
       </div>
     </section>

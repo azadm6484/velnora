@@ -1,8 +1,25 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Play, Users, Layers, Globe, Shield } from 'lucide-react';
+import { useRouter } from '../App';
 
 const Hero = () => {
+  const { navigate } = useRouter();
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const showcaseImages = [
+    "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=2426",
+    "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=2000",
+    "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&q=80&w=2000"
+  ];
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % showcaseImages.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, [showcaseImages.length]);
+
   return (
     <section id="home" className="relative pt-40 pb-20 overflow-hidden bg-[#06141B]">
       {/* Background Image */}
@@ -15,7 +32,7 @@ const Hero = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-[#06141B]/80 via-[#06141B]/60 to-[#06141B] pointer-events-none" />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 w-full mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center text-center mb-16">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -43,37 +60,57 @@ const Hero = () => {
             thrive in the future digital landscape. Certified Enterprise Grade.
           </motion.p>
           <div className="flex space-x-4">
-            <button className="bg-white text-[#06141B] font-medium px-8 py-3 rounded-full transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-[0_0_20px_rgba(255,255,255,0.3)]">Configurate</button>
-            <button className="bg-transparent text-white border border-white/20 font-medium px-8 py-3 rounded-full transition-all duration-300 hover:bg-white/10 active:scale-[0.98]">Experience</button>
+            <button onClick={() => navigate('/services')} className="bg-white text-[#06141B] font-medium px-8 py-3 rounded-full transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-[0_0_20px_rgba(255,255,255,0.3)]">Configurate</button>
+            <button onClick={() => navigate('/about')} className="bg-transparent text-white border border-white/20 font-medium px-8 py-3 rounded-full transition-all duration-300 hover:bg-white/10 active:scale-[0.98]">Experience</button>
           </div>
         </div>
 
         {/* Product Showcase with Hotspots */}
-        <div className="relative max-w-5xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1 }}
-            className="relative rounded-[3rem] overflow-hidden bg-[#11212D] shadow-2xl border border-white/10"
-          >
-            <img
-              src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=2426"
-              alt="Dashboard Showcase"
-              className="w-full h-auto opacity-90 mix-blend-lighten"
-            />
+        <div className="relative w-full max-w-7xl mx-auto h-[300px] sm:h-[450px] lg:h-[650px] flex items-center justify-center mt-10 perspective-1000">
+          {showcaseImages.map((src, index) => {
+            const position = index - currentIndex;
+            const diff = position < -1 ? position + 3 : position > 1 ? position - 3 : position;
+            
+            const isCenter = diff === 0;
+            const isLeft = diff === -1;
+            const isRight = diff === 1;
 
-            {/* Hotspots */}
-            <Hotspot x="20%" y="40%" label="AI Integration" />
-            <Hotspot x="45%" y="60%" label="Real-time Analytics" />
-            <Hotspot x="75%" y="30%" label="Cloud Infrastructure" />
-          </motion.div>
+            return (
+              <motion.div
+                key={index}
+                className="absolute w-[85%] lg:w-[70%] max-w-5xl rounded-[2rem] lg:rounded-[3rem] overflow-hidden bg-[#11212D] shadow-2xl border border-white/10 cursor-pointer"
+                animate={{
+                  x: isCenter ? "0%" : isLeft ? "-45%" : "45%",
+                  scale: isCenter ? 1 : 0.75,
+                  zIndex: isCenter ? 20 : 10,
+                  opacity: isCenter ? 1 : 0.4,
+                }}
+                transition={{ duration: 0.6, ease: [0.32, 0.72, 0, 1] }}
+                onClick={() => setCurrentIndex(index)}
+              >
+                <img
+                  src={src}
+                  alt={`Dashboard Showcase ${index + 1}`}
+                  className="w-full h-full aspect-[16/10] object-cover opacity-90 mix-blend-lighten pointer-events-none"
+                />
+
+                {/* Hotspots */}
+                {isCenter && index === 0 && (
+                  <>
+                    <Hotspot x="20%" y="40%" label="AI Integration" />
+                    <Hotspot x="45%" y="60%" label="Real-time Analytics" />
+                    <Hotspot x="75%" y="30%" label="Cloud Infrastructure" />
+                  </>
+                )}
+              </motion.div>
+            );
+          })}
 
           {/* Floating Spec Cards */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.5 }}
-            className="absolute -right-8 top-1/4 w-64 bg-[#11212D]/90 backdrop-blur-xl border border-white/10 text-white p-6 rounded-3xl shadow-2xl z-20"
+            animate={{ opacity: currentIndex === 0 ? 1 : 0, x: currentIndex === 0 ? 0 : 50 }}
+            transition={{ duration: 0.5 }}
+            className="absolute hidden lg:block right-0 lg:-right-4 top-1/4 w-64 bg-[#11212D]/90 backdrop-blur-xl border border-white/10 text-white p-6 rounded-3xl shadow-2xl z-30 pointer-events-none"
           >
             <div className="flex items-center space-x-2 mb-4">
               <div className="p-2 bg-white/10 rounded-xl">
