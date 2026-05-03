@@ -1,6 +1,7 @@
 import React from 'react';
 import { MessageCircle, Mail, MapPin, Facebook, Twitter, Linkedin, Github } from 'lucide-react';
 import { useRouter } from '../App';
+import logo from '../assets/velnora_favicon.png';
 
 const Footer = () => {
   const { navigate } = useRouter();
@@ -28,8 +29,11 @@ const Footer = () => {
 
           {/* Brand */}
           <div className="col-span-1 md:col-span-1">
-            <button onClick={() => navigate('/')} className="text-2xl font-black text-white mb-6 block text-left">
-              Velnora<span className="text-[#4A5C6A]">Tech</span>
+            <button onClick={() => navigate('/')} className="flex items-center gap-3 text-2xl font-black text-white mb-6 group">
+              <div className="w-10 h-10 flex items-center justify-center overflow-hidden">
+                <img src={logo} alt="VelnoraTech Logo" className="w-full h-full object-contain scale-125 group-hover:scale-150 transition-transform duration-500" />
+              </div>
+              <span>Velnora<span className="text-[#4A5C6A]">Tech</span></span>
             </button>
             <p className="text-[#9BA8AB] text-sm leading-relaxed mb-6">
               Building scalable digital products for future businesses.

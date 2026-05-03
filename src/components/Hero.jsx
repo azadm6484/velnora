@@ -8,9 +8,9 @@ const Hero = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const showcaseImages = [
-    "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=2426",
-    "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=2000",
-    "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&q=80&w=2000"
+    "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=70&w=1200",
+    "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=70&w=1200",
+    "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&q=70&w=1200"
   ];
 
   useEffect(() => {
@@ -21,13 +21,14 @@ const Hero = () => {
   }, [showcaseImages.length]);
 
   return (
-    <section id="home" className="relative pt-40 pb-20 overflow-hidden bg-[#06141B]">
+    <section id="home" className="relative pt-32 pb-20 overflow-hidden bg-[#06141B]">
       {/* Background Image */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 overflow-hidden">
         <img 
-          src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070&auto=format&fit=crop" 
+          src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=60&w=1200&auto=format&fit=crop" 
           alt="Technology Background" 
           className="w-full h-full object-cover opacity-20"
+          loading="eager"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[#06141B]/80 via-[#06141B]/60 to-[#06141B] pointer-events-none" />
       </div>
@@ -78,7 +79,7 @@ const Hero = () => {
             return (
               <motion.div
                 key={index}
-                className="absolute w-[85%] lg:w-[70%] max-w-5xl rounded-[2rem] lg:rounded-[3rem] overflow-hidden bg-[#11212D] shadow-2xl border border-white/10 cursor-pointer"
+                className="absolute w-[85%] lg:w-[70%] max-w-5xl rounded-[2rem] lg:rounded-[3rem] overflow-hidden bg-[#11212D] shadow-2xl border border-white/10 cursor-pointer will-change-transform"
                 animate={{
                   x: isCenter ? "0%" : isLeft ? "-45%" : "45%",
                   scale: isCenter ? 1 : 0.75,
@@ -92,6 +93,7 @@ const Hero = () => {
                   src={src}
                   alt={`Dashboard Showcase ${index + 1}`}
                   className="w-full h-full aspect-[16/10] object-cover opacity-90 mix-blend-lighten pointer-events-none"
+                  loading="lazy"
                 />
 
                 {/* Hotspots */}
@@ -127,11 +129,11 @@ const Hero = () => {
 
         {/* Bottom Feature Grid */}
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 mt-20">
-          <SpecCard icon={<Users size={20} />} label="Capacity" value="Unlimited" image="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=800&auto=format&fit=crop" />
-          <SpecCard icon={<Layers size={20} />} label="Engine" value="Turbo AI" image="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=800&auto=format&fit=crop" />
-          <SpecCard icon={<Shield size={20} />} label="Power" value="Secure V8" image="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=800&auto=format&fit=crop" />
-          <SpecCard icon={<Globe size={20} />} label="Network" value="Global" image="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=800&auto=format&fit=crop" />
-          <SpecCard icon={<ArrowRight size={20} />} label="Speed" value="0.1 sec" image="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800&auto=format&fit=crop" />
+          <SpecCard icon={<Users size={20} />} label="Capacity" value="Unlimited" image="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=60&w=400&auto=format&fit=crop" />
+          <SpecCard icon={<Layers size={20} />} label="Engine" value="Turbo AI" image="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=60&w=400&auto=format&fit=crop" />
+          <SpecCard icon={<Shield size={20} />} label="Power" value="Secure V8" image="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=60&w=400&auto=format&fit=crop" />
+          <SpecCard icon={<Globe size={20} />} label="Network" value="Global" image="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=60&w=400&auto=format&fit=crop" />
+          <SpecCard icon={<ArrowRight size={20} />} label="Speed" value="0.1 sec" image="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=60&w=400&auto=format&fit=crop" />
         </div>
       </div>
     </section>
@@ -155,7 +157,7 @@ const Hotspot = ({ x, y, label }) => (
 const SpecCard = ({ icon, label, value, image }) => (
   <div className="relative overflow-hidden bg-[#11212D]/60 backdrop-blur-sm p-6 rounded-3xl border border-white/5 shadow-sm hover:border-white/20 transition-all group min-h-[140px] flex flex-col justify-end">
     {image && (
-      <img src={image} alt={label} className="absolute inset-0 w-full h-full object-cover opacity-30 group-hover:opacity-50 transition-all duration-700 group-hover:scale-110" />
+      <img src={image} alt={label} className="absolute inset-0 w-full h-full object-cover opacity-30 group-hover:opacity-50 transition-all duration-700 group-hover:scale-110" loading="lazy" />
     )}
     <div className="absolute inset-0 bg-gradient-to-t from-[#06141B]/90 to-transparent pointer-events-none" />
     <div className="relative z-10 mt-auto">

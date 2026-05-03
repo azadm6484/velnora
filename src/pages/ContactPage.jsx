@@ -12,7 +12,7 @@ const ContactPage = () => {
   };
 
   return (
-    <section className="relative pt-40 pb-24 min-h-screen overflow-hidden bg-[#06141B]" id="contact">
+    <section className="relative pt-32 pb-24 min-h-screen overflow-hidden bg-[#06141B]" id="contact">
     {/* Background Image */}
     <div className="absolute inset-0 z-0">
       <img 

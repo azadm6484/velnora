@@ -70,7 +70,7 @@ const IndustryDetailPage = () => {
 
   if (!industry) {
     return (
-      <section className="pt-40 pb-24 min-h-screen bg-[#06141B] flex flex-col items-center justify-center text-center">
+      <section className="pt-32 pb-24 min-h-screen bg-[#06141B] flex flex-col items-center justify-center text-center">
         <h1 className="text-4xl font-black text-white mb-4">Industry Not Found</h1>
         <button onClick={() => navigate('/industries')} className="bg-white text-[#06141B] px-8 py-3 rounded-full font-bold">
           View All Industries
@@ -80,9 +80,9 @@ const IndustryDetailPage = () => {
   }
 
   return (
-    <div className="bg-[#06141B] min-h-screen pt-24">
+    <div className="bg-[#06141B] min-h-screen pt-16">
       {/* Hero */}
-      <section className="relative py-24 lg:py-32 overflow-hidden border-b border-white/10">
+      <section className="relative py-16 lg:py-24 overflow-hidden border-b border-white/10">
         <div className="absolute inset-0 z-0">
           <img src={industry.image} alt={industry.title} className="w-full h-full object-cover opacity-20" />
           <div className="absolute inset-0 bg-gradient-to-b from-[#06141B]/80 via-[#06141B]/40 to-[#06141B] pointer-events-none" />

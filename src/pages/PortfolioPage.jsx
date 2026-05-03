@@ -12,7 +12,7 @@ const projects = [
 ];
 
 const PortfolioPage = () => (
-  <section className="relative pt-40 pb-24 min-h-screen overflow-hidden bg-[#06141B]" id="portfolio">
+  <section className="relative pt-32 pb-24 min-h-screen overflow-hidden bg-[#06141B]" id="portfolio">
     {/* Background Image */}
     <div className="absolute inset-0 z-0">
       <img 

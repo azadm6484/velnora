@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ChevronDown, Globe, Laptop, Smartphone, Palette, Code, Server, Layers, Shield, Landmark, HeartPulse, ShoppingCart, GraduationCap, Truck, Home, Database, Cloud } from 'lucide-react';
 import { useRouter } from '../App';
+import logo from '../assets/velnora_favicon.png';
 
 const Navbar = () => {
   const { currentPath, navigate } = useRouter();
@@ -65,12 +66,12 @@ const Navbar = () => {
   return (
     <nav className={`fixed w-full z-50 transition-all duration-500 ${scrolled ? 'py-3' : 'py-5'}`}>
       <div className="w-full mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center bg-white/85 backdrop-blur-xl border border-gray-200/60 rounded-full px-5 py-2.5 shadow-lg shadow-black/5">
+        <div className="flex justify-between items-center bg-white/85 backdrop-blur-md border border-gray-200/60 rounded-full px-5 py-2.5 shadow-lg shadow-black/5">
 
           {/* Logo */}
-          <button onClick={() => go('/')} className="flex items-center space-x-2 shrink-0">
-            <div className="w-8 h-8 bg-[#06141B] rounded-full flex items-center justify-center">
-              <span className="text-white text-xs font-black">VT</span>
+          <button onClick={() => go('/')} className="flex items-center space-x-2 shrink-0 group">
+            <div className="w-10 h-10 flex items-center justify-center overflow-hidden">
+              <img src={logo} alt="VelnoraTech Logo" className="w-full h-full object-contain scale-125 group-hover:scale-150 transition-transform duration-500" />
             </div>
             <span className="text-lg font-black tracking-tight text-[#06141B]">
               Velnora<span className="text-[#4A5C6A] font-semibold">Tech</span>

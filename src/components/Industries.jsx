@@ -10,37 +10,37 @@ const Industries = () => {
       name: 'Fintech', 
       slug: 'fintech',
       icon: <Landmark className="text-white" size={24} />,
-      image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=2000&auto=format&fit=crop"
+      image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=60&w=800&auto=format&fit=crop"
     },
     { 
       name: 'Healthcare', 
       slug: 'healthcare',
       icon: <HeartPulse className="text-white" size={24} />,
-      image: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=2000&auto=format&fit=crop"
+      image: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=60&w=800&auto=format&fit=crop"
     },
     { 
       name: 'E-commerce', 
       slug: 'e-commerce',
       icon: <ShoppingCart className="text-white" size={24} />,
-      image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=2000&auto=format&fit=crop"
+      image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=60&w=800&auto=format&fit=crop"
     },
     { 
       name: 'Education', 
       slug: 'education',
       icon: <GraduationCap className="text-white" size={24} />,
-      image: "https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=2000&auto=format&fit=crop"
+      image: "https://images.unsplash.com/photo-1509062522246-3755977927d7?q=60&w=800&auto=format&fit=crop"
     },
     { 
       name: 'Logistics', 
       slug: 'logistics',
       icon: <Truck className="text-white" size={24} />,
-      image: "https://images.unsplash.com/photo-1580674285054-bed31e145f59?q=80&w=2000&auto=format&fit=crop"
+      image: "https://images.unsplash.com/photo-1580674285054-bed31e145f59?q=60&w=800&auto=format&fit=crop"
     },
     { 
       name: 'Real Estate', 
       slug: 'real-estate',
       icon: <Home className="text-white" size={24} />,
-      image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=2000&auto=format&fit=crop"
+      image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=60&w=800&auto=format&fit=crop"
     },
   ];
 
@@ -60,7 +60,7 @@ const Industries = () => {
 
         <div className="relative w-full overflow-hidden flex">
           <motion.div 
-            className="flex space-x-6 px-6"
+            className="flex space-x-6 px-6 will-change-transform"
             animate={{ x: ["0%", "-33.333333%"] }}
             transition={{ repeat: Infinity, ease: "linear", duration: 25 }}
           >
@@ -69,12 +69,13 @@ const Industries = () => {
                 key={index}
                 whileHover={{ y: -10 }}
                 onClick={() => navigate(`/industries/${industry.slug}`)}
-                className="group relative w-80 h-64 flex-shrink-0 rounded-3xl overflow-hidden cursor-pointer"
+                className="group relative w-80 h-64 flex-shrink-0 rounded-3xl overflow-hidden cursor-pointer will-change-transform"
               >
                 <img 
                   src={industry.image} 
                   alt={industry.name} 
                   className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#06141B] via-[#06141B]/40 to-transparent transition-opacity duration-300 group-hover:opacity-80" />
                 

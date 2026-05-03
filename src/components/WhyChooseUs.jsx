@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { CheckCircle2 } from 'lucide-react';
+import logo from '../assets/velnora_favicon.png';
 
 const WhyChooseUs = () => {
   const points = [
@@ -63,8 +64,8 @@ const WhyChooseUs = () => {
               
               {/* Center VT Logo */}
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                 <div className="w-24 h-24 lg:w-32 lg:h-32 bg-white/95 backdrop-blur-md border-4 border-white rounded-full flex items-center justify-center shadow-[0_0_40px_rgba(74,92,106,0.3)] z-10 transition-transform duration-500 hover:scale-105 pointer-events-auto cursor-pointer">
-                    <span className="text-3xl lg:text-4xl font-black text-[#06141B]">VT</span>
+                 <div className="w-24 h-24 lg:w-32 lg:h-32 bg-white/95 backdrop-blur-md border-4 border-white rounded-full flex items-center justify-center shadow-[0_0_40px_rgba(74,92,106,0.3)] z-10 transition-transform duration-500 hover:scale-105 pointer-events-auto cursor-pointer p-6">
+                    <img src={logo} alt="VelnoraTech" className="w-full h-full object-contain" />
                  </div>
               </div>
             </div>

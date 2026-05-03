@@ -1,12 +1,13 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { CheckCircle2, Users, Award, Globe, Clock } from 'lucide-react';
+import logo from '../assets/velnora_favicon.png';
 
 const stats = [
-  { value: '500+', label: 'Projects Delivered', icon: <Award size={24} /> },
-  { value: '50+', label: 'Happy Clients', icon: <Users size={24} /> },
-  { value: '12+', label: 'Countries Served', icon: <Globe size={24} /> },
-  { value: '5+', label: 'Years Experience', icon: <Clock size={24} /> },
+  { value: '500+', label: 'Projects Delivered', icon: <Award size={24} />, image: 'https://images.unsplash.com/photo-1579389083078-4e7018379f7e?q=60&w=400&auto=format&fit=crop' },
+  { value: '50+', label: 'Happy Clients', icon: <Users size={24} />, image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?q=60&w=400&auto=format&fit=crop' },
+  { value: '12+', label: 'Countries Served', icon: <Globe size={24} />, image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=60&w=400&auto=format&fit=crop' },
+  { value: '5+', label: 'Years Experience', icon: <Clock size={24} />, image: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=60&w=400&auto=format&fit=crop' },
 ];
 
 const points = [
@@ -19,13 +20,14 @@ const points = [
 ];
 
 const AboutPage = () => (
-  <section className="relative pt-40 pb-24 min-h-screen overflow-hidden bg-[#06141B]" id="about">
+  <section className="relative pt-32 pb-24 min-h-screen overflow-hidden bg-[#06141B]" id="about">
     {/* Background Image */}
     <div className="absolute inset-0 z-0">
       <img 
-        src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070&auto=format&fit=crop" 
+        src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=60&w=1200&auto=format&fit=crop" 
         alt="Technology Background" 
         className="w-full h-full object-cover opacity-20"
+        loading="lazy"
       />
       <div className="absolute inset-0 bg-gradient-to-b from-[#06141B]/80 via-[#06141B]/60 to-[#06141B] pointer-events-none" />
     </div>
@@ -51,10 +53,16 @@ const AboutPage = () => (
         {stats.map((stat, i) => (
           <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: i * 0.1 }} viewport={{ once: true }}
-            className="bg-[#11212D]/60 backdrop-blur-sm p-8 rounded-3xl border border-white/5 shadow-sm hover:border-white/20 transition-all text-center">
-            <div className="text-gray-300 flex justify-center mb-3">{stat.icon}</div>
-            <h3 className="text-4xl font-black text-white mb-1 drop-shadow-md">{stat.value}</h3>
-            <p className="text-[10px] text-gray-400 uppercase font-bold tracking-widest">{stat.label}</p>
+            className="relative overflow-hidden bg-[#11212D]/60 backdrop-blur-sm p-8 rounded-3xl border border-white/5 shadow-sm hover:border-white/20 transition-all text-center group">
+            {stat.image && (
+              <img src={stat.image} alt={stat.label} className="absolute inset-0 w-full h-full object-cover opacity-10 group-hover:opacity-20 transition-all duration-700 group-hover:scale-110" loading="lazy" />
+            )}
+            <div className="absolute inset-0 bg-gradient-to-t from-[#06141B]/90 to-transparent pointer-events-none" />
+            <div className="relative z-10">
+              <div className="text-gray-300 flex justify-center mb-3 group-hover:text-white transition-colors">{stat.icon}</div>
+              <h3 className="text-4xl font-black text-white mb-1 drop-shadow-md">{stat.value}</h3>
+              <p className="text-[10px] text-gray-400 uppercase font-bold tracking-widest">{stat.label}</p>
+            </div>
           </motion.div>
         ))}
       </div>
@@ -77,8 +85,8 @@ const AboutPage = () => (
         </motion.div>
         <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}
           className="bg-[#11212D]/60 backdrop-blur-sm rounded-3xl p-12 border border-white/5 shadow-sm hover:border-white/20 transition-all text-center">
-          <div className="w-32 h-32 bg-[#06141B] border border-white/10 rounded-full flex items-center justify-center mx-auto mb-8 shadow-xl">
-            <span className="text-4xl font-black text-white">VT</span>
+          <div className="w-32 h-32 bg-[#06141B] border border-white/10 rounded-full flex items-center justify-center mx-auto mb-8 shadow-xl overflow-hidden p-6">
+            <img src={logo} alt="VelnoraTech" className="w-full h-full object-contain" />
           </div>
           <h3 className="text-2xl font-black text-white mb-4">VelnoraTech Software Pvt Ltd</h3>
           <p className="text-gray-400 text-sm leading-relaxed mb-6">
