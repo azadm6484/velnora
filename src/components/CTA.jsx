@@ -28,13 +28,13 @@ const CTA = () => {
           <div className="flex flex-col sm:flex-row justify-center items-center gap-5">
             <button 
               onClick={() => setQuoteModalMode('quote')} 
-              className="w-full sm:w-auto bg-white text-[#06141B] font-black uppercase tracking-widest text-sm px-10 py-5 rounded-2xl hover:bg-gray-100 transition-all flex items-center justify-center shadow-[0_20px_40px_rgba(255,255,255,0.1)] hover:scale-[1.03] active:scale-[0.97]"
+              className="w-full sm:w-auto bg-white text-[#06141B] font-black uppercase tracking-widest text-xs sm:text-sm px-8 sm:px-10 py-4 sm:py-5 rounded-2xl hover:bg-gray-100 transition-all flex items-center justify-center shadow-[0_20px_40px_rgba(255,255,255,0.1)] hover:scale-[1.03] active:scale-[0.97]"
             >
               Start Project <ArrowRight className="ml-2" size={18} />
             </button>
             <button 
               onClick={() => navigate('/services')} 
-              className="w-full sm:w-auto bg-white/5 text-white font-black uppercase tracking-widest text-sm px-10 py-5 rounded-2xl hover:bg-white/10 transition-all border border-white/10 backdrop-blur-md flex items-center justify-center hover:scale-[1.03] active:scale-[0.97]"
+              className="w-full sm:w-auto bg-white/5 text-white font-black uppercase tracking-widest text-xs sm:text-sm px-8 sm:px-10 py-4 sm:py-5 rounded-2xl hover:bg-white/10 transition-all border border-white/10 backdrop-blur-md flex items-center justify-center hover:scale-[1.03] active:scale-[0.97]"
             >
               Explore Services <MessageSquare className="ml-2" size={18} />
             </button>
