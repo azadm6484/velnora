@@ -61,12 +61,12 @@ const WhyChooseUs = () => {
                   <div className="absolute inset-0 bg-[#06141B]/10 group-hover:bg-transparent transition-colors duration-500" />
                 </div>
               </div>
-              
+
               {/* Center VT Logo */}
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                 <div className="w-24 h-24 lg:w-32 lg:h-32 bg-white/95 backdrop-blur-md border-4 border-white rounded-full flex items-center justify-center shadow-[0_0_40px_rgba(74,92,106,0.3)] z-10 transition-transform duration-500 hover:scale-105 pointer-events-auto cursor-pointer p-6">
-                    <img src={logo} alt="VelnoraTech" className="w-full h-full object-contain" />
-                 </div>
+                <div className="w-24 h-24 lg:w-32 lg:h-32 bg-white/95 backdrop-blur-md border-4 border-white rounded-full flex items-center justify-center shadow-[0_0_40px_rgba(74,92,106,0.3)] z-10 transition-transform duration-500 hover:scale-105 pointer-events-auto cursor-pointer p-3">
+                  <img src={logo} alt="VelnoraTech" className="w-full h-full object-contain mt-[15px]" />
+                </div>
               </div>
             </div>
           </motion.div>

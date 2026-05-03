@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ChevronDown, Globe, Laptop, Smartphone, Palette, Code, Server, Layers, Shield, Landmark, HeartPulse, ShoppingCart, GraduationCap, Truck, Home, Database, Cloud, Cpu } from 'lucide-react';
+import { Menu, X, ChevronDown, Globe, Laptop, Smartphone, Palette, Code, Server, Layers, Shield, Landmark, HeartPulse, ShoppingCart, GraduationCap, Truck, Home, Database, Cloud, Cpu, Phone } from 'lucide-react';
 import { useRouter } from '../App';
 import logo from '../assets/velnora_favicon.png';
 
@@ -135,6 +135,13 @@ const Navbar = () => {
 
           {/* Right CTA */}
           <div className="hidden xl:flex items-center gap-3">
+            <a
+              href="tel:+919876543210"
+              className="flex items-center gap-2 text-[#06141B] font-bold text-sm px-4 py-2.5 hover:text-[#4A5C6A] transition-colors"
+            >
+              <Phone size={18} />
+              <span>+91 98765 43210</span>
+            </a>
             <button
               onClick={() => setQuoteModalMode('quote')}
               className="bg-[#06141B] text-white text-sm font-bold px-5 py-2.5 rounded-full hover:bg-[#253745] transition-all shadow-lg shadow-black/20 hover:shadow-xl hover:scale-[1.02] active:scale-[0.98]"
@@ -198,7 +205,14 @@ const Navbar = () => {
                   )}
                 </div>
               ))}
-              <div className="px-2 pt-3 pb-1">
+              <div className="px-2 pt-3 pb-1 flex flex-col gap-2">
+                <a
+                  href="tel:+919876543210"
+                  className="w-full bg-white border border-[#06141B] text-[#06141B] py-4 rounded-xl font-bold text-sm flex items-center justify-center gap-2"
+                >
+                  <Phone size={18} />
+                  Call Us Now
+                </a>
                 <button onClick={() => { setIsOpen(false); setQuoteModalMode('quote'); }}
                   className="w-full bg-[#06141B] text-white py-4 rounded-xl font-bold text-sm hover:bg-[#253745] transition-all shadow-lg"
                 >

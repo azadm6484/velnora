@@ -13,6 +13,8 @@ import ContactPage from './pages/ContactPage';
 import ServiceDetailPage from './pages/ServiceDetailPage';
 import IndustryDetailPage from './pages/IndustryDetailPage';
 import DeveloperDetailPage from './pages/DeveloperDetailPage';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import TermsOfService from './pages/TermsOfService';
 
 import QuoteModal from './components/QuoteModal';
 
@@ -29,6 +31,8 @@ const routes = {
   '/portfolio': PortfolioPage,
   '/hire-developers': HireDevelopersPage,
   '/contact': ContactPage,
+  '/privacy-policy': PrivacyPolicy,
+  '/terms-of-service': TermsOfService,
 };
 
 function App() {

@@ -85,7 +85,7 @@ const AboutPage = () => (
         </motion.div>
         <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}
           className="bg-[#11212D]/60 backdrop-blur-sm rounded-3xl p-12 border border-white/5 shadow-sm hover:border-white/20 transition-all text-center">
-          <div className="w-32 h-32 bg-[#06141B] border border-white/10 rounded-full flex items-center justify-center mx-auto mb-8 shadow-xl overflow-hidden p-6">
+          <div className="w-32 h-32 bg-[#06141B] border border-white/10 rounded-full flex items-center justify-center mx-auto mb-8 shadow-xl overflow-hidden p-3">
             <img src={logo} alt="VelnoraTech" className="w-full h-full object-contain" />
           </div>
           <h3 className="text-2xl font-black text-white mb-4">VelnoraTech Software Pvt Ltd</h3>
