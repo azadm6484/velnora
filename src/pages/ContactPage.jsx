@@ -55,7 +55,7 @@ const ContactPage = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 shrink-0">
             {[
               { icon: <Mail size={20} />, label: 'Email Address', value: 'info@velnoratech.com', link: 'mailto:info@velnoratech.com' },
-              { icon: <Phone size={20} />, label: 'Direct Call', value: '+91 98765 43210', link: 'tel:+919876543210' },
+              { icon: <Phone size={20} />, label: 'Direct Call', value: '+91 8383895123', link: 'tel:+918383895123' },
             ].map((item, i) => (
               <a key={i} href={item.link} className="flex gap-4 bg-[#11212D]/40 backdrop-blur-md p-5 rounded-[2rem] border border-white/5 shadow-xl hover:border-white/20 hover:bg-[#11212D]/60 transition-all group">
                 <div className="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center text-white shrink-0 group-hover:bg-white/10 transition-all">{item.icon}</div>
@@ -67,7 +67,7 @@ const ContactPage = () => {
             ))}
           </div>
 
-          <a href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer"
+          <a href="https://wa.me/918383895123" target="_blank" rel="noopener noreferrer"
             className="flex items-center justify-center gap-3 bg-[#25D366] text-white p-6 rounded-[2rem] font-black uppercase tracking-widest text-sm hover:bg-[#20BA5A] transition-all shadow-[0_20px_40px_rgba(37,211,102,0.2)] hover:scale-[1.02] active:scale-[0.98] shrink-0">
             <MessageCircle size={22} />
             Chat on WhatsApp
@@ -113,7 +113,7 @@ const ContactPage = () => {
                   <label className="text-[10px] font-black uppercase tracking-[0.2em] text-[#4A5C6A] ml-1">Phone Number</label>
                   <input required type="tel" value={form.phone} onChange={e => setForm({...form, phone: e.target.value})}
                     className="w-full bg-[#06141B]/50 border border-white/5 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-[#4A5C6A] transition-all placeholder-gray-600"
-                    placeholder="+91 98765 43210" />
+                    placeholder="+91 8383895123" />
                 </div>
               </div>
 

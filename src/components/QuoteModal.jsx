@@ -110,7 +110,7 @@ const QuoteModal = ({ mode, isOpen, onClose }) => {
                         type="tel"
                         value={form.phone}
                         onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                        placeholder="+91 98765 43210"
+                        placeholder="+91 8383895123"
                         className="w-full bg-[#06141B]/50 border border-white/5 rounded-2xl px-5 py-3 text-white focus:outline-none focus:border-[#4A5C6A] transition-colors placeholder-gray-600"
                       />
                     </div>

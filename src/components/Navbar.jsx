@@ -136,11 +136,11 @@ const Navbar = () => {
           {/* Right CTA */}
           <div className="hidden xl:flex items-center gap-3">
             <a
-              href="tel:+919876543210"
+              href="tel:+918383895123"
               className="flex items-center gap-2 text-[#06141B] font-bold text-sm px-4 py-2.5 hover:text-[#4A5C6A] transition-colors"
             >
               <Phone size={18} />
-              <span>+91 98765 43210</span>
+              <span>+91 8383895123</span>
             </a>
             <button
               onClick={() => setQuoteModalMode('quote')}
@@ -207,7 +207,7 @@ const Navbar = () => {
               ))}
               <div className="px-2 pt-3 pb-1 flex flex-col gap-2">
                 <a
-                  href="tel:+919876543210"
+                  href="tel:+918383895123"
                   className="w-full bg-white border border-[#06141B] text-[#06141B] py-4 rounded-xl font-bold text-sm flex items-center justify-center gap-2"
                 >
                   <Phone size={18} />

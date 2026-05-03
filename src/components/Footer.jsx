@@ -101,8 +101,8 @@ const Footer = () => {
               </li>
               <li className="flex items-center gap-3">
                 <MessageCircle size={16} className="text-[#4A5C6A] shrink-0" />
-                <a href="tel:+919876543210" className="hover:text-white transition-colors">
-                  +91 98765 43210
+                <a href="tel:+918383895123" className="hover:text-white transition-colors">
+                  +91 8383895123
                 </a>
               </li>
             </ul>
@@ -122,7 +122,7 @@ const Footer = () => {
       <div className="fixed bottom-8 right-8 z-50 flex flex-col gap-4">
         {/* Call Button */}
         <a
-          href="tel:+919876543210"
+          href="tel:+918383895123"
           className="p-4 bg-[#4A5C6A] text-white rounded-full shadow-[0_10px_30px_rgba(74,92,106,0.5)] hover:scale-110 transition-transform flex items-center justify-center group relative"
           title="Call Us"
         >
@@ -134,7 +134,7 @@ const Footer = () => {
 
         {/* WhatsApp Button */}
         <a
-          href="https://wa.me/919876543210"
+          href="https://wa.me/918383895123"
           target="_blank"
           rel="noopener noreferrer"
           className="p-4 bg-[#25D366] text-white rounded-full shadow-[0_10px_30px_rgba(37,211,102,0.5)] hover:scale-110 transition-transform flex items-center justify-center group relative"
