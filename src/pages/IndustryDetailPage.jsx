@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { CheckCircle2, ArrowRight, Landmark, HeartPulse, ShoppingCart, GraduationCap, Truck, Home } from 'lucide-react';
+import { CheckCircle2, ArrowRight, ArrowLeft, Landmark, HeartPulse, ShoppingCart, GraduationCap, Truck, Home } from 'lucide-react';
 import { useRouter } from '../App';
 
 const industryData = {
@@ -80,14 +80,29 @@ const IndustryDetailPage = () => {
   }
 
   return (
-    <div className="bg-[#06141B] min-h-screen pt-16">
+    <div className="bg-[#06141B] min-h-screen pt-28 pb-20">
+      {/* Back Button */}
+      <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 mb-6">
+        <motion.button 
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          onClick={() => navigate('/industries')}
+          className="group flex items-center gap-3 text-gray-400 hover:text-white transition-all font-bold uppercase tracking-widest text-[10px]"
+        >
+          <div className="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center group-hover:border-white/30 group-hover:bg-white/5 transition-all shadow-lg">
+            <ArrowLeft size={16} />
+          </div>
+          <span>Back to Industries</span>
+        </motion.button>
+      </div>
+
       {/* Hero */}
-      <section className="relative py-16 lg:py-24 overflow-hidden border-b border-white/10">
+      <section className="relative py-12 lg:py-20 overflow-hidden border-b border-white/5">
         <div className="absolute inset-0 z-0">
           <img src={industry.image} alt={industry.title} className="w-full h-full object-cover opacity-20" />
           <div className="absolute inset-0 bg-gradient-to-b from-[#06141B]/80 via-[#06141B]/40 to-[#06141B] pointer-events-none" />
         </div>
-        <div className="relative z-10 max-w-7xl mx-auto px-4 text-center">
+        <div className="relative z-10 w-full mx-auto px-4 sm:px-10 lg:px-20 text-center">
           <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} className="inline-flex p-5 rounded-3xl bg-white/5 backdrop-blur-xl border border-white/10 mb-8 shadow-2xl">
             {industry.icon}
           </motion.div>
@@ -102,7 +117,7 @@ const IndustryDetailPage = () => {
 
       {/* Content */}
       <section className="py-24 relative z-10">
-        <div className="max-w-7xl mx-auto px-4">
+        <div className="w-full mx-auto px-4 sm:px-10 lg:px-20">
           <div className="grid lg:grid-cols-2 gap-20 items-start">
             <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
               <h2 className="text-3xl font-black text-white mb-8">Specialized <span className="text-[#4A5C6A]">Solutions</span></h2>

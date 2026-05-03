@@ -1,5 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import n8nLogo from '../assets/n8n-color.svg';
+import makeLogo from '../assets/make-color.svg';
 
 const TechStack = () => {
   const technologies = [
@@ -13,6 +15,9 @@ const TechStack = () => {
     { name: 'PostgreSQL', image: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg' },
     { name: 'Figma', image: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg' },
     { name: 'Tailwind CSS', image: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg' },
+    { name: 'n8n', image: n8nLogo },
+    { name: 'Make.com', image: makeLogo },
+    { name: 'Zapier', image: 'https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/zapier.svg' },
   ];
 
   return (
@@ -52,11 +57,12 @@ const TechStack = () => {
               viewport={{ once: true }}
               whileHover={{ y: -5, scale: 1.1 }}
               className="flex flex-col items-center justify-center p-4 bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 hover:border-white/30 transition-all duration-300 shadow-[0_0_15px_rgba(0,0,0,0.5)] cursor-pointer w-24 h-24 md:w-32 md:h-32"
+              style={tech.name === 'Zapier' ? { backgroundColor: 'rgba(255, 79, 0, 0.1)', borderColor: 'rgba(255, 79, 0, 0.3)' } : {}}
             >
               <img 
                 src={tech.image} 
                 alt={tech.name} 
-                className="w-12 h-12 md:w-16 md:h-16 object-contain filter drop-shadow-md brightness-110" 
+                className={`w-12 h-12 md:w-16 md:h-16 object-contain filter drop-shadow-md ${tech.name === 'Zapier' ? 'invert brightness-200' : 'brightness-110'}`} 
               />
               <span className="mt-3 text-xs md:text-sm font-medium text-gray-300">{tech.name}</span>
             </motion.div>

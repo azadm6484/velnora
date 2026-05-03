@@ -14,6 +14,8 @@ import ServiceDetailPage from './pages/ServiceDetailPage';
 import IndustryDetailPage from './pages/IndustryDetailPage';
 import DeveloperDetailPage from './pages/DeveloperDetailPage';
 
+import QuoteModal from './components/QuoteModal';
+
 // Simple Router Context
 export const RouterContext = createContext(null);
 
@@ -31,6 +33,7 @@ const routes = {
 
 function App() {
   const [currentPath, setCurrentPath] = useState(window.location.pathname);
+  const [quoteModalMode, setQuoteModalMode] = useState(null); // null, 'quote', 'hire'
 
   const navigate = (path) => {
     window.history.pushState({}, '', path);
@@ -72,13 +75,14 @@ function App() {
   }
 
   return (
-    <RouterContext.Provider value={{ currentPath, navigate }}>
+    <RouterContext.Provider value={{ currentPath, navigate, quoteModalMode, setQuoteModalMode }}>
       <div className="min-h-[100dvh] bg-[#F8F9FA] selection:bg-[#4A5C6A]/30">
         <Navbar />
         <main>
           <PageComponent />
         </main>
         <Footer />
+        <QuoteModal mode={quoteModalMode} isOpen={!!quoteModalMode} onClose={() => setQuoteModalMode(null)} />
       </div>
     </RouterContext.Provider>
   );

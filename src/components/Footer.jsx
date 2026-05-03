@@ -15,10 +15,11 @@ const Footer = () => {
   ];
 
   const serviceLinks = [
-    { label: 'Web Development', path: '/services' },
-    { label: 'Mobile Apps', path: '/services' },
-    { label: 'SaaS Solutions', path: '/services' },
-    { label: 'UI/UX Design', path: '/services' },
+    { label: 'Web Development', path: '/services/website-development' },
+    { label: 'Mobile Apps', path: '/services/mobile-app-development' },
+    { label: 'SaaS Solutions', path: '/services/saas-software-solutions' },
+    { label: 'UI/UX Design', path: '/services/ui-ux-design' },
+    { label: 'Automation Solutions', path: '/services/automation-solutions' },
     { label: 'Hire Developers', path: '/hire-developers' },
   ];
 
@@ -90,7 +91,7 @@ const Footer = () => {
             <ul className="space-y-4 text-sm text-[#9BA8AB]">
               <li className="flex items-start gap-3">
                 <MapPin size={16} className="text-[#4A5C6A] shrink-0 mt-0.5" />
-                <span className="leading-relaxed">Gaur Chowk, Plot No. 17, Tech Zone IV, Amrapali Dream Valley, Greater Noida, UP 201318</span>
+                <span className="leading-relaxed">NX-One, Tech, Amrapali Dream Valley, B-109, Zone IV, Greater Noida, Uttar Pradesh 201318</span>
               </li>
               <li className="flex items-center gap-3">
                 <Mail size={16} className="text-[#4A5C6A] shrink-0" />

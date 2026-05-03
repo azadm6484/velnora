@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ChevronDown, Globe, Laptop, Smartphone, Palette, Code, Server, Layers, Shield, Landmark, HeartPulse, ShoppingCart, GraduationCap, Truck, Home, Database, Cloud } from 'lucide-react';
+import { Menu, X, ChevronDown, Globe, Laptop, Smartphone, Palette, Code, Server, Layers, Shield, Landmark, HeartPulse, ShoppingCart, GraduationCap, Truck, Home, Database, Cloud, Cpu } from 'lucide-react';
 import { useRouter } from '../App';
 import logo from '../assets/velnora_favicon.png';
 
 const Navbar = () => {
-  const { currentPath, navigate } = useRouter();
+  const { currentPath, navigate, setQuoteModalMode } = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeMenu, setActiveMenu] = useState(null);
@@ -43,6 +43,7 @@ const Navbar = () => {
         { name: 'UI/UX Design', icon: <Palette size={17} />, desc: 'Modern user interfaces', path: '/services/ui-ux-design' },
         { name: 'Custom Software', icon: <Layers size={17} />, desc: 'Bespoke business tools', path: '/services/custom-software' },
         { name: 'Security & QA', icon: <Shield size={17} />, desc: 'Robust testing & audit', path: '/services/security-qa' },
+        { name: 'Automation Solutions', icon: <Cpu size={17} />, desc: 'n8n, Make, Zapier expert', path: '/services/automation-solutions' },
       ]
     },
     {
@@ -134,11 +135,8 @@ const Navbar = () => {
 
           {/* Right CTA */}
           <div className="hidden xl:flex items-center gap-3">
-            <button className="p-2 hover:bg-gray-100 rounded-full transition-colors text-[#666]">
-              <Globe size={18} />
-            </button>
             <button
-              onClick={() => go('/contact')}
+              onClick={() => setQuoteModalMode('quote')}
               className="bg-[#06141B] text-white text-sm font-bold px-5 py-2.5 rounded-full hover:bg-[#253745] transition-all shadow-lg shadow-black/20 hover:shadow-xl hover:scale-[1.02] active:scale-[0.98]"
             >
               Get Quote
@@ -201,7 +199,7 @@ const Navbar = () => {
                 </div>
               ))}
               <div className="px-2 pt-3 pb-1">
-                <button onClick={() => go('/contact')}
+                <button onClick={() => { setIsOpen(false); setQuoteModalMode('quote'); }}
                   className="w-full bg-[#06141B] text-white py-4 rounded-xl font-bold text-sm hover:bg-[#253745] transition-all shadow-lg"
                 >
                   Get Quote

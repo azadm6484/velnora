@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Code, Server, Palette, Smartphone, Database, Cloud } from 'lucide-react';
+import { Code, Server, Palette, Smartphone, Database, Cloud, Cpu } from 'lucide-react';
 import { useRouter } from '../App';
 
 const roles = [
@@ -10,6 +10,7 @@ const roles = [
   { title: 'Mobile Developers', slug: 'mobile-developers', icon: <Smartphone size={36} />, skills: ['React Native', 'Flutter', 'iOS', 'Android'], desc: 'Cross-platform mobile experts delivering native-like apps.', image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&q=60&w=800' },
   { title: 'Backend / DevOps', slug: 'backend-devops', icon: <Database size={36} />, skills: ['Python', 'Django', 'PostgreSQL', 'Docker'], desc: 'Full-stack engineers managing infrastructure and databases.', image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&q=60&w=800' },
   { title: 'Cloud Architects', slug: 'cloud-architects', icon: <Cloud size={36} />, skills: ['AWS', 'GCP', 'Azure', 'Kubernetes'], desc: 'Cloud specialists designing cost-optimized infrastructure.', image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=60&w=800' },
+  { title: 'Automation Experts', slug: 'automation-experts', icon: <Cpu size={36} />, skills: ['n8n', 'Make.com', 'Zapier', 'Python'], desc: 'Specialists in hyper-automation and workflow optimization.', image: 'https://images.unsplash.com/photo-1518433278988-5102eda10214?auto=format&fit=crop&q=60&w=800' },
 ];
 
 const HireDevelopersPage = () => {

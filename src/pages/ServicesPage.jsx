@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Globe, Smartphone, Cloud, Layers, Layout, Shield } from 'lucide-react';
+import { Globe, Smartphone, Cloud, Layers, Layout, Shield, Cpu } from 'lucide-react';
 import { useRouter } from '../App';
 
 const services = [
@@ -10,6 +10,7 @@ const services = [
   { title: 'UI/UX Design', slug: 'ui-ux-design', desc: 'User-centric designs that are visually stunning and highly intuitive for your customers.', icon: <Layout className="text-[#4A5C6A]" size={32} />, image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?q=60&w=600&auto=format&fit=crop' },
   { title: 'Custom Software', slug: 'custom-software', desc: 'Bespoke software tailored to your specific business needs and industry requirements.', icon: <Layers className="text-[#4A5C6A]" size={32} />, image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=60&w=600&auto=format&fit=crop' },
   { title: 'Security & QA', slug: 'security-qa', desc: 'Rigorous testing and security audits to ensure your product is robust and reliable.', icon: <Shield className="text-[#4A5C6A]" size={32} />, image: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=60&w=600&auto=format&fit=crop' },
+  { title: 'Automation Solutions', slug: 'automation-solutions', desc: 'Optimize your workflows with n8n, Make.com, and Zapier. Automated booking systems, lead generation, and data syncing.', icon: <Cpu className="text-[#4A5C6A]" size={32} />, image: 'https://images.unsplash.com/photo-1518433278988-5102eda10214?q=60&w=600&auto=format&fit=crop' },
 ];
 
 const ServicesPage = () => {

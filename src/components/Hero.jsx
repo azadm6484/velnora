@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { ArrowRight, Play, Users, Layers, Globe, Shield } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ArrowRight, Play, Users, Layers, Globe, Shield, X } from 'lucide-react';
 import { useRouter } from '../App';
 
 const Hero = () => {
-  const { navigate } = useRouter();
+  const { navigate, setQuoteModalMode } = useRouter();
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [selectedImage, setSelectedImage] = useState(null);
 
   const showcaseImages = [
     "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=70&w=1200",
@@ -61,7 +62,7 @@ const Hero = () => {
             thrive in the future digital landscape. Certified Enterprise Grade.
           </motion.p>
           <div className="flex space-x-4">
-            <button onClick={() => navigate('/services')} className="bg-white text-[#06141B] font-medium px-8 py-3 rounded-full transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-[0_0_20px_rgba(255,255,255,0.3)]">Configurate</button>
+            <button onClick={() => setQuoteModalMode('quote')} className="bg-white text-[#06141B] font-medium px-8 py-3 rounded-full transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-[0_0_20px_rgba(255,255,255,0.3)]">Configurate</button>
             <button onClick={() => navigate('/about')} className="bg-transparent text-white border border-white/20 font-medium px-8 py-3 rounded-full transition-all duration-300 hover:bg-white/10 active:scale-[0.98]">Experience</button>
           </div>
         </div>
@@ -87,7 +88,10 @@ const Hero = () => {
                   opacity: isCenter ? 1 : 0.4,
                 }}
                 transition={{ duration: 0.6, ease: [0.32, 0.72, 0, 1] }}
-                onClick={() => setCurrentIndex(index)}
+                onClick={() => {
+                  if (isCenter) setSelectedImage(src);
+                  else setCurrentIndex(index);
+                }}
               >
                 <img
                   src={src}
@@ -136,6 +140,35 @@ const Hero = () => {
           <SpecCard icon={<ArrowRight size={20} />} label="Speed" value="0.1 sec" image="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=60&w=400&auto=format&fit=crop" />
         </div>
       </div>
+
+      {/* Modal Lightbox */}
+      <AnimatePresence>
+        {selectedImage && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSelectedImage(null)}
+            className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-2xl flex items-center justify-center p-4 md:p-12 cursor-zoom-out"
+          >
+            <motion.button
+              className="absolute top-8 right-8 text-white p-3 bg-white/10 rounded-full hover:bg-white/20 transition-colors"
+              whileHover={{ rotate: 90 }}
+            >
+              <X size={24} />
+            </motion.button>
+            <motion.img
+              initial={{ scale: 0.9, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.9, opacity: 0, y: 20 }}
+              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              src={selectedImage}
+              className="max-w-full max-h-full rounded-2xl shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-white/10"
+              alt="Preview"
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };

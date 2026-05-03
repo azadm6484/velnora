@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { CheckCircle2, ArrowRight, Layers, Smartphone, Globe, Shield, Cloud, Layout } from 'lucide-react';
+import { CheckCircle2, ArrowRight, ArrowLeft, Layers, Smartphone, Globe, Shield, Cloud, Layout, Cpu } from 'lucide-react';
 import { useRouter } from '../App';
 
 const serviceData = {
@@ -57,11 +57,20 @@ const serviceData = {
     features: ['Automated End-to-End Testing', 'Penetration Testing & Security Audits', 'Performance & Load Testing', 'CI/CD Pipeline Integration', 'Compliance Standards (HIPAA, GDPR)', 'Code Quality Analysis'],
     techStack: ['Cypress', 'Selenium', 'Jest', 'OWASP ZAP', 'SonarQube', 'GitHub Actions'],
     image: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&q=60&w=1200',
+  },
+  'automation-solutions': {
+    title: 'Automation Solutions',
+    icon: <Cpu size={48} className="text-white" />,
+    shortDesc: 'Optimize your workflows with n8n, Make.com, and Zapier expert integrations.',
+    fullDesc: 'We specialize in hyper-automation, connecting your favorite tools to create seamless, hands-free business processes. From automated lead nurturing to complex multi-step booking systems, we help you save thousands of hours using modern No-Code and Low-Code platforms.',
+    features: ['n8n Self-Hosted Automation', 'Make.com (Integromat) Scenarios', 'Zapier Workflow Optimization', 'Automated Booking & Appointment Systems', 'CRM & ERP Synchronization', 'AI-Powered Document Processing'],
+    techStack: ['n8n', 'Make.com', 'Zapier', 'Python', 'Node.js', 'OpenAI API'],
+    image: 'https://images.unsplash.com/photo-1518433278988-5102eda10214?auto=format&fit=crop&q=60&w=1200',
   }
 };
 
 const ServiceDetailPage = () => {
-  const { currentPath, navigate } = useRouter();
+  const { currentPath, navigate, setQuoteModalMode } = useRouter();
   
   // Extract service ID from path e.g. "/services/website-development"
   const pathParts = currentPath.split('/');
@@ -87,14 +96,29 @@ const ServiceDetailPage = () => {
   }
 
   return (
-    <div className="bg-[#06141B] min-h-screen pt-16 pb-20">
+    <div className="bg-[#06141B] min-h-screen pt-28 pb-20">
+      {/* Back Button */}
+      <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 mb-6">
+        <motion.button 
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          onClick={() => navigate('/services')}
+          className="group flex items-center gap-3 text-gray-400 hover:text-white transition-all font-bold uppercase tracking-widest text-[10px]"
+        >
+          <div className="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center group-hover:border-white/30 group-hover:bg-white/5 transition-all shadow-lg">
+            <ArrowLeft size={16} />
+          </div>
+          <span>Back to Services</span>
+        </motion.button>
+      </div>
+
       {/* Hero Section */}
-      <section className="relative py-16 lg:py-24 overflow-hidden border-b border-white/10">
+      <section className="relative py-12 lg:py-20 overflow-hidden border-b border-white/5">
         <div className="absolute inset-0 z-0">
           <img src={service.image} alt={service.title} className="w-full h-full object-cover opacity-[0.15]" loading="lazy" />
           <div className="absolute inset-0 bg-gradient-to-b from-[#06141B]/80 via-[#06141B]/60 to-[#06141B] pointer-events-none" />
         </div>
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="relative z-10 w-full mx-auto px-4 sm:px-10 lg:px-20 text-center">
           <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} className="inline-flex items-center justify-center w-24 h-24 rounded-3xl bg-white/10 backdrop-blur-md border border-white/20 shadow-2xl mb-8">
             {service.icon}
           </motion.div>
@@ -109,7 +133,7 @@ const ServiceDetailPage = () => {
 
       {/* Content Section */}
       <section className="py-24 relative z-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="w-full mx-auto px-4 sm:px-10 lg:px-20">
           <div className="grid lg:grid-cols-2 gap-16">
             {/* Left Column: Description & Features */}
             <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
@@ -119,11 +143,11 @@ const ServiceDetailPage = () => {
               </p>
               
               <h3 className="text-2xl font-bold text-white mb-6">Key Features</h3>
-              <div className="space-y-4">
+              <div className="grid sm:grid-cols-2 gap-4">
                 {service.features.map((feature, idx) => (
-                  <div key={idx} className="flex items-start gap-4 p-4 rounded-2xl bg-[#11212D]/40 border border-white/5 hover:border-white/10 transition-colors">
-                    <CheckCircle2 className="text-green-400 shrink-0 mt-0.5" size={20} />
-                    <span className="text-gray-200 font-medium">{feature}</span>
+                  <div key={idx} className="flex items-center gap-3 p-4 rounded-2xl bg-[#11212D]/40 border border-white/5 hover:border-white/10 transition-colors group">
+                    <CheckCircle2 className="text-green-400 shrink-0 group-hover:scale-110 transition-transform" size={18} />
+                    <span className="text-gray-200 text-sm font-medium">{feature}</span>
                   </div>
                 ))}
               </div>
@@ -145,7 +169,7 @@ const ServiceDetailPage = () => {
               <div className="bg-gradient-to-br from-[#06141B] to-[#11212D] rounded-3xl p-10 border border-white/10 shadow-2xl text-center">
                 <h3 className="text-2xl font-black text-white mb-4">Ready to start your project?</h3>
                 <p className="text-gray-400 mb-8">Let's discuss how our {service.title.toLowerCase()} expertise can help you achieve your business goals.</p>
-                <button onClick={() => navigate('/contact')} className="w-full bg-white text-[#06141B] py-4 rounded-xl font-bold text-lg hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(255,255,255,0.2)]">
+                <button onClick={() => setQuoteModalMode('quote')} className="w-full bg-white text-[#06141B] py-4 rounded-xl font-bold text-lg hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(255,255,255,0.2)]">
                   Get a Free Quote <ArrowRight size={20} />
                 </button>
               </div>

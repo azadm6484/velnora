@@ -90,8 +90,8 @@ const AboutPage = () => (
           </div>
           <h3 className="text-2xl font-black text-white mb-4">VelnoraTech Software Pvt Ltd</h3>
           <p className="text-gray-400 text-sm leading-relaxed mb-6">
-            Gaur Chowk, Plot No. 17, Tech Zone IV,<br />
-            Amrapali Dream Valley, Greater Noida, UP 201318
+            NX-One, Tech, Amrapali Dream Valley, B-109, Zone IV,<br />
+            Greater Noida, Uttar Pradesh 201318
           </p>
           <a href="mailto:info@velnoratech.com"
             className="inline-block bg-white text-[#06141B] px-8 py-3 rounded-full font-bold text-sm hover:scale-[1.02] active:scale-[0.98] transition-all shadow-[0_0_15px_rgba(255,255,255,0.3)]">

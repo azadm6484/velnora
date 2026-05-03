@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { CheckCircle2, ArrowRight, Code, Server, Palette, Smartphone, Database, Cloud } from 'lucide-react';
+import { CheckCircle2, ArrowRight, ArrowLeft, Code, Server, Palette, Smartphone, Database, Cloud, Cpu } from 'lucide-react';
 import { useRouter } from '../App';
 
 const developerData = {
@@ -57,11 +57,20 @@ const developerData = {
     skills: ['AWS (Certified)', 'Azure', 'Google Cloud (GCP)', 'Kubernetes', 'Serverless Architecture', 'Cloud Security'],
     features: ['Scalable Architecture Design', 'Cost Optimization Audits', 'Disaster Recovery Planning', 'Multi-Cloud Strategy', 'Cloud Security Hardening', 'Auto-scaling Implementation'],
     image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=2000',
+  },
+  'automation-experts': {
+    title: 'Automation Experts',
+    icon: <Cpu size={48} className="text-white" />,
+    shortDesc: 'Specialists in hyper-automation, connecting tools with n8n, Make, and Zapier.',
+    fullDesc: 'Our automation experts are masters of workflow optimization. They bridge the gap between different software platforms, creating autonomous systems that handle everything from lead management to complex business logic without human intervention.',
+    skills: ['n8n', 'Make.com', 'Zapier', 'Python / Node.js', 'API Integration', 'Low-Code / No-Code'],
+    features: ['Custom Workflow Architecture', 'API & Webhook Integration', 'Error Handling & Monitoring', 'Database Synchronization', 'Automated Marketing Funnels', 'Business Process Mapping'],
+    image: 'https://images.unsplash.com/photo-1518433278988-5102eda10214?auto=format&fit=crop&q=80&w=2000',
   }
 };
 
 const DeveloperDetailPage = () => {
-  const { currentPath, navigate } = useRouter();
+  const { currentPath, navigate, setQuoteModalMode } = useRouter();
   const pathParts = currentPath.split('/');
   const roleId = pathParts[pathParts.length - 1];
   const role = developerData[roleId];
@@ -80,14 +89,29 @@ const DeveloperDetailPage = () => {
   }
 
   return (
-    <div className="bg-[#06141B] min-h-screen pt-16">
+    <div className="bg-[#06141B] min-h-screen pt-28 pb-20">
+      {/* Back Button */}
+      <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 mb-6">
+        <motion.button 
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          onClick={() => navigate('/hire-developers')}
+          className="group flex items-center gap-3 text-gray-400 hover:text-white transition-all font-bold uppercase tracking-widest text-[10px]"
+        >
+          <div className="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center group-hover:border-white/30 group-hover:bg-white/5 transition-all shadow-lg">
+            <ArrowLeft size={16} />
+          </div>
+          <span>Back to Talent</span>
+        </motion.button>
+      </div>
+
       {/* Hero */}
-      <section className="relative py-16 lg:py-24 overflow-hidden border-b border-white/10">
+      <section className="relative py-12 lg:py-20 overflow-hidden border-b border-white/5">
         <div className="absolute inset-0 z-0">
           <img src={role.image} alt={role.title} className="w-full h-full object-cover opacity-[0.15]" />
           <div className="absolute inset-0 bg-gradient-to-b from-[#06141B]/80 via-[#06141B]/60 to-[#06141B] pointer-events-none" />
         </div>
-        <div className="relative z-10 max-w-7xl mx-auto px-4 text-center">
+        <div className="relative z-10 w-full mx-auto px-4 sm:px-10 lg:px-20 text-center">
           <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} className="inline-flex p-5 rounded-3xl bg-white/10 backdrop-blur-xl border border-white/20 mb-8 shadow-2xl">
             {role.icon}
           </motion.div>
@@ -102,18 +126,18 @@ const DeveloperDetailPage = () => {
 
       {/* Content */}
       <section className="py-24 relative z-10">
-        <div className="max-w-7xl mx-auto px-4">
+        <div className="w-full mx-auto px-4 sm:px-10 lg:px-20">
           <div className="grid lg:grid-cols-2 gap-16">
             <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
               <h2 className="text-3xl font-black text-white mb-6">Role <span className="text-[#4A5C6A]">Overview</span></h2>
               <p className="text-gray-300 text-lg leading-relaxed mb-10">{role.fullDesc}</p>
               
               <h3 className="text-2xl font-bold text-white mb-6">Key Capabilities</h3>
-              <div className="space-y-4">
+              <div className="grid sm:grid-cols-2 gap-4">
                 {role.features.map((feature, idx) => (
-                  <div key={idx} className="flex items-start gap-4 p-4 rounded-2xl bg-[#11212D]/40 border border-white/5 hover:border-white/10 transition-all group">
-                    <CheckCircle2 className="text-green-400 shrink-0 mt-0.5 group-hover:scale-110 transition-transform" size={20} />
-                    <span className="text-gray-200 font-medium">{feature}</span>
+                  <div key={idx} className="flex items-center gap-3 p-4 rounded-2xl bg-[#11212D]/40 border border-white/5 hover:border-white/10 transition-all group">
+                    <CheckCircle2 className="text-green-400 shrink-0 group-hover:scale-110 transition-transform" size={18} />
+                    <span className="text-gray-200 text-sm font-medium">{feature}</span>
                   </div>
                 ))}
               </div>
@@ -134,7 +158,7 @@ const DeveloperDetailPage = () => {
               <div className="bg-gradient-to-br from-[#11212D] to-[#06141B] rounded-3xl p-10 border border-white/10 shadow-2xl text-center">
                 <h3 className="text-2xl font-black text-white mb-4">Hire Top Talent</h3>
                 <p className="text-gray-400 mb-8">Our engineers are ready to join your team and start contributing immediately. No recruitment overhead.</p>
-                <button onClick={() => navigate('/contact')} className="w-full bg-white text-[#06141B] py-4 rounded-xl font-black text-lg hover:scale-[1.02] transition-all flex items-center justify-center gap-2">
+                <button onClick={() => setQuoteModalMode('hire')} className="w-full bg-white text-[#06141B] py-4 rounded-xl font-black text-lg hover:scale-[1.02] transition-all flex items-center justify-center gap-2">
                   Inquire About This Role <ArrowRight size={20} />
                 </button>
               </div>
