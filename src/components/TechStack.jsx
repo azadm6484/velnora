@@ -32,7 +32,7 @@ const TechStack = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-[#06141B] via-transparent to-[#06141B] pointer-events-none" />
       </div>
 
-      <div className="relative z-10 w-full mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 w-full mx-auto px-2 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -47,7 +47,7 @@ const TechStack = () => {
           </p>
         </div>
 
-        <div className="flex flex-wrap justify-center gap-8 md:gap-12 lg:gap-16">
+        <div className="grid grid-cols-3 sm:grid-cols-4 md:flex md:flex-wrap justify-center gap-3 sm:gap-6 md:gap-12 lg:gap-16">
           {technologies.map((tech, index) => (
             <motion.div
               key={index}
@@ -56,13 +56,13 @@ const TechStack = () => {
               transition={{ delay: index * 0.05 }}
               viewport={{ once: true }}
               whileHover={{ y: -5, scale: 1.1 }}
-              className="flex flex-col items-center justify-center p-4 bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 hover:border-white/30 transition-all duration-300 shadow-[0_0_15px_rgba(0,0,0,0.5)] cursor-pointer w-24 h-24 md:w-32 md:h-32"
+              className="flex flex-col items-center justify-center p-3 sm:p-4 bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 hover:border-white/30 transition-all duration-300 shadow-[0_0_15px_rgba(0,0,0,0.5)] cursor-pointer w-full aspect-square md:w-32 md:h-32 mx-auto"
               style={tech.name === 'Zapier' ? { backgroundColor: 'rgba(255, 79, 0, 0.1)', borderColor: 'rgba(255, 79, 0, 0.3)' } : {}}
             >
               <img 
                 src={tech.image} 
                 alt={tech.name} 
-                className={`w-12 h-12 md:w-16 md:h-16 object-contain filter drop-shadow-md ${tech.name === 'Zapier' ? 'invert brightness-200' : 'brightness-110'}`} 
+                className={`w-8 h-8 sm:w-12 sm:h-12 md:w-16 md:h-16 object-contain filter drop-shadow-md ${tech.name === 'Zapier' ? 'invert brightness-200' : 'brightness-110'}`} 
               />
               <span className="mt-3 text-xs md:text-sm font-medium text-gray-300">{tech.name}</span>
             </motion.div>

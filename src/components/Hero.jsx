@@ -25,17 +25,17 @@ const Hero = () => {
     <section id="home" className="relative pt-32 pb-20 overflow-hidden bg-[#06141B]">
       {/* Background Image */}
       <div className="absolute inset-0 z-0 overflow-hidden">
-        <img 
-          src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=60&w=1200&auto=format&fit=crop" 
-          alt="Technology Background" 
+        <img
+          src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=60&w=1200&auto=format&fit=crop"
+          alt="Technology Background"
           className="w-full h-full object-cover opacity-20"
           loading="eager"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[#06141B]/80 via-[#06141B]/60 to-[#06141B] pointer-events-none" />
       </div>
 
-      <div className="relative z-10 w-full mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col items-center text-center mb-16">
+      <div className="relative z-10 w-full mx-auto px-2 sm:px-6 lg:px-8">
+        <div className="flex flex-col items-center text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -68,11 +68,11 @@ const Hero = () => {
         </div>
 
         {/* Product Showcase with Hotspots */}
-        <div className="relative w-full max-w-7xl mx-auto h-[300px] sm:h-[450px] lg:h-[650px] flex items-center justify-center mt-10 perspective-1000">
+        <div className="relative w-full max-w-7xl mx-auto h-[300px] sm:h-[450px] lg:h-[650px] flex items-center justify-center perspective-1000">
           {showcaseImages.map((src, index) => {
             const position = index - currentIndex;
             const diff = position < -1 ? position + 3 : position > 1 ? position - 3 : position;
-            
+
             const isCenter = diff === 0;
             const isLeft = diff === -1;
             const isRight = diff === 1;
