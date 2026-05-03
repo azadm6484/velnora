@@ -169,9 +169,14 @@ const ServiceDetailPage = () => {
               <div className="bg-gradient-to-br from-[#06141B] to-[#11212D] rounded-3xl p-10 border border-white/10 shadow-2xl text-center">
                 <h3 className="text-2xl font-black text-white mb-4">Ready to start your project?</h3>
                 <p className="text-gray-400 mb-8">Let's discuss how our {service.title.toLowerCase()} expertise can help you achieve your business goals.</p>
-                <button onClick={() => setQuoteModalMode('quote')} className="w-full bg-white text-[#06141B] py-4 rounded-xl font-bold text-lg hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(255,255,255,0.2)]">
-                  Get a Free Quote <ArrowRight size={20} />
-                </button>
+                <div className="flex flex-col gap-4">
+                  <button onClick={() => setQuoteModalMode('calendly')} className="w-full bg-white text-[#06141B] py-4 rounded-xl font-bold text-lg hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(255,255,255,0.2)]">
+                    Schedule a Discovery Call <ArrowRight size={20} />
+                  </button>
+                  <button onClick={() => setQuoteModalMode('quote')} className="w-full bg-white/5 border border-white/10 text-white py-4 rounded-xl font-bold text-lg hover:bg-white/10 transition-all">
+                    Get a Free Quote
+                  </button>
+                </div>
               </div>
             </motion.div>
           </div>

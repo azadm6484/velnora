@@ -61,7 +61,7 @@ const industryData = {
 };
 
 const IndustryDetailPage = () => {
-  const { currentPath, navigate } = useRouter();
+  const { currentPath, navigate, setQuoteModalMode } = useRouter();
   const pathParts = currentPath.split('/');
   const industryId = pathParts[pathParts.length - 1];
   const industry = industryData[industryId];
@@ -145,7 +145,7 @@ const IndustryDetailPage = () => {
               <div className="bg-gradient-to-br from-[#11212D] to-[#06141B] rounded-3xl p-10 border border-white/10 shadow-2xl text-center">
                 <h3 className="text-2xl font-black text-white mb-4">Partner with Experts</h3>
                 <p className="text-gray-400 mb-8">Discuss your industry-specific challenges with our specialized engineering team.</p>
-                <button onClick={() => navigate('/contact')} className="w-full bg-white text-[#06141B] py-4 rounded-xl font-bold hover:scale-[1.02] transition-all flex items-center justify-center gap-2">
+                <button onClick={() => setQuoteModalMode('calendly')} className="w-full bg-white text-[#06141B] py-4 rounded-xl font-bold hover:scale-[1.02] transition-all flex items-center justify-center gap-2">
                   Schedule a Discovery Call <ArrowRight size={20} />
                 </button>
               </div>

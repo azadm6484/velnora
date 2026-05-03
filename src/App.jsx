@@ -17,6 +17,7 @@ import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsOfService from './pages/TermsOfService';
 
 import QuoteModal from './components/QuoteModal';
+import CalendlyModal from './components/CalendlyModal';
 
 // Simple Router Context
 export const RouterContext = createContext(null);
@@ -37,7 +38,7 @@ const routes = {
 
 function App() {
   const [currentPath, setCurrentPath] = useState(window.location.pathname);
-  const [quoteModalMode, setQuoteModalMode] = useState(null); // null, 'quote', 'hire'
+  const [quoteModalMode, setQuoteModalMode] = useState(null); // null, 'quote', 'hire', 'calendly'
 
   const navigate = (path) => {
     window.history.pushState({}, '', path);
@@ -86,7 +87,8 @@ function App() {
           <PageComponent />
         </main>
         <Footer />
-        <QuoteModal mode={quoteModalMode} isOpen={!!quoteModalMode} onClose={() => setQuoteModalMode(null)} />
+        <QuoteModal mode={quoteModalMode === 'calendly' ? null : quoteModalMode} isOpen={!!quoteModalMode && quoteModalMode !== 'calendly'} onClose={() => setQuoteModalMode(null)} />
+        <CalendlyModal isOpen={quoteModalMode === 'calendly'} onClose={() => setQuoteModalMode(null)} />
       </div>
     </RouterContext.Provider>
   );

@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, MapPin, Phone, Send, MessageCircle } from 'lucide-react';
+import { Mail, MapPin, Phone, Send, MessageCircle, Clock } from 'lucide-react';
+import { useRouter } from '../App';
 
 const ContactPage = () => {
+  const { setQuoteModalMode } = useRouter();
   const [form, setForm] = useState({ name: '', email: '', phone: '', subject: '', message: '' });
   const [sent, setSent] = useState(false);
 
@@ -67,11 +69,18 @@ const ContactPage = () => {
             ))}
           </div>
 
-          <a href="https://wa.me/918383895123" target="_blank" rel="noopener noreferrer"
-            className="flex items-center justify-center gap-3 bg-[#25D366] text-white p-6 rounded-[2rem] font-black uppercase tracking-widest text-sm hover:bg-[#20BA5A] transition-all shadow-[0_20px_40px_rgba(37,211,102,0.2)] hover:scale-[1.02] active:scale-[0.98] shrink-0">
-            <MessageCircle size={22} />
-            Chat on WhatsApp
-          </a>
+          <div className="flex flex-col gap-4 shrink-0">
+            <a href="https://wa.me/918383895123" target="_blank" rel="noopener noreferrer"
+              className="flex items-center justify-center gap-3 bg-[#25D366] text-white p-6 rounded-[2rem] font-black uppercase tracking-widest text-sm hover:bg-[#20BA5A] transition-all shadow-[0_20px_40px_rgba(37,211,102,0.2)] hover:scale-[1.02] active:scale-[0.98]">
+              <MessageCircle size={22} />
+              Chat on WhatsApp
+            </a>
+            <button onClick={() => setQuoteModalMode('calendly')}
+              className="flex items-center justify-center gap-3 bg-white text-[#06141B] p-6 rounded-[2rem] font-black uppercase tracking-widest text-sm hover:bg-gray-100 transition-all shadow-[0_20px_40px_rgba(255,255,255,0.1)] hover:scale-[1.02] active:scale-[0.98]">
+              <Clock size={22} />
+              Schedule a Discovery Call
+            </button>
+          </div>
           
           <div className="p-6 bg-white/5 rounded-[2rem] border border-white/5 text-center flex-grow flex flex-col justify-center">
             <p className="text-[10px] font-black uppercase tracking-[0.2em] text-[#4A5C6A] mb-2 text-center">Our Headquarters</p>
