@@ -47,7 +47,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-6xl lg:text-8xl font-black text-white leading-none mb-6"
+            className="text-5xl sm:text-7xl lg:text-8xl font-black text-white leading-[1.1] mb-6"
           >
             Velnora <span className="text-[#4A5C6A] drop-shadow-lg">Software</span>
           </motion.h1>
@@ -79,7 +79,7 @@ const Hero = () => {
             return (
               <motion.div
                 key={index}
-                className="absolute w-[85%] lg:w-[70%] max-w-5xl rounded-[2rem] lg:rounded-[3rem] overflow-hidden bg-[#11212D] shadow-2xl border border-white/10 cursor-pointer will-change-transform"
+                className="absolute w-[95%] sm:w-[85%] lg:w-[70%] max-w-5xl rounded-[1.5rem] sm:rounded-[2rem] lg:rounded-[3rem] overflow-hidden bg-[#11212D] shadow-2xl border border-white/10 cursor-pointer will-change-transform"
                 animate={{
                   x: isCenter ? "0%" : isLeft ? "-45%" : "45%",
                   scale: isCenter ? 1 : 0.75,

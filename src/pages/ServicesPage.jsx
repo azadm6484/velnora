@@ -16,7 +16,7 @@ const ServicesPage = () => {
   const { navigate } = useRouter();
 
   return (
-  <section className="relative pt-32 pb-24 min-h-screen overflow-hidden bg-[#06141B]" id="services">
+  <section className="relative pt-24 sm:pt-32 pb-24 min-h-screen overflow-hidden bg-[#06141B]" id="services">
     {/* Background Image */}
     <div className="absolute inset-0 z-0">
       <img 
@@ -37,7 +37,7 @@ const ServicesPage = () => {
         </motion.span>
         <motion.h1
           initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
-          className="text-5xl lg:text-7xl font-black text-white mb-6"
+          className="text-4xl sm:text-6xl lg:text-7xl font-black text-white mb-6"
         >
           Our <span className="text-[#4A5C6A] drop-shadow-lg">Services</span>
         </motion.h1>

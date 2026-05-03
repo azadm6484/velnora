@@ -19,6 +19,16 @@ const Navbar = () => {
   // Close mobile menu on route change
   useEffect(() => { setIsOpen(false); setActiveMenu(null); }, [currentPath]);
 
+  // Prevent background scroll when mobile menu is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => { document.body.style.overflow = 'unset'; };
+  }, [isOpen]);
+
   const go = (path) => { navigate(path); setIsOpen(false); setActiveMenu(null); };
 
   const menuItems = [
@@ -143,6 +153,19 @@ const Navbar = () => {
           </button>
         </div>
       </div>
+      
+      {/* Backdrop for mobile menu */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setIsOpen(false)}
+            className="lg:hidden fixed inset-0 bg-[#06141B]/40 backdrop-blur-sm z-[-1]"
+          />
+        )}
+      </AnimatePresence>
 
       {/* Mobile Menu */}
       <AnimatePresence>
@@ -151,24 +174,25 @@ const Navbar = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden mx-4 mt-2 bg-white backdrop-blur-xl rounded-2xl border border-gray-100 shadow-2xl overflow-hidden"
+            className="lg:hidden relative z-10 mx-4 mt-2 bg-white backdrop-blur-xl rounded-2xl border border-gray-100 shadow-2xl overflow-y-auto max-h-[85vh] custom-scrollbar"
           >
-            <div className="px-4 py-4 space-y-1">
+            <div className="px-3 py-4 space-y-1">
               {menuItems.map((item) => (
-                <div key={item.name}>
+                <div key={item.name} className="space-y-1">
                   <button onClick={() => go(item.path)}
-                    className={`block w-full text-left px-4 py-3 text-sm font-bold rounded-xl transition-colors ${
+                    className={`block w-full text-left px-5 py-3.5 text-sm font-bold rounded-xl transition-colors ${
                       isActive(item.path) ? 'bg-[#06141B] text-white' : 'text-[#06141B] hover:bg-gray-50'
                     }`}
                   >
                     {item.name}
                   </button>
                   {item.mega && (
-                    <div className="pl-4 space-y-1 pb-1">
+                    <div className="grid grid-cols-1 gap-1 px-2 pb-2">
                       {item.items.map((sub) => (
                         <button key={sub.name} onClick={() => go(sub.path)}
-                          className="block w-full text-left py-2 px-4 text-xs text-[#666] hover:text-[#06141B] rounded-lg hover:bg-gray-50 transition-colors"
+                          className="flex items-center w-full text-left py-3 px-4 text-[13px] font-medium text-[#555] hover:text-[#06141B] rounded-lg hover:bg-gray-50 transition-colors"
                         >
+                          <span className="mr-3 text-[#4A5C6A]">{sub.icon}</span>
                           {sub.name}
                         </button>
                       ))}
@@ -176,9 +200,9 @@ const Navbar = () => {
                   )}
                 </div>
               ))}
-              <div className="pt-3 pb-1">
+              <div className="px-2 pt-3 pb-1">
                 <button onClick={() => go('/contact')}
-                  className="w-full bg-[#06141B] text-white py-3 rounded-full font-bold text-sm hover:bg-[#253745] transition-all"
+                  className="w-full bg-[#06141B] text-white py-4 rounded-xl font-bold text-sm hover:bg-[#253745] transition-all shadow-lg"
                 >
                   Get Quote
                 </button>

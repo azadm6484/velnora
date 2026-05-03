@@ -53,14 +53,14 @@ const Industries = () => {
       </div>
 
       <div className="relative z-10 w-full py-4">
-        <div className="text-center mb-16 px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl lg:text-5xl font-bold mb-4 text-white">Industries <span className="text-[#4A5C6A]">We Serve</span></h2>
-          <p className="text-[#9BA8AB] max-w-2xl mx-auto">Expertise across diverse sectors to deliver specialized solutions tailored to unique industry demands.</p>
+          <div className="text-center mb-12 px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 text-white">Industries <span className="text-[#4A5C6A]">We Serve</span></h2>
+          <p className="text-[#9BA8AB] max-w-2xl mx-auto text-sm sm:text-base">Expertise across diverse sectors to deliver specialized solutions tailored to unique industry demands.</p>
         </div>
 
         <div className="relative w-full overflow-hidden flex">
           <motion.div 
-            className="flex space-x-6 px-6 will-change-transform"
+            className="flex space-x-4 sm:space-x-6 px-6 will-change-transform"
             animate={{ x: ["0%", "-33.333333%"] }}
             transition={{ repeat: Infinity, ease: "linear", duration: 25 }}
           >
@@ -69,7 +69,7 @@ const Industries = () => {
                 key={index}
                 whileHover={{ y: -10 }}
                 onClick={() => navigate(`/industries/${industry.slug}`)}
-                className="group relative w-80 h-64 flex-shrink-0 rounded-3xl overflow-hidden cursor-pointer will-change-transform"
+                className="group relative w-72 sm:w-80 h-56 sm:h-64 flex-shrink-0 rounded-2xl sm:rounded-3xl overflow-hidden cursor-pointer will-change-transform"
               >
                 <img 
                   src={industry.image} 

@@ -43,6 +43,15 @@ function App() {
     window.addEventListener('popstate', handlePopState);
     return () => window.removeEventListener('popstate', handlePopState);
   }, []);
+  
+  // Global scroll-to-top on route change
+  useEffect(() => {
+    // Small timeout ensures the scroll happens after the mobile menu closes and layout settles
+    const timer = setTimeout(() => {
+      window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+    }, 10);
+    return () => clearTimeout(timer);
+  }, [currentPath]);
 
   let PageComponent = routes[currentPath];
 
@@ -64,7 +73,7 @@ function App() {
 
   return (
     <RouterContext.Provider value={{ currentPath, navigate }}>
-      <div className="min-h-screen bg-[#F8F9FA] selection:bg-[#4A5C6A]/30">
+      <div className="min-h-[100dvh] bg-[#F8F9FA] selection:bg-[#4A5C6A]/30">
         <Navbar />
         <main>
           <PageComponent />
