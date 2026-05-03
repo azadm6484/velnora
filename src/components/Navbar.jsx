@@ -89,7 +89,7 @@ const Navbar = () => {
           </button>
 
           {/* Desktop Nav */}
-          <div className="hidden lg:flex items-center space-x-1">
+          <div className="hidden xl:flex items-center space-x-1">
             {menuItems.map((item) => (
               <div key={item.name} className="relative"
                 onMouseEnter={() => item.mega && setActiveMenu(item.name)}
@@ -97,7 +97,7 @@ const Navbar = () => {
               >
                 <button
                   onClick={() => go(item.path)}
-                  className={`flex items-center gap-1 px-4 py-2 rounded-full text-sm font-semibold transition-all duration-200 ${
+                  className={`flex items-center gap-1 px-3 xl:px-4 py-2 rounded-full text-sm font-semibold transition-all duration-200 ${
                     isActive(item.path) ? 'bg-[#06141B] text-white' : 'text-[#555] hover:bg-gray-100 hover:text-[#06141B]'
                   }`}
                 >
@@ -133,7 +133,7 @@ const Navbar = () => {
           </div>
 
           {/* Right CTA */}
-          <div className="hidden lg:flex items-center gap-3">
+          <div className="hidden xl:flex items-center gap-3">
             <button className="p-2 hover:bg-gray-100 rounded-full transition-colors text-[#666]">
               <Globe size={18} />
             </button>
@@ -147,7 +147,7 @@ const Navbar = () => {
 
           {/* Mobile Hamburger */}
           <button onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden text-[#06141B] p-2 rounded-full hover:bg-gray-100 transition-colors"
+            className="xl:hidden text-[#06141B] p-2 rounded-full hover:bg-gray-100 transition-colors"
           >
             {isOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
@@ -162,7 +162,7 @@ const Navbar = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setIsOpen(false)}
-            className="lg:hidden fixed inset-0 bg-[#06141B]/40 backdrop-blur-sm z-[-1]"
+            className="xl:hidden fixed inset-0 bg-[#06141B]/40 backdrop-blur-sm z-[-1]"
           />
         )}
       </AnimatePresence>
@@ -174,9 +174,9 @@ const Navbar = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden relative z-10 mx-4 mt-2 bg-white backdrop-blur-xl rounded-2xl border border-gray-100 shadow-2xl overflow-y-auto max-h-[85vh] custom-scrollbar"
+            className="xl:hidden relative z-10 mx-4 mt-2 bg-white backdrop-blur-xl rounded-2xl border border-gray-100 shadow-2xl overflow-y-auto max-h-[calc(100dvh-140px)] custom-scrollbar"
           >
-            <div className="px-3 py-4 space-y-1">
+            <div className="px-3 pt-4 pb-8 space-y-1">
               {menuItems.map((item) => (
                 <div key={item.name} className="space-y-1">
                   <button onClick={() => go(item.path)}
