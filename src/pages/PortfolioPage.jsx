@@ -40,7 +40,7 @@ const PortfolioPage = () => (
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         {projects.map((project, index) => (
           <motion.div key={index}
-            initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.1 }} viewport={{ once: true }}
             className="group relative overflow-hidden rounded-3xl bg-[#11212D]/60 backdrop-blur-sm border border-white/5 shadow-sm hover:border-white/20 transition-all duration-300">
             <div className="aspect-video overflow-hidden">

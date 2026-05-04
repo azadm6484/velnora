@@ -50,14 +50,14 @@ const ServicesPage = () => {
         {services.map((service, index) => (
           <motion.div
             key={index}
-            initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.1 }} viewport={{ once: true }}
             whileHover={{ y: -8 }}
             onClick={() => navigate(`/services/${service.slug}`)}
             className="relative overflow-hidden cursor-pointer bg-[#11212D]/60 backdrop-blur-sm p-8 rounded-3xl border border-white/5 shadow-sm hover:border-white/20 transition-all duration-300 group"
           >
             {service.image && (
-              <img src={service.image} alt={service.title} className="absolute inset-0 w-full h-full object-cover opacity-10 group-hover:opacity-20 transition-all duration-700 group-hover:scale-110" loading="lazy" />
+              <img src={service.image} alt={service.title} className="absolute inset-0 w-full h-full object-cover opacity-10 group-hover:opacity-20 transition-all duration-700 group-hover:scale-110" loading="eager" />
             )}
             <div className="absolute inset-0 bg-gradient-to-t from-[#06141B]/90 to-transparent pointer-events-none" />
             <div className="relative z-10">

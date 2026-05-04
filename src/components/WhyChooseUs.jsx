@@ -17,8 +17,8 @@ const WhyChooseUs = () => {
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
           >
             <h2 className="text-4xl lg:text-5xl font-bold mb-8">Why Businesses <span className="text-[#4A5C6A]">Choose Us</span></h2>
             <div className="space-y-8">
@@ -38,8 +38,8 @@ const WhyChooseUs = () => {
 
           <motion.div
             initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
             className="relative"
           >
             <div className="glass-card aspect-square relative p-6 lg:p-10 overflow-hidden shadow-xl">

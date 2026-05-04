@@ -42,9 +42,8 @@ const Portfolio = () => {
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
-              viewport={{ once: true }}
               className="group relative overflow-hidden rounded-2xl glass-card border-0 cursor-pointer will-change-transform"
               onClick={() => navigate('/portfolio')}
             >
@@ -53,7 +52,7 @@ const Portfolio = () => {
                   src={project.image} 
                   alt={project.title} 
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  loading="lazy"
+                  loading="eager"
                 />
               </div>
               <div className="absolute inset-0 bg-gradient-to-t from-[#06141B] via-transparent to-transparent opacity-80" />

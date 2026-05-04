@@ -128,7 +128,7 @@ const DeveloperDetailPage = () => {
       <section className="py-24 relative z-10">
         <div className="w-full mx-auto px-4 sm:px-10 lg:px-20">
           <div className="grid lg:grid-cols-2 gap-16">
-            <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
+            <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }}>
               <h2 className="text-3xl font-black text-white mb-6">Role <span className="text-[#4A5C6A]">Overview</span></h2>
               <p className="text-gray-300 text-lg leading-relaxed mb-10">{role.fullDesc}</p>
               
@@ -143,7 +143,7 @@ const DeveloperDetailPage = () => {
               </div>
             </motion.div>
 
-            <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
+            <motion.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }}>
               <div className="bg-[#11212D]/60 backdrop-blur-md rounded-3xl p-10 border border-white/10 shadow-xl mb-10">
                 <h3 className="text-2xl font-bold text-white mb-6">Core Skills</h3>
                 <div className="flex flex-wrap gap-3">

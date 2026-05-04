@@ -49,7 +49,7 @@ const ContactPage = () => {
               className="w-full h-full rounded-[2.2rem] opacity-80 hover:opacity-100 transition-opacity"
               style={{ border: 0, filter: 'invert(90%) hue-rotate(180deg) brightness(90%) contrast(90%)' }}
               allowFullScreen="" 
-              loading="lazy" 
+              loading="eager" 
               referrerPolicy="no-referrer-when-downgrade"
             />
           </div>

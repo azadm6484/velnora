@@ -119,7 +119,7 @@ const IndustryDetailPage = () => {
       <section className="py-24 relative z-10">
         <div className="w-full mx-auto px-4 sm:px-10 lg:px-20">
           <div className="grid lg:grid-cols-2 gap-20 items-start">
-            <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
+            <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }}>
               <h2 className="text-3xl font-black text-white mb-8">Specialized <span className="text-[#4A5C6A]">Solutions</span></h2>
               <p className="text-gray-300 text-lg leading-relaxed mb-10">{industry.fullDesc}</p>
               
@@ -133,7 +133,7 @@ const IndustryDetailPage = () => {
               </div>
             </motion.div>
 
-            <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
+            <motion.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }}>
               <div className="grid grid-cols-2 gap-6 mb-10">
                 {industry.stats.map((stat, idx) => (
                   <div key={idx} className="bg-[#11212D]/60 backdrop-blur-md p-8 rounded-3xl border border-white/10 text-center">

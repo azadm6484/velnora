@@ -24,7 +24,7 @@ const HireDevelopersPage = () => {
         src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=60&w=1200&auto=format&fit=crop" 
         alt="Technology Background" 
         className="w-full h-full object-cover opacity-20"
-        loading="lazy"
+        loading="eager"
       />
       <div className="absolute inset-0 bg-gradient-to-b from-[#06141B]/80 via-[#06141B]/60 to-[#06141B] pointer-events-none" />
     </div>
@@ -43,12 +43,12 @@ const HireDevelopersPage = () => {
       </div>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         {roles.map((role, i) => (
-          <motion.div key={i} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
+          <motion.div key={i} initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }}
             transition={{ delay: i * 0.1 }} viewport={{ once: true }}
             onClick={() => navigate(`/hire-developers/${role.slug}`)}
             className="relative overflow-hidden cursor-pointer bg-[#11212D]/60 backdrop-blur-sm p-8 rounded-3xl border border-white/5 shadow-sm hover:border-white/20 transition-all group flex flex-col">
             {role.image && (
-              <img src={role.image} alt={role.title} className="absolute inset-0 w-full h-full object-cover opacity-10 group-hover:opacity-20 transition-all duration-700 group-hover:scale-110" loading="lazy" />
+              <img src={role.image} alt={role.title} className="absolute inset-0 w-full h-full object-cover opacity-10 group-hover:opacity-20 transition-all duration-700 group-hover:scale-110" loading="eager" />
             )}
             <div className="absolute inset-0 bg-gradient-to-t from-[#06141B]/90 to-transparent pointer-events-none" />
             <div className="relative z-10 flex flex-col h-full">

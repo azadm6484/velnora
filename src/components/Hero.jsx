@@ -35,7 +35,7 @@ const Hero = () => {
       </div>
 
       <div className="relative z-10 w-full mx-auto px-2 sm:px-6 lg:px-8">
-        <div className="flex flex-col items-center text-center">
+        <div className="flex flex-col items-center text-center  ">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -62,14 +62,14 @@ const Hero = () => {
             thrive in the future digital landscape. Certified Enterprise Grade.
           </motion.p>
           <div className="flex flex-col sm:flex-row gap-4">
-            <button 
-              onClick={() => setQuoteModalMode('calendly')} 
+            <button
+              onClick={() => setQuoteModalMode('calendly')}
               className="bg-white text-[#06141B] font-bold px-8 py-4 rounded-full transition-all duration-300 hover:scale-[1.05] active:scale-[0.95] shadow-[0_0_30px_rgba(255,255,255,0.3)] flex items-center justify-center gap-2"
             >
               Schedule a Discovery Call <ArrowRight size={18} />
             </button>
-            <button 
-              onClick={() => setQuoteModalMode('quote')} 
+            <button
+              onClick={() => setQuoteModalMode('quote')}
               className="bg-transparent text-white border border-white/20 font-bold px-8 py-4 rounded-full transition-all duration-300 hover:bg-white/10 active:scale-[0.95] flex items-center justify-center gap-2"
             >
               Get a Free Quote

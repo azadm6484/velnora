@@ -11,8 +11,7 @@ const CTA = () => {
       <div className="w-full mx-auto px-2 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
+          animate={{ opacity: 1, scale: 1 }}
           className="bg-[#06141B] rounded-[3rem] p-10 lg:p-20 text-center relative overflow-hidden shadow-2xl"
         >
           <div className="absolute top-0 right-0 w-96 h-96 bg-[#4A5C6A]/20 rounded-full blur-[100px] pointer-events-none" />

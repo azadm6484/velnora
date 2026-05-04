@@ -27,9 +27,8 @@ const Stats = () => {
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
-              viewport={{ once: true }}
               className="bg-[#11212D]/60 backdrop-blur-xl border border-white/5 rounded-3xl p-8 text-center group hover:border-[#4A5C6A]/50 hover:-translate-y-2 hover:shadow-[0_10px_30px_rgba(74,92,106,0.15)] transition-all duration-300"
             >
               <h3 className="text-4xl lg:text-5xl font-black mb-3 bg-clip-text text-transparent bg-gradient-to-b from-white to-gray-400 group-hover:to-[#4A5C6A] transition-colors duration-300">

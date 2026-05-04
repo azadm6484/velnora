@@ -50,9 +50,8 @@ const Testimonials = () => {
             <motion.div
               key={index}
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
-              whileInView={{ opacity: 1, scale: 1, y: 0 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
-              viewport={{ once: true }}
               whileHover={{ y: -5 }}
               className="bg-[#11212D]/60 backdrop-blur-xl border border-white/5 rounded-3xl p-8 relative shadow-2xl hover:border-white/20 transition-all duration-300"
             >

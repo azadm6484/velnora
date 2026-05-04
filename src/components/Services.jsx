@@ -66,8 +66,7 @@ const Services = () => {
         <div className="text-center mb-16">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            animate={{ opacity: 1, y: 0 }}
             className="text-4xl lg:text-5xl font-bold mb-4 text-white"
           >
             Innovative <span className="text-[#4A5C6A]">Services</span>
@@ -82,9 +81,8 @@ const Services = () => {
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
-              viewport={{ once: true }}
               whileHover={{ y: -10 }}
               onClick={() => navigate(`/services/${service.slug}`)}
               className="cursor-pointer bg-[#11212D]/80 backdrop-blur-md rounded-3xl overflow-hidden border border-white/5 group transition-all duration-300 hover:shadow-[0_20px_50px_rgba(74,92,106,0.2)] hover:border-white/20 flex flex-col"

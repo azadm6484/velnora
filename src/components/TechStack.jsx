@@ -36,8 +36,7 @@ const TechStack = () => {
         <div className="text-center mb-16">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            animate={{ opacity: 1, y: 0 }}
             className="text-4xl lg:text-5xl font-bold mb-4 text-white"
           >
             Our <span className="text-[#4A5C6A]">Tech Stack</span>
@@ -52,9 +51,8 @@ const TechStack = () => {
             <motion.div
               key={index}
               initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: index * 0.05 }}
-              viewport={{ once: true }}
               whileHover={{ y: -5, scale: 1.1 }}
               className="flex flex-col items-center justify-center p-3 sm:p-4 bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 hover:border-white/30 transition-all duration-300 shadow-[0_0_15px_rgba(0,0,0,0.5)] cursor-pointer w-full aspect-square md:w-32 md:h-32 mx-auto"
               style={tech.name === 'Zapier' ? { backgroundColor: 'rgba(255, 79, 0, 0.1)', borderColor: 'rgba(255, 79, 0, 0.3)' } : {}}

@@ -51,11 +51,11 @@ const AboutPage = () => (
       {/* Stats */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-24">
         {stats.map((stat, i) => (
-          <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
+          <motion.div key={i} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
             transition={{ delay: i * 0.1 }} viewport={{ once: true }}
             className="relative overflow-hidden bg-[#11212D]/60 backdrop-blur-sm p-8 rounded-3xl border border-white/5 shadow-sm hover:border-white/20 transition-all text-center group">
             {stat.image && (
-              <img src={stat.image} alt={stat.label} className="absolute inset-0 w-full h-full object-cover opacity-10 group-hover:opacity-20 transition-all duration-700 group-hover:scale-110" loading="lazy" />
+              <img src={stat.image} alt={stat.label} className="absolute inset-0 w-full h-full object-cover opacity-10 group-hover:opacity-20 transition-all duration-700 group-hover:scale-110" loading="eager" />
             )}
             <div className="absolute inset-0 bg-gradient-to-t from-[#06141B]/90 to-transparent pointer-events-none" />
             <div className="relative z-10">
@@ -69,7 +69,7 @@ const AboutPage = () => (
 
       {/* Why Choose Us */}
       <div className="grid lg:grid-cols-2 gap-16 items-center">
-        <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
+        <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
           <h2 className="text-4xl font-black text-white mb-10">Why Businesses <span className="text-[#4A5C6A] drop-shadow-lg">Choose Us</span></h2>
           <div className="space-y-6">
             {points.map((point, i) => (
@@ -83,7 +83,7 @@ const AboutPage = () => (
             ))}
           </div>
         </motion.div>
-        <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}
+        <motion.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} viewport={{ once: true }}
           className="bg-[#11212D]/60 backdrop-blur-sm rounded-3xl p-12 border border-white/5 shadow-sm hover:border-white/20 transition-all text-center">
           <div className="w-32 h-32 bg-[#06141B] border border-white/10 rounded-full flex items-center justify-center mx-auto mb-8 shadow-xl overflow-hidden p-3">
             <img src={logo} alt="VelnoraTech" className="w-full h-full object-contain" />

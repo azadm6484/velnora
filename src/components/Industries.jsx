@@ -75,7 +75,7 @@ const Industries = () => {
                   src={industry.image} 
                   alt={industry.name} 
                   className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  loading="lazy"
+                  loading="eager"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#06141B] via-[#06141B]/40 to-transparent transition-opacity duration-300 group-hover:opacity-80" />
                 
