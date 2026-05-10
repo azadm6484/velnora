@@ -50,7 +50,7 @@ const Hero = () => {
             transition={{ delay: 0.1 }}
             className="text-5xl sm:text-7xl lg:text-8xl font-black text-white leading-[1.1] mb-6"
           >
-            Velnora <span className="text-[#4A5C6A] drop-shadow-lg">Software</span>
+            Velnora<span className="text-[#4A5C6A] drop-shadow-lg">Tech</span><span className="text-[#4A5C6A] drop-shadow-lg"> Software</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
