@@ -72,7 +72,7 @@ const QuoteModal = ({ mode, isOpen, onClose }) => {
     { value: 'other', label: 'Other' },
   ];
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     // Bot Protection Check (Honeypot)
@@ -87,14 +87,33 @@ const QuoteModal = ({ mode, isOpen, onClose }) => {
       return;
     }
 
-    setSent(true);
-    // In a real app, you would send turnstileToken to your backend for verification
-    setTimeout(() => {
-      onClose();
-      setSent(false);
-      setForm({ name: '', email: '', phone: '', project: '', details: '', honeypot: '' });
-      resetTurnstile();
-    }, 3000);
+    try {
+      const response = await fetch('https://n8n-lxyp.onrender.com/webhook/7ccecc54-64fb-4184-bfef-a4569c04c2d4', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ...form,
+          turnstileToken,
+          source: isHireMode ? 'Talent Inquiry' : 'Quote Request',
+          mode: mode
+        }),
+      });
+
+      if (response.ok) {
+        setSent(true);
+        setTimeout(() => {
+          onClose();
+          setSent(false);
+          setForm({ name: '', email: '', phone: '', project: '', details: '', honeypot: '' });
+          resetTurnstile();
+        }, 3000);
+      } else {
+        alert('Failed to send request. Please try again.');
+      }
+    } catch (error) {
+      console.error('Webhook Error:', error);
+      alert('Connection error. Please check your network.');
+    }
   };
 
   return (

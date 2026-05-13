@@ -8,11 +8,31 @@ const ContactPage = () => {
   const [form, setForm] = useState({ name: '', email: '', phone: '', subject: '', message: '' });
   const [sent, setSent] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSent(true);
-    // Auto-reset after 5 seconds
-    setTimeout(() => setSent(false), 5000);
+    
+    try {
+      const response = await fetch('https://n8n-lxyp.onrender.com/webhook/7ccecc54-64fb-4184-bfef-a4569c04c2d4', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ...form,
+          source: 'Contact Page'
+        }),
+      });
+
+      if (response.ok) {
+        setSent(true);
+        setForm({ name: '', email: '', phone: '', subject: '', message: '' });
+        // Auto-reset after 5 seconds
+        setTimeout(() => setSent(false), 5000);
+      } else {
+        alert('Something went wrong. Please try again.');
+      }
+    } catch (error) {
+      console.error('Submission error:', error);
+      alert('Network error. Please check your connection.');
+    }
   };
 
   return (
