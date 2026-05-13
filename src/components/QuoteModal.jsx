@@ -5,7 +5,56 @@ import { X, Send, CheckCircle2 } from 'lucide-react';
 const QuoteModal = ({ mode, isOpen, onClose }) => {
   const [sent, setSent] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [form, setForm] = useState({ name: '', email: '', phone: '', project: '', details: '' });
+  const [turnstileToken, setTurnstileToken] = useState(null);
+  const [form, setForm] = useState({ name: '', email: '', phone: '', project: '', details: '', honeypot: '' });
+  const widgetId = React.useRef(null);
+
+  // Use the testing site key (Always Passes on localhost)
+  // Replace this with your real Site Key from Cloudflare Dashboard when deploying
+  const SITE_KEY = '0x4AAAAAADOngXM5EUs3bjAG';
+
+  const resetTurnstile = () => {
+    if (window.turnstile && widgetId.current) {
+      try {
+        window.turnstile.reset(widgetId.current);
+      } catch (e) {
+        console.warn('Turnstile reset failed:', e);
+      }
+      setTurnstileToken(null);
+      widgetId.current = null;
+    }
+  };
+
+  React.useEffect(() => {
+    if (isOpen) {
+      setSent(false);
+      // Wait for DOM to render before initializing Turnstile
+      const timer = setTimeout(() => {
+        if (window.turnstile && !widgetId.current) {
+          try {
+            widgetId.current = window.turnstile.render('#turnstile-container', {
+              sitekey: SITE_KEY,
+              callback: (token) => setTurnstileToken(token),
+              'expired-callback': () => setTurnstileToken(null),
+              'error-callback': (err) => {
+                console.error('Turnstile Error Code:', err);
+                // If it fails on localhost, it's likely a site key domain restriction
+                if (window.location.hostname === 'localhost') {
+                  console.warn('Turnstile might be failing because your Site Key is not configured for localhost.');
+                }
+              }
+            });
+          } catch (e) {
+            console.error('Turnstile render failed:', e);
+          }
+        }
+      }, 100);
+      return () => clearTimeout(timer);
+    }
+    return () => {
+      resetTurnstile();
+    };
+  }, [isOpen]);
 
   const isHireMode = mode === 'hire';
 
@@ -25,32 +74,46 @@ const QuoteModal = ({ mode, isOpen, onClose }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    // Bot Protection Check (Honeypot)
+    if (form.honeypot !== '') {
+      console.log('Bot detected via honeypot');
+      return;
+    }
+
+    // Bot Protection Check (Cloudflare Turnstile)
+    if (!turnstileToken) {
+      alert('Please complete the human verification.');
+      return;
+    }
+
     setSent(true);
-    // In a real app, you would send this to your API
+    // In a real app, you would send turnstileToken to your backend for verification
     setTimeout(() => {
       onClose();
       setSent(false);
-      setForm({ name: '', email: '', phone: '', project: '', details: '' });
+      setForm({ name: '', email: '', phone: '', project: '', details: '', honeypot: '' });
+      resetTurnstile();
     }, 3000);
   };
 
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-[999] flex items-center justify-center p-4 md:p-6">
+        <div className="fixed inset-0 z-[999] overflow-y-auto overflow-x-hidden flex justify-center items-start p-4 md:p-6 py-10 sm:py-20">
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="absolute inset-0 bg-[#06141B]/95 backdrop-blur-xl"
+            className="fixed inset-0 bg-[#06141B]/95 backdrop-blur-xl"
           />
-          
+
           <motion.div
             initial={{ scale: 0.9, opacity: 0, y: 20 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.9, opacity: 0, y: 20 }}
-            className="relative w-full max-w-xl bg-[#11212D] rounded-[2.5rem] border border-white/10 shadow-2xl overflow-visible"
+            className="relative w-full max-w-xl bg-[#11212D] rounded-[2.5rem] border border-white/10 shadow-2xl overflow-visible my-auto"
           >
             <button
               onClick={onClose}
@@ -68,9 +131,9 @@ const QuoteModal = ({ mode, isOpen, onClose }) => {
                 <p className="text-gray-400">{isHireMode ? 'Our recruitment team will contact you shortly to discuss your talent needs.' : 'Our experts will review your project and get back to you within 24 hours.'}</p>
               </div>
             ) : (
-              <div className="p-8 md:p-10">
-                <div className="mb-8">
-                  <h2 className="text-3xl font-black text-white mb-2">
+              <div className="p-6 md:p-8">
+                <div className="mb-6">
+                  <h2 className="text-2xl md:text-3xl font-black text-white mb-2">
                     {isHireMode ? 'Inquire About ' : 'Request a '}
                     <span className="text-[#4A5C6A]">{isHireMode ? 'Talent' : 'Quote'}</span>
                   </h2>
@@ -80,6 +143,18 @@ const QuoteModal = ({ mode, isOpen, onClose }) => {
                 </div>
 
                 <form onSubmit={handleSubmit} className="space-y-4">
+                  {/* Honeypot Field (Bot Protection) */}
+                  <div className="hidden" aria-hidden="true">
+                    <input
+                      type="text"
+                      name="website_honeypot"
+                      tabIndex="-1"
+                      autoComplete="off"
+                      value={form.honeypot}
+                      onChange={(e) => setForm({ ...form, honeypot: e.target.value })}
+                    />
+                  </div>
+
                   <div className="space-y-1.5">
                     <label className="text-[10px] font-bold uppercase tracking-widest text-gray-500 ml-1">Full Name</label>
                     <input
@@ -118,7 +193,7 @@ const QuoteModal = ({ mode, isOpen, onClose }) => {
 
                   <div className="space-y-1.5 relative">
                     <label className="text-[10px] font-bold uppercase tracking-widest text-gray-500 ml-1">{isHireMode ? 'Desired Role' : 'Project Type'}</label>
-                    <div 
+                    <div
                       onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                       className="w-full bg-[#06141B]/50 border border-white/5 rounded-2xl px-5 py-3 text-white cursor-pointer flex justify-between items-center hover:border-white/10 transition-colors"
                     >
@@ -165,6 +240,11 @@ const QuoteModal = ({ mode, isOpen, onClose }) => {
                       placeholder={isHireMode ? "Describe the skills and experience you're looking for..." : "Briefly describe your project goals..."}
                       className="w-full bg-[#06141B]/50 border border-white/5 rounded-2xl px-5 py-3 text-white focus:outline-none focus:border-[#4A5C6A] transition-colors resize-none placeholder-gray-600"
                     />
+                  </div>
+
+                  {/* Cloudflare Turnstile */}
+                  <div className="flex justify-center py-2 min-h-[65px]">
+                    <div id="turnstile-container"></div>
                   </div>
 
                   <button
