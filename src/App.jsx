@@ -52,12 +52,44 @@ function App() {
     return () => window.removeEventListener('popstate', handlePopState);
   }, []);
   
-  // Global scroll-to-top on route change
+  // Global scroll-to-top and dynamic SEO title on route change
   useEffect(() => {
-    // Small timeout ensures the scroll happens after the mobile menu closes and layout settles
+    // Scroll to top
     const timer = setTimeout(() => {
       window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
     }, 10);
+
+    // Update Title based on route
+    const titleMap = {
+      '/': 'VelnoraTech | Futuristic SaaS & Software Solutions',
+      '/about': 'About Us | VelnoraTech',
+      '/services': 'Our Services | Custom Software Development',
+      '/industries': 'Industries We Serve | Specialized Tech Solutions',
+      '/portfolio': 'Our Portfolio | Case Studies & Projects',
+      '/hire-developers': 'Hire Dedicated Developers | Expert Tech Talent',
+      '/contact': 'Contact Us | Get a Free Quote',
+      '/privacy-policy': 'Privacy Policy | VelnoraTech',
+      '/terms-of-service': 'Terms of Service | VelnoraTech',
+    };
+
+    let title = titleMap[currentPath];
+    
+    // Dynamic titles for detail pages
+    if (!title) {
+      if (currentPath.startsWith('/services/')) {
+        const serviceName = currentPath.split('/').pop().replace(/-/g, ' ');
+        title = `${serviceName.charAt(0).toUpperCase() + serviceName.slice(1)} | Services`;
+      } else if (currentPath.startsWith('/industries/')) {
+        const industryName = currentPath.split('/').pop().replace(/-/g, ' ');
+        title = `${industryName.charAt(0).toUpperCase() + industryName.slice(1)} | Industries`;
+      } else if (currentPath.startsWith('/hire-developers/')) {
+        const roleName = currentPath.split('/').pop().replace(/-/g, ' ');
+        title = `Hire ${roleName.charAt(0).toUpperCase() + roleName.slice(1)} | VelnoraTech`;
+      }
+    }
+
+    document.title = title || 'VelnoraTech';
+
     return () => clearTimeout(timer);
   }, [currentPath]);
 

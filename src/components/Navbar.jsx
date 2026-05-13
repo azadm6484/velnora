@@ -80,14 +80,14 @@ const Navbar = () => {
         <div className="flex justify-between items-center bg-white/85 backdrop-blur-md border border-gray-200/60 rounded-full px-5 py-2.5 shadow-lg shadow-black/5">
 
           {/* Logo */}
-          <button onClick={() => go('/')} className="flex items-center space-x-2 shrink-0 group">
+          <a href="/" onClick={(e) => { e.preventDefault(); go('/'); }} className="flex items-center space-x-2 shrink-0 group">
             <div className="w-12 h-12 flex items-center justify-center">
               <img src={logo} alt="VelnoraTech Logo" className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500" />
             </div>
             <span className="text-lg font-black tracking-tight text-[#06141B]">
               Velnora<span className="text-[#4A5C6A] font-semibold">Tech</span>
             </span>
-          </button>
+          </a>
 
           {/* Desktop Nav */}
           <div className="hidden xl:flex items-center space-x-1">
@@ -96,15 +96,17 @@ const Navbar = () => {
                 onMouseEnter={() => item.mega && setActiveMenu(item.name)}
                 onMouseLeave={() => setActiveMenu(null)}
               >
-                <button
-                  onClick={() => go(item.path)}
+                <a
+                  href={item.path}
+                  onClick={(e) => { e.preventDefault(); go(item.path); }}
+                  onMouseEnter={() => item.mega && setActiveMenu(item.name)}
                   className={`flex items-center gap-1 px-3 xl:px-4 py-2 rounded-full text-sm font-semibold transition-all duration-200 ${
                     isActive(item.path) ? 'bg-[#06141B] text-white' : 'text-[#555] hover:bg-gray-100 hover:text-[#06141B]'
                   }`}
                 >
                   {item.name}
                   {item.mega && <ChevronDown size={13} className={`transition-transform duration-200 ${activeMenu === item.name ? 'rotate-180' : ''}`} />}
-                </button>
+                </a>
 
                 <AnimatePresence>
                   {item.mega && activeMenu === item.name && (
@@ -116,15 +118,15 @@ const Navbar = () => {
                       className="absolute left-1/2 -translate-x-1/2 mt-3 w-[400px] bg-white rounded-2xl p-3 grid grid-cols-2 gap-1 shadow-2xl shadow-black/10 border border-gray-100"
                     >
                       {item.items.map((sub) => (
-                        <button key={sub.name} onClick={() => go(sub.path)}
-                          className="p-3 rounded-xl hover:bg-gray-50 transition-all group text-left w-full"
+                        <a href={sub.path} onClick={(e) => { e.preventDefault(); go(sub.path); }}
+                          className="p-3 rounded-xl hover:bg-gray-50 transition-all group text-left w-full block"
                         >
                           <div className="flex items-center mb-0.5">
                             {sub.icon && <span className="text-[#4A5C6A] mr-2 group-hover:scale-110 transition-transform">{sub.icon}</span>}
                             <span className="font-bold text-[#06141B] text-xs">{sub.name}</span>
                           </div>
                           {sub.desc && <p className="text-[10px] text-[#888] pl-6">{sub.desc}</p>}
-                        </button>
+                        </a>
                       ))}
                     </motion.div>
                   )}
@@ -184,22 +186,22 @@ const Navbar = () => {
             <div className="px-3 pt-4 pb-8 space-y-1">
               {menuItems.map((item) => (
                 <div key={item.name} className="space-y-1">
-                  <button onClick={() => go(item.path)}
+                  <a href={item.path} onClick={(e) => { e.preventDefault(); go(item.path); }}
                     className={`block w-full text-left px-5 py-3.5 text-sm font-bold rounded-xl transition-colors ${
                       isActive(item.path) ? 'bg-[#06141B] text-white' : 'text-[#06141B] hover:bg-gray-50'
                     }`}
                   >
                     {item.name}
-                  </button>
+                  </a>
                   {item.mega && (
                     <div className="grid grid-cols-1 gap-1 px-2 pb-2">
                       {item.items.map((sub) => (
-                        <button key={sub.name} onClick={() => go(sub.path)}
+                        <a key={sub.name} href={sub.path} onClick={(e) => { e.preventDefault(); go(sub.path); }}
                           className="flex items-center w-full text-left py-3 px-4 text-[13px] font-medium text-[#555] hover:text-[#06141B] rounded-lg hover:bg-gray-50 transition-colors"
                         >
                           <span className="mr-3 text-[#4A5C6A]">{sub.icon}</span>
                           {sub.name}
-                        </button>
+                        </a>
                       ))}
                     </div>
                   )}
