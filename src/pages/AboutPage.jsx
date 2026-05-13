@@ -4,10 +4,10 @@ import { CheckCircle2, Users, Award, Globe, Clock } from 'lucide-react';
 import logo from '../assets/velnora_favicon.png';
 
 const stats = [
-  { value: '500+', label: 'Projects Delivered', icon: <Award size={24} />, image: 'https://images.unsplash.com/photo-1579389083078-4e7018379f7e?q=60&w=400&auto=format&fit=crop' },
-  { value: '50+', label: 'Happy Clients', icon: <Users size={24} />, image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?q=60&w=400&auto=format&fit=crop' },
-  { value: '12+', label: 'Countries Served', icon: <Globe size={24} />, image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=60&w=400&auto=format&fit=crop' },
-  { value: '5+', label: 'Years Experience', icon: <Clock size={24} />, image: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=60&w=400&auto=format&fit=crop' },
+  { value: '70+', label: 'Projects Delivered', icon: <Award size={24} />, image: 'https://images.unsplash.com/photo-1579389083078-4e7018379f7e?q=60&w=400&auto=format&fit=crop' },
+  { value: '45+', label: 'Happy Clients', icon: <Users size={24} />, image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?q=60&w=400&auto=format&fit=crop' },
+  { value: '10+', label: 'Countries Served', icon: <Globe size={24} />, image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=60&w=400&auto=format&fit=crop' },
+  { value: '3+', label: 'Years Experience', icon: <Clock size={24} />, image: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=60&w=400&auto=format&fit=crop' },
 ];
 
 const points = [
@@ -44,7 +44,7 @@ const AboutPage = () => (
           About <span className="text-[#4A5C6A] drop-shadow-lg">VelnoraTech</span>
         </motion.h1>
         <p className="text-lg text-gray-300 max-w-3xl mx-auto">
-          We are a premier software development company based in Greater Noida, India — building scalable digital products for businesses worldwide since 2019.
+          We are a premier software development company based in Greater Noida, India — building scalable digital products for businesses worldwide since 2023.
         </p>
       </header>
 
@@ -93,9 +93,9 @@ const AboutPage = () => (
             NX-One, Tech, Amrapali Dream Valley, B-109, Zone IV,<br />
             Greater Noida, Uttar Pradesh 201318
           </p>
-          <a href="mailto:info@velnoratech.com"
+          <a href="mailto:info@velnorasoftware.com"
             className="inline-block bg-white text-[#06141B] px-8 py-3 rounded-full font-bold text-sm hover:scale-[1.02] active:scale-[0.98] transition-all shadow-[0_0_15px_rgba(255,255,255,0.3)]">
-            info@velnoratech.com
+            info@velnorasoftware.com
           </a>
         </motion.aside>
       </div>

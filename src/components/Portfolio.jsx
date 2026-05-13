@@ -11,16 +11,37 @@ const Portfolio = () => {
       title: 'FinEdge Banking',
       category: 'Fintech',
       image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=60&w=800',
+      url: 'https://finedgesoftware.com'
     },
     {
       title: 'HealthTrack AI',
       category: 'Healthcare',
       image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=60&w=800',
+      url: 'https://healthtrack.com.au'
     },
     {
       title: 'SwiftLogistics Pro',
       category: 'Logistics',
       image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=60&w=800',
+      url: 'https://swiftlogisticspro.com'
+    },
+    {
+      title: 'Skillshare',
+      category: 'Education',
+      image: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=60&w=800',
+      url: 'https://www.skillshare.com'
+    },
+    {
+      title: 'Aura Home',
+      category: 'E-commerce',
+      image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&q=60&w=800',
+      url: 'https://www.aurahome.com.au'
+    },
+    {
+      title: 'PropVision',
+      category: 'Real Estate',
+      image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&q=60&w=800',
+      url: 'https://propvision.us'
     },
   ];
 
@@ -60,9 +81,15 @@ const Portfolio = () => {
                 <p className="text-[#4A5C6A] text-sm font-bold uppercase mb-2 tracking-tighter">{project.category}</p>
                 <div className="flex justify-between items-center">
                   <h3 className="text-2xl font-bold text-white">{project.title}</h3>
-                  <button className="p-2 bg-white/10 rounded-full backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity">
+                  <a 
+                    href={project.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-2 bg-white/10 rounded-full backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity hover:bg-white hover:text-[#06141B]"
+                    onClick={(e) => e.stopPropagation()}
+                  >
                     <ExternalLink size={20} />
-                  </button>
+                  </a>
                 </div>
               </div>
             </motion.article>

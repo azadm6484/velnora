@@ -95,8 +95,8 @@ const Footer = () => {
               </li>
               <li className="flex items-center gap-3">
                 <Mail size={16} className="text-[#4A5C6A] shrink-0" />
-                <a href="mailto:info@velnoratech.com" className="hover:text-white transition-colors">
-                  info@velnoratech.com
+                <a href="mailto:info@velnorasoftware.com" className="hover:text-white transition-colors">
+                  info@velnorasoftware.com
                 </a>
               </li>
               <li className="flex items-center gap-3">

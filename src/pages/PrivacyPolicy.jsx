@@ -90,8 +90,8 @@ const PrivacyPolicy = () => {
               <div className="p-6 rounded-3xl bg-[#11212D]/40 border border-white/5">
                 <h4 className="text-white font-bold mb-2">Need help?</h4>
                 <p className="text-xs text-gray-400 mb-4">Questions about your data or our privacy practices?</p>
-                <a href="mailto:support@velnoratech.com" className="text-[#4A5C6A] text-sm font-black hover:text-white transition-colors">
-                  support@velnoratech.com
+                <a href="mailto:info@velnorasoftware.com" className="text-[#4A5C6A] text-sm font-black hover:text-white transition-colors">
+                  info@velnorasoftware.com
                 </a>
               </div>
             </div>
@@ -397,7 +397,7 @@ const PrivacyPolicy = () => {
                   ))}
                 </div>
                 <div className="mt-8 text-center">
-                  <p className="text-sm">To exercise these rights, contact us at <a href="mailto:support@velnoratech.com" className="text-white font-bold underline decoration-[#4A5C6A]">support@velnoratech.com</a></p>
+                  <p className="text-sm">To exercise these rights, contact us at <a href="mailto:info@velnorasoftware.com" className="text-white font-bold underline decoration-[#4A5C6A]">info@velnorasoftware.com</a></p>
                 </div>
               </section>
 
@@ -464,11 +464,11 @@ const PrivacyPolicy = () => {
                   <div className="space-y-2 text-sm">
                     <p className="flex items-center gap-3 text-gray-400">
                       <Mail size={14} className="text-[#4A5C6A]" />
-                      support@velnoratech.com
+                      info@velnorasoftware.com
                     </p>
                     <p className="flex items-center gap-3 text-gray-400">
                       <Globe size={14} className="text-[#4A5C6A]" />
-                      velnora-pearl.vercel.app
+                      www.velnorasoftware.com
                     </p>
                     <p className="text-xs text-gray-500 mt-4">Response Time: Within 24–48 business hours</p>
                   </div>

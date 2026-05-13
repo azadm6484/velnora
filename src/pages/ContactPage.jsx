@@ -56,7 +56,7 @@ const ContactPage = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 shrink-0">
             {[
-              { icon: <Mail size={20} />, label: 'Email Address', value: 'info@velnoratech.com', link: 'mailto:info@velnoratech.com' },
+              { icon: <Mail size={20} />, label: 'Email Address', value: 'info@velnorasoftware.com', link: 'mailto:info@velnorasoftware.com' },
               { icon: <Phone size={20} />, label: 'Direct Call', value: '+91 8383895123', link: 'tel:+918383895123' },
             ].map((item, i) => (
               <a key={i} href={item.link} className="flex gap-4 bg-[#11212D]/40 backdrop-blur-md p-5 rounded-[2rem] border border-white/5 shadow-xl hover:border-white/20 hover:bg-[#11212D]/60 transition-all group">

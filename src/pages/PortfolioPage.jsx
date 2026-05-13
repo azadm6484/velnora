@@ -3,12 +3,48 @@ import { motion } from 'framer-motion';
 import { ExternalLink } from 'lucide-react';
 
 const projects = [
-  { title: 'FinEdge Banking', category: 'Fintech', image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800', desc: 'A next-generation digital banking platform with AI-driven fraud detection.' },
-  { title: 'HealthTrack AI', category: 'Healthcare', image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=800', desc: 'Patient management and telemedicine platform serving 50,000+ users.' },
-  { title: 'SwiftLogistics Pro', category: 'Logistics', image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=800', desc: 'Real-time fleet tracking and supply chain management solution.' },
-  { title: 'EduLearn Platform', category: 'Education', image: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=800', desc: 'Interactive e-learning platform with AI-personalized curriculum.' },
-  { title: 'ShopSphere', category: 'E-commerce', image: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&q=80&w=800', desc: 'Multi-vendor marketplace with real-time inventory and analytics.' },
-  { title: 'PropVision', category: 'Real Estate', image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&q=80&w=800', desc: '3D virtual property tours and AI-powered valuation engine.' },
+  { 
+    title: 'FinEdge Banking', 
+    category: 'Fintech', 
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800', 
+    desc: 'A next-generation digital banking platform with AI-driven fraud detection.',
+    url: 'https://finedgesoftware.com'
+  },
+  { 
+    title: 'HealthTrack AI', 
+    category: 'Healthcare', 
+    image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=800', 
+    desc: 'Patient management and telemedicine platform serving 50,000+ users.',
+    url: 'https://healthtrack.com.au'
+  },
+  { 
+    title: 'SwiftLogistics Pro', 
+    category: 'Logistics', 
+    image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=800', 
+    desc: 'Real-time fleet tracking and supply chain management solution.',
+    url: 'https://swiftlogisticspro.com'
+  },
+  { 
+    title: 'Skillshare', 
+    category: 'Education', 
+    image: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=800', 
+    desc: 'A leading online learning community with thousands of classes for creative and curious people.',
+    url: 'https://www.skillshare.com'
+  },
+  { 
+    title: 'Aura Home', 
+    category: 'E-commerce', 
+    image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&q=80&w=800', 
+    desc: 'A premium lifestyle and home decor platform with seamless Shopify integration.',
+    url: 'https://www.aurahome.com.au'
+  },
+  { 
+    title: 'PropVision', 
+    category: 'Real Estate', 
+    image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&q=80&w=800', 
+    desc: '3D virtual property tours and AI-powered valuation engine.',
+    url: 'https://propvision.us'
+  },
 ];
 
 const PortfolioPage = () => (
@@ -50,9 +86,14 @@ const PortfolioPage = () => (
               <span className="text-xs font-bold uppercase tracking-widest text-gray-400">{project.category}</span>
               <div className="flex justify-between items-center mt-1">
                 <h3 className="text-xl font-bold text-white">{project.title}</h3>
-                <button className="p-2 bg-white/10 text-white rounded-full hover:bg-white hover:text-[#06141B] transition-all">
+                <a 
+                  href={project.url} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="p-2 bg-white/10 text-white rounded-full hover:bg-white hover:text-[#06141B] transition-all"
+                >
                   <ExternalLink size={16} />
-                </button>
+                </a>
               </div>
               <p className="text-sm text-gray-400 mt-2 leading-relaxed">{project.desc}</p>
             </div>
