@@ -99,21 +99,20 @@ const ServiceDetailPage = () => {
     <div className="bg-[#06141B] min-h-screen pt-28 pb-20">
       {/* Back Button */}
       <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 mb-6">
-        <motion.button 
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          onClick={() => navigate('/services')}
-          className="group flex items-center gap-3 text-gray-400 hover:text-white transition-all font-bold uppercase tracking-widest text-[10px]"
+        <a 
+          href="/services"
+          onClick={(e) => { e.preventDefault(); navigate('/services'); }}
+          className="group inline-flex items-center gap-3 text-gray-400 hover:text-white transition-all font-bold uppercase tracking-widest text-[10px]"
         >
           <div className="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center group-hover:border-white/30 group-hover:bg-white/5 transition-all shadow-lg">
             <ArrowLeft size={16} />
           </div>
           <span>Back to Services</span>
-        </motion.button>
+        </a>
       </div>
 
       {/* Hero Section */}
-      <section className="relative py-12 lg:py-20 overflow-hidden border-b border-white/5">
+      <header className="relative py-12 lg:py-20 overflow-hidden border-b border-white/5">
         <div className="absolute inset-0 z-0">
           <img src={service.image} alt={service.title} className="w-full h-full object-cover opacity-[0.15]" loading="eager" />
           <div className="absolute inset-0 bg-gradient-to-b from-[#06141B]/80 via-[#06141B]/60 to-[#06141B] pointer-events-none" />
@@ -129,7 +128,7 @@ const ServiceDetailPage = () => {
             {service.shortDesc}
           </motion.p>
         </div>
-      </section>
+      </header>
 
       {/* Content Section */}
       <section className="py-24 relative z-10">

@@ -24,7 +24,7 @@ const Stats = () => {
       <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           {stats.map((stat, index) => (
-            <motion.div
+            <motion.article
               key={index}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -35,7 +35,7 @@ const Stats = () => {
                 {stat.value}
               </h3>
               <p className="text-[#9BA8AB] text-xs font-bold uppercase tracking-widest">{stat.label}</p>
-            </motion.div>
+            </motion.article>
           ))}
         </div>
       </div>

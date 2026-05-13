@@ -35,7 +35,7 @@ const Hero = () => {
       </div>
 
       <div className="relative z-10 w-full mx-auto px-2 sm:px-6 lg:px-8">
-        <div className="flex flex-col items-center text-center  ">
+        <header className="flex flex-col items-center text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -75,10 +75,10 @@ const Hero = () => {
               Get a Free Quote
             </button>
           </div>
-        </div>
+        </header>
 
         {/* Product Showcase with Hotspots */}
-        <div className="relative w-full max-w-7xl mx-auto h-[300px] sm:h-[450px] lg:h-[650px] flex items-center justify-center perspective-1000">
+        <section className="relative w-full max-w-7xl mx-auto h-[300px] sm:h-[450px] lg:h-[650px] flex items-center justify-center perspective-1000">
           {showcaseImages.map((src, index) => {
             const position = index - currentIndex;
             const diff = position < -1 ? position + 3 : position > 1 ? position - 3 : position;
@@ -139,16 +139,16 @@ const Hero = () => {
               <span className="text-xs text-gray-500">v-system-pro</span>
             </div>
           </motion.div>
-        </div>
+        </section>
 
         {/* Bottom Feature Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 mt-20">
+        <section className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 mt-20">
           <SpecCard icon={<Users size={20} />} label="Capacity" value="Unlimited" image="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=60&w=400&auto=format&fit=crop" />
           <SpecCard icon={<Layers size={20} />} label="Engine" value="Turbo AI" image="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=60&w=400&auto=format&fit=crop" />
           <SpecCard icon={<Shield size={20} />} label="Power" value="Secure V8" image="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=60&w=400&auto=format&fit=crop" />
           <SpecCard icon={<Globe size={20} />} label="Network" value="Global" image="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=60&w=400&auto=format&fit=crop" />
           <SpecCard icon={<ArrowRight size={20} />} label="Speed" value="0.1 sec" image="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=60&w=400&auto=format&fit=crop" />
-        </div>
+        </section>
       </div>
 
       {/* Modal Lightbox */}

@@ -40,14 +40,14 @@ const Testimonials = () => {
       </div>
 
       <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center mb-20">
+        <header className="text-center mb-20">
           <h2 className="text-4xl lg:text-5xl font-bold mb-4 text-white">What Our <span className="text-[#4A5C6A]">Clients Say</span></h2>
           <p className="text-[#9BA8AB] max-w-2xl mx-auto text-lg">Trusted by industry leaders worldwide.</p>
-        </div>
+        </header>
 
         <div className="grid md:grid-cols-3 gap-8">
           {testimonials.map((t, index) => (
-            <motion.div
+            <motion.article
               key={index}
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -72,7 +72,7 @@ const Testimonials = () => {
                   <p className="text-sm text-[#4A5C6A] font-medium">{t.role}</p>
                 </div>
               </div>
-            </motion.div>
+            </motion.article>
           ))}
         </div>
       </div>

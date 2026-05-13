@@ -30,12 +30,12 @@ const Footer = () => {
 
           {/* Brand */}
           <div className="col-span-1 md:col-span-1">
-            <button onClick={() => navigate('/')} className="flex items-center gap-3 text-2xl font-black text-white mb-6 group">
+            <a href="/" onClick={(e) => { e.preventDefault(); navigate('/'); }} className="flex items-center gap-3 text-2xl font-black text-white mb-6 group">
               <div className="w-12 h-12 flex items-center justify-center">
                 <img src={logo} alt="VelnoraTech Logo" className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500" />
               </div>
               <span>Velnora<span className="text-[#4A5C6A]">Tech</span></span>
-            </button>
+            </a>
             <p className="text-[#9BA8AB] text-sm leading-relaxed mb-6">
               Building scalable digital products for future businesses.
               Innovative software solutions for global enterprises.
@@ -61,10 +61,10 @@ const Footer = () => {
             <ul className="space-y-3 text-sm text-[#9BA8AB]">
               {quickLinks.map(({ label, path }) => (
                 <li key={label}>
-                  <button onClick={() => navigate(path)}
-                    className="hover:text-white transition-colors text-left">
+                  <a href={path} onClick={(e) => { e.preventDefault(); navigate(path); }}
+                    className="hover:text-white transition-colors text-left block">
                     {label}
-                  </button>
+                  </a>
                 </li>
               ))}
             </ul>
@@ -76,10 +76,10 @@ const Footer = () => {
             <ul className="space-y-3 text-sm text-[#9BA8AB]">
               {serviceLinks.map(({ label, path }) => (
                 <li key={label}>
-                  <button onClick={() => navigate(path)}
-                    className="hover:text-white transition-colors text-left">
+                  <a href={path} onClick={(e) => { e.preventDefault(); navigate(path); }}
+                    className="hover:text-white transition-colors text-left block">
                     {label}
-                  </button>
+                  </a>
                 </li>
               ))}
             </ul>
@@ -112,8 +112,8 @@ const Footer = () => {
         <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-[#9BA8AB]">
           <p>© {new Date().getFullYear()} VelnoraTech Software Pvt Ltd. All rights reserved.</p>
           <div className="flex gap-6">
-            <button onClick={() => navigate('/privacy-policy')} className="hover:text-white transition-colors">Privacy Policy</button>
-            <button onClick={() => navigate('/terms-of-service')} className="hover:text-white transition-colors">Terms of Service</button>
+            <a href="/privacy-policy" onClick={(e) => { e.preventDefault(); navigate('/privacy-policy'); }} className="hover:text-white transition-colors">Privacy Policy</a>
+            <a href="/terms-of-service" onClick={(e) => { e.preventDefault(); navigate('/terms-of-service'); }} className="hover:text-white transition-colors">Terms of Service</a>
           </div>
         </div>
       </div>

@@ -63,7 +63,7 @@ const Services = () => {
       </div>
 
       <div className="relative z-10 w-full mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+        <header className="text-center mb-16">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -74,11 +74,11 @@ const Services = () => {
           <p className="text-[#9BA8AB] max-w-2xl mx-auto">
             We provide a comprehensive suite of digital solutions to help your business thrive in the modern era.
           </p>
-        </div>
+        </header>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
-            <motion.div
+            <motion.article
               key={index}
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -102,7 +102,7 @@ const Services = () => {
                 <h3 className="text-2xl font-bold mb-4 text-white">{service.title}</h3>
                 <p className="text-[#9BA8AB] leading-relaxed flex-1">{service.desc}</p>
               </div>
-            </motion.div>
+            </motion.article>
           ))}
         </div>
       </div>

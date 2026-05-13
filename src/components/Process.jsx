@@ -24,10 +24,10 @@ const Process = () => {
       </div>
 
       <div className="w-full mx-auto px-2 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center mb-20">
+        <header className="text-center mb-20">
           <h2 className="text-4xl lg:text-5xl font-bold mb-4 text-white">Our <span className="text-[#4A5C6A]">Process</span></h2>
           <p className="text-[#9BA8AB] max-w-2xl mx-auto text-lg">A systematic approach to building excellence.</p>
-        </div>
+        </header>
 
         <div className="relative pt-4">
           {/* Connector Line */}
@@ -35,7 +35,7 @@ const Process = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-12 relative z-10">
             {steps.map((step, index) => (
-              <motion.div
+              <motion.article
                 key={index}
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -54,7 +54,7 @@ const Process = () => {
                 </div>
                 <h3 className="text-xl font-bold mb-3 text-white group-hover:text-[#4A5C6A] transition-colors">{step.name}</h3>
                 <p className="text-sm text-[#9BA8AB] leading-relaxed">{step.desc}</p>
-              </motion.div>
+              </motion.article>
             ))}
           </div>
         </div>

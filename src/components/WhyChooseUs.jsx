@@ -20,10 +20,12 @@ const WhyChooseUs = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-4xl lg:text-5xl font-bold mb-8">Why Businesses <span className="text-[#4A5C6A]">Choose Us</span></h2>
+            <header>
+              <h2 className="text-4xl lg:text-5xl font-bold mb-8">Why Businesses <span className="text-[#4A5C6A]">Choose Us</span></h2>
+            </header>
             <div className="space-y-8">
               {points.map((point, index) => (
-                <div key={index} className="flex gap-4">
+                <article key={index} className="flex gap-4">
                   <div className="flex-shrink-0 mt-1">
                     <CheckCircle2 className="text-[#4A5C6A]" size={24} />
                   </div>
@@ -31,7 +33,7 @@ const WhyChooseUs = () => {
                     <h3 className="text-xl font-bold mb-1">{point.title}</h3>
                     <p className="text-[#9BA8AB] leading-relaxed">{point.desc}</p>
                   </div>
-                </div>
+                </article>
               ))}
             </div>
           </motion.div>

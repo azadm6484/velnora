@@ -27,7 +27,7 @@ const Portfolio = () => {
   return (
     <section className="py-24 bg-[#11212D]/30" id="portfolio">
       <div className="w-full mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-end mb-16">
+        <header className="flex justify-between items-end mb-16">
           <div>
             <h2 className="text-4xl lg:text-5xl font-bold mb-4">Our <span className="text-[#4A5C6A]">Portfolio</span></h2>
             <p className="text-[#9BA8AB]">Showcasing our best work across various industries.</p>
@@ -35,11 +35,11 @@ const Portfolio = () => {
           <button onClick={() => navigate('/portfolio')} className="hidden md:block px-6 py-2 border border-white/10 rounded-full hover:bg-white/5 transition-all text-sm font-semibold">
             View All Projects
           </button>
-        </div>
+        </header>
 
         <div className="grid md:grid-cols-3 gap-8">
           {projects.map((project, index) => (
-            <motion.div
+            <motion.article
               key={index}
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -65,7 +65,7 @@ const Portfolio = () => {
                   </button>
                 </div>
               </div>
-            </motion.div>
+            </motion.article>
           ))}
         </div>
       </div>

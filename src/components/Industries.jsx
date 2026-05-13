@@ -53,10 +53,10 @@ const Industries = () => {
       </div>
 
       <div className="relative z-10 w-full py-4">
-          <div className="text-center mb-12 px-4 sm:px-6 lg:px-8">
+          <header className="text-center mb-12 px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 text-white">Industries <span className="text-[#4A5C6A]">We Serve</span></h2>
           <p className="text-[#9BA8AB] max-w-2xl mx-auto text-sm sm:text-base">Expertise across diverse sectors to deliver specialized solutions tailored to unique industry demands.</p>
-        </div>
+        </header>
 
         <div className="relative w-full overflow-hidden flex">
           <motion.div 
@@ -65,7 +65,7 @@ const Industries = () => {
             transition={{ repeat: Infinity, ease: "linear", duration: 25 }}
           >
             {[...industries, ...industries, ...industries].map((industry, index) => (
-              <motion.div
+              <motion.article
                 key={index}
                 whileHover={{ y: -10 }}
                 onClick={() => navigate(`/industries/${industry.slug}`)}
@@ -85,7 +85,7 @@ const Industries = () => {
                     {industry.icon}
                   </div>
                 </div>
-              </motion.div>
+              </motion.article>
             ))}
           </motion.div>
         </div>
