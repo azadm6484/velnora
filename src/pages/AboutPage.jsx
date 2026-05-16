@@ -23,9 +23,9 @@ const AboutPage = () => (
   <section className="relative pt-24 sm:pt-32 pb-24 min-h-screen overflow-hidden bg-[#06141B]" id="about">
     {/* Background Image */}
     <div className="absolute inset-0 z-0">
-      <img 
-        src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=60&w=1200&auto=format&fit=crop" 
-        alt="Technology Background" 
+      <img
+        src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=60&w=1200&auto=format&fit=crop"
+        alt="Technology Background"
         className="w-full h-full object-cover opacity-20"
         loading="lazy"
       />
@@ -90,7 +90,7 @@ const AboutPage = () => (
           </div>
           <h3 className="text-2xl font-black text-white mb-4">VelnoraTech Software Pvt Ltd</h3>
           <p className="text-gray-400 text-sm leading-relaxed mb-6">
-            NX-One, Tech, Amrapali Dream Valley, B-109, Zone IV,<br />
+            NX-One, Tech, Amrapali Dream Valley, B-114, Zone IV,<br />
             Greater Noida, Uttar Pradesh 201318
           </p>
           <a href="mailto:info@velnorasoftware.com"

@@ -10,38 +10,50 @@ const Portfolio = () => {
     {
       title: 'FinEdge Banking',
       category: 'Fintech',
-      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=60&w=800',
+      image: '/finedge.png',
       url: 'https://finedgesoftware.com'
     },
     {
       title: 'HealthTrack AI',
       category: 'Healthcare',
-      image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=60&w=800',
+      image: '/healthtrack.png',
       url: 'https://healthtrack.com.au'
     },
     {
       title: 'SwiftLogistics Pro',
       category: 'Logistics',
-      image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=60&w=800',
+      image: '/swiftlogistic.png',
       url: 'https://swiftlogisticspro.com'
     },
     {
       title: 'Skillshare',
       category: 'Education',
-      image: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=60&w=800',
+      image: '/skillshare.png',
       url: 'https://www.skillshare.com'
     },
     {
       title: 'Aura Home',
       category: 'E-commerce',
-      image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&q=60&w=800',
+      image: '/aurahome.png',
       url: 'https://www.aurahome.com.au'
     },
     {
       title: 'PropVision',
       category: 'Real Estate',
-      image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&q=60&w=800',
+      image: '/propvision.png',
       url: 'https://propvision.us'
+    },
+    {
+      title: 'Adlyngo',
+      category: 'Advertising',
+      image: '/adlyngo.png',
+      url: 'https://www.adlyngo.com/'
+    },
+    {
+      title: 'Zara Boutique',
+      category: 'Boutique & Salon',
+      image: '/zara.png',
+      url: 'https://zaraboutique.netlify.app/'
     },
   ];
 
@@ -69,9 +81,9 @@ const Portfolio = () => {
               onClick={() => navigate('/portfolio')}
             >
               <div className="aspect-video overflow-hidden">
-                <img 
-                  src={project.image} 
-                  alt={project.title} 
+                <img
+                  src={project.image}
+                  alt={project.title}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   loading="eager"
                 />
@@ -81,7 +93,7 @@ const Portfolio = () => {
                 <p className="text-[#4A5C6A] text-sm font-bold uppercase mb-2 tracking-tighter">{project.category}</p>
                 <div className="flex justify-between items-center">
                   <h3 className="text-2xl font-bold text-white">{project.title}</h3>
-                  <a 
+                  <a
                     href={project.url}
                     target="_blank"
                     rel="noopener noreferrer"

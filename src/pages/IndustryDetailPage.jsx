@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { CheckCircle2, ArrowRight, ArrowLeft, Landmark, HeartPulse, ShoppingCart, GraduationCap, Truck, Home } from 'lucide-react';
+import { CheckCircle2, ArrowRight, ArrowLeft, Landmark, HeartPulse, ShoppingCart, GraduationCap, Truck, Home, Megaphone, Scissors } from 'lucide-react';
 import { useRouter } from '../App';
 
 const industryData = {
@@ -57,6 +57,24 @@ const industryData = {
     features: ['Property Listing Engines', '3D Virtual Tours Integration', 'Real Estate CRM Systems', 'AI Property Valuation', 'Lease Management Portals', 'Agent Performance Tools'],
     stats: [{ label: 'Listings Managed', value: '100k+' }, { label: 'Lead Quality', value: 'High' }],
     image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&q=80&w=2000',
+  },
+  'advertising-marketing': {
+    title: 'Advertising & Marketing',
+    icon: <Megaphone size={48} className="text-white" />,
+    shortDesc: 'Data-driven digital advertising and marketing automation platforms.',
+    fullDesc: 'Empowering brands to reach their full potential. We build sophisticated advertising platforms that handle massive data loads, real-time bidding, and complex campaign analytics to maximize ROI.',
+    features: ['Real-time Bidding Engines', 'Campaign Management Dashboards', 'Multi-channel Attribution', 'Marketing Automation Workflows', 'Audience Segmentation AI', 'Performance Tracking & Reporting'],
+    stats: [{ label: 'Ad Impressions/mo', value: '1B+' }, { label: 'ROI Improvement', value: '45%+' }],
+    image: 'https://images.unsplash.com/photo-1533750516457-a7f992034fce?auto=format&fit=crop&q=80&w=2000',
+  },
+  'boutique-salon': {
+    title: 'Boutique & Salon Tech',
+    icon: <Scissors size={48} className="text-white" />,
+    shortDesc: 'Elegant management and e-commerce solutions for the beauty and fashion industry.',
+    fullDesc: 'Crafting premium digital experiences for high-end boutiques and salons. Our solutions streamline booking, manage inventory, and provide a stunning online storefront that matches your brand\'s elegance.',
+    features: ['Smart Appointment Booking', 'Boutique Inventory Management', 'E-commerce Storefronts', 'Customer Loyalty Programs', 'Staff Scheduling Tools', 'Visual Lookbook Integration'],
+    stats: [{ label: 'Bookings Managed', value: '250k+' }, { label: 'Client Retention', value: '+30%' }],
+    image: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&q=80&w=2000',
   }
 };
 

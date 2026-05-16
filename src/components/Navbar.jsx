@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ChevronDown, Globe, Laptop, Smartphone, Palette, Code, Server, Layers, Shield, Landmark, HeartPulse, ShoppingCart, GraduationCap, Truck, Home, Database, Cloud, Cpu, Phone } from 'lucide-react';
+import { Menu, X, ChevronDown, Globe, Laptop, Smartphone, Palette, Code, Server, Layers, Shield, Landmark, HeartPulse, ShoppingCart, GraduationCap, Truck, Home, Database, Cloud, Cpu, Phone, Megaphone, Scissors } from 'lucide-react';
 import { useRouter } from '../App';
 import logo from '../assets/velnora_favicon.png';
 
@@ -55,6 +55,8 @@ const Navbar = () => {
         { name: 'Logistics', icon: <Truck size={17} />, desc: 'Supply Chain', path: '/industries/logistics' },
         { name: 'Education', icon: <GraduationCap size={17} />, desc: 'EdTech Solutions', path: '/industries/education' },
         { name: 'Real Estate', icon: <Home size={17} />, desc: 'Property & PropTech', path: '/industries/real-estate' },
+        { name: 'Advertising', icon: <Megaphone size={17} />, desc: 'AdTech & Marketing', path: '/industries/advertising-marketing' },
+        { name: 'Boutique', icon: <Scissors size={17} />, desc: 'Salon & Spa Tech', path: '/industries/boutique-salon' },
       ]
     },
     { name: 'Portfolio', path: '/portfolio' },

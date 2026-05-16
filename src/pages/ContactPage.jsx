@@ -105,7 +105,7 @@ const ContactPage = () => {
             <div className="p-6 bg-white/5 rounded-[2rem] border border-white/5 text-center flex-grow flex flex-col justify-center">
               <p className="text-[10px] font-black uppercase tracking-[0.2em] text-[#4A5C6A] mb-2 text-center">Our Headquarters</p>
               <p className="text-gray-400 text-xs leading-relaxed">
-                NX-One, Tech, Amrapali Dream Valley, B-109, Zone IV, <br />
+                NX-One, Tech, Amrapali Dream Valley, B-114, Zone IV, <br />
                 Greater Noida, Uttar Pradesh 201318
               </p>
             </div>

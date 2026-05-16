@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Landmark, HeartPulse, ShoppingCart, GraduationCap, Truck, Home } from 'lucide-react';
+import { Landmark, HeartPulse, ShoppingCart, GraduationCap, Truck, Home, Megaphone, Scissors } from 'lucide-react';
 import { useRouter } from '../App';
 
 const industries = [
@@ -10,6 +10,8 @@ const industries = [
   { name: 'Education', slug: 'education', icon: <GraduationCap size={40} />, desc: 'E-learning platforms, LMS systems, and interactive educational tools.', image: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?q=60&w=800&auto=format&fit=crop' },
   { name: 'Logistics', slug: 'logistics', icon: <Truck size={40} />, desc: 'Supply chain, fleet management, and real-time tracking solutions.', image: 'https://images.unsplash.com/photo-1580674285054-bed31e145f59?q=60&w=800&auto=format&fit=crop' },
   { name: 'Real Estate', slug: 'real-estate', icon: <Home size={40} />, desc: 'Property listing platforms, virtual tours, and CRM for real estate agents.', image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=60&w=800&auto=format&fit=crop' },
+  { name: 'Advertising & Marketing', slug: 'advertising-marketing', icon: <Megaphone size={40} />, desc: 'Digital advertising platforms, campaign management, and marketing automation.', image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=60&w=800&auto=format&fit=crop' },
+  { name: 'Boutique & Salon', slug: 'boutique-salon', icon: <Scissors size={40} />, desc: 'Boutique management, salon booking systems, and specialized retail solutions.', image: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?q=60&w=800&auto=format&fit=crop' },
 ];
 
 const IndustriesPage = () => {

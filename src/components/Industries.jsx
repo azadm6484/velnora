@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Landmark, HeartPulse, ShoppingCart, GraduationCap, Truck, Home } from 'lucide-react';
+import { Landmark, HeartPulse, ShoppingCart, GraduationCap, Truck, Home, Megaphone, Scissors } from 'lucide-react';
 import { useRouter } from '../App';
 
 const Industries = () => {
@@ -41,6 +41,18 @@ const Industries = () => {
       slug: 'real-estate',
       icon: <Home className="text-white" size={24} />,
       image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=60&w=800&auto=format&fit=crop"
+    },
+    { 
+      name: 'Advertising', 
+      slug: 'advertising-marketing',
+      icon: <Megaphone className="text-white" size={24} />,
+      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=60&w=800&auto=format&fit=crop"
+    },
+    { 
+      name: 'Boutique & Salon', 
+      slug: 'boutique-salon',
+      icon: <Scissors className="text-white" size={24} />,
+      image: "https://images.unsplash.com/photo-1562322140-8baeececf3df?q=60&w=800&auto=format&fit=crop"
     },
   ];
 
