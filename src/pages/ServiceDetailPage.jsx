@@ -65,12 +65,12 @@ const serviceData = {
     fullDesc: 'We specialize in hyper-automation, connecting your favorite tools to create seamless, hands-free business processes. From automated lead nurturing to complex multi-step booking systems, we help you save thousands of hours using modern No-Code and Low-Code platforms.',
     features: ['n8n Self-Hosted Automation', 'Make.com (Integromat) Scenarios', 'Zapier Workflow Optimization', 'Automated Booking & Appointment Systems', 'CRM & ERP Synchronization', 'AI-Powered Document Processing'],
     techStack: ['n8n', 'Make.com', 'Zapier', 'Python', 'Node.js', 'OpenAI API'],
-    image: 'https://images.unsplash.com/photo-1518433278988-5102eda10214?auto=format&fit=crop&q=60&w=1200',
+    image: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=1200',
   }
 };
 
 const ServiceDetailPage = () => {
-  const { currentPath, navigate, setQuoteModalMode } = useRouter();
+  const { currentPath, navigate, setQuoteModalMode, theme } = useRouter();
   
   // Extract service ID from path e.g. "/services/website-development"
   const pathParts = currentPath.split('/');
@@ -85,10 +85,10 @@ const ServiceDetailPage = () => {
 
   if (!service) {
     return (
-      <section className="pt-32 pb-24 min-h-screen bg-[#06141B] flex flex-col items-center justify-center text-center">
-        <h1 className="text-4xl font-black text-white mb-4">Service Not Found</h1>
-        <p className="text-gray-400 mb-8">The service you're looking for doesn't exist or has been moved.</p>
-        <button onClick={() => navigate('/services')} className="bg-white text-[#06141B] px-8 py-3 rounded-full font-bold">
+      <section className={`pt-32 pb-24 min-h-screen ${theme === 'dark' ? 'bg-[#06141B]' : 'bg-[#F8F9FA]'} flex flex-col items-center justify-center text-center transition-colors duration-500`}>
+        <h1 className={`text-4xl font-black ${theme === 'dark' ? 'text-white' : 'text-[#06141B]'} mb-4`}>Service Not Found</h1>
+        <p className={`${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'} mb-8`}>The service you're looking for doesn't exist or has been moved.</p>
+        <button onClick={() => navigate('/services')} className={`${theme === 'dark' ? 'bg-white text-[#06141B]' : 'bg-[#06141B] text-white'} px-8 py-3 rounded-full font-bold transition-all`}>
           View All Services
         </button>
       </section>
@@ -96,15 +96,15 @@ const ServiceDetailPage = () => {
   }
 
   return (
-    <div className="bg-[#06141B] min-h-screen pt-28 pb-20">
+    <div className={`transition-colors duration-500 ${theme === 'dark' ? 'bg-[#06141B]' : 'bg-[#F8F9FA]'} min-h-screen pt-28 pb-20`}>
       {/* Back Button */}
       <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 mb-6">
         <a 
           href="/services"
           onClick={(e) => { e.preventDefault(); navigate('/services'); }}
-          className="group inline-flex items-center gap-3 text-gray-400 hover:text-white transition-all font-bold uppercase tracking-widest text-[10px]"
+          className={`group inline-flex items-center gap-3 transition-colors duration-500 ${theme === 'dark' ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-[#06141B]'} font-bold uppercase tracking-widest text-[10px]`}
         >
-          <div className="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center group-hover:border-white/30 group-hover:bg-white/5 transition-all shadow-lg">
+          <div className={`w-9 h-9 rounded-full border ${theme === 'dark' ? 'border-white/10 group-hover:bg-white/5' : 'border-[#06141B]/10 group-hover:bg-[#06141B]/5'} flex items-center justify-center transition-all shadow-lg`}>
             <ArrowLeft size={16} />
           </div>
           <span>Back to Services</span>
@@ -112,19 +112,19 @@ const ServiceDetailPage = () => {
       </div>
 
       {/* Hero Section */}
-      <header className="relative py-12 lg:py-20 overflow-hidden border-b border-white/5">
+      <header className={`relative py-12 lg:py-20 overflow-hidden border-b transition-colors duration-500 ${theme === 'dark' ? 'border-white/5' : 'border-gray-100'}`}>
         <div className="absolute inset-0 z-0">
-          <img src={service.image} alt={service.title} className="w-full h-full object-cover opacity-[0.15]" loading="eager" />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#06141B]/80 via-[#06141B]/60 to-[#06141B] pointer-events-none" />
+          <img src={service.image} alt={service.title} className={`w-full h-full object-cover transition-opacity duration-500 ${theme === 'dark' ? 'opacity-[0.15]' : 'opacity-100'}`} loading="eager" />
+          <div className={`absolute inset-0 bg-gradient-to-b ${theme === 'dark' ? 'from-[#06141B]/80 via-[#06141B]/60 to-[#06141B]' : 'from-white/95 via-white/80 to-white/90'} pointer-events-none transition-colors duration-500`} />
         </div>
         <div className="relative z-10 w-full mx-auto px-4 sm:px-10 lg:px-20 text-center">
-          <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} className="inline-flex items-center justify-center w-24 h-24 rounded-3xl bg-white/10 backdrop-blur-md border border-white/20 shadow-2xl mb-8">
-            {service.icon}
+          <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} className={`inline-flex items-center justify-center w-24 h-24 rounded-3xl ${theme === 'dark' ? 'bg-white/10 border-white/20' : 'bg-[#06141B]/90 border-[#06141B]/10'} backdrop-blur-md border shadow-2xl mb-8`}>
+            <div className="text-white">{service.icon}</div>
           </motion.div>
-          <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="text-5xl lg:text-7xl font-black text-white mb-6 drop-shadow-lg">
+          <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className={`text-5xl lg:text-7xl font-black ${theme === 'dark' ? 'text-white' : 'text-[#06141B]'} mb-6 drop-shadow-lg`}>
             {service.title}
           </motion.h1>
-          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className={`text-xl ${theme === 'dark' ? 'text-gray-300' : 'text-[#06141B] font-bold'} max-w-3xl mx-auto`}>
             {service.shortDesc}
           </motion.p>
         </div>
@@ -135,44 +135,44 @@ const ServiceDetailPage = () => {
         <div className="w-full mx-auto px-4 sm:px-10 lg:px-20">
           <div className="grid lg:grid-cols-2 gap-16">
             {/* Left Column: Description & Features */}
-            <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }}>
-              <h2 className="text-3xl font-black text-white mb-6">Service <span className="text-[#4A5C6A]">Overview</span></h2>
-              <p className="text-gray-300 text-lg leading-relaxed mb-10">
+            <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
+              <h2 className={`text-3xl font-black transition-colors duration-500 ${theme === 'dark' ? 'text-white' : 'text-[#06141B]'} mb-6`}>Service <span className="text-[#4A5C6A]">Overview</span></h2>
+              <p className={`transition-colors duration-500 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700 font-medium'} text-lg leading-relaxed mb-10`}>
                 {service.fullDesc}
               </p>
               
-              <h3 className="text-2xl font-bold text-white mb-6">Key Features</h3>
+              <h3 className={`text-2xl font-bold transition-colors duration-500 ${theme === 'light' ? 'text-[#06141B]' : 'text-white'} mb-6`}>Key Features</h3>
               <div className="grid sm:grid-cols-2 gap-4">
                 {service.features.map((feature, idx) => (
-                  <div key={idx} className="flex items-center gap-3 p-4 rounded-2xl bg-[#11212D]/40 border border-white/5 hover:border-white/10 transition-colors group">
-                    <CheckCircle2 className="text-green-400 shrink-0 group-hover:scale-110 transition-transform" size={18} />
-                    <span className="text-gray-200 text-sm font-medium">{feature}</span>
+                  <div key={idx} className={`flex items-center gap-3 p-4 rounded-2xl ${theme === 'light' ? 'bg-white/30 backdrop-blur-xl border border-white/50 shadow-xl' : 'bg-[#11212D]/40 border-white/5 shadow-2xl'} border transition-all group`}>
+                    <CheckCircle2 className="text-green-500 shrink-0 group-hover:scale-110 transition-transform" size={18} />
+                    <span className={`${theme === 'light' ? 'text-[#06141B] font-bold' : 'text-gray-200'} text-sm`}>{feature}</span>
                   </div>
                 ))}
               </div>
             </motion.div>
 
             {/* Right Column: Tech Stack & CTA */}
-            <motion.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }}>
-              <div className="bg-[#11212D]/60 backdrop-blur-md rounded-3xl p-10 border border-white/10 shadow-xl mb-10">
-                <h3 className="text-2xl font-bold text-white mb-6">Technology Stack</h3>
+            <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
+              <div className={`${theme === 'light' ? 'bg-white/30 backdrop-blur-xl border border-white/50 shadow-xl' : 'bg-[#11212D]/60 border-white/10 shadow-2xl'} rounded-3xl p-10 border mb-10 transition-all duration-500`}>
+                <h3 className={`text-2xl font-bold transition-colors duration-500 ${theme === 'light' ? 'text-[#06141B]' : 'text-white'} mb-6`}>Technology Stack</h3>
                 <div className="flex flex-wrap gap-3">
                   {service.techStack.map((tech, idx) => (
-                    <span key={idx} className="px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-gray-300 font-medium text-sm hover:bg-white/10 transition-colors">
+                    <span key={idx} className={`px-4 py-2 rounded-xl transition-colors duration-500 ${theme === 'light' ? 'bg-[#06141B]/10 border-[#06141B]/10 text-[#06141B] hover:bg-[#06141B]/20' : 'bg-white/5 border-white/10 text-gray-300 hover:bg-white/10'} border font-bold text-sm`}>
                       {tech}
                     </span>
                   ))}
                 </div>
               </div>
 
-              <div className="bg-gradient-to-br from-[#06141B] to-[#11212D] rounded-3xl p-10 border border-white/10 shadow-2xl text-center">
+              <div className={`bg-gradient-to-br ${theme === 'light' ? 'from-[#4A5C6A] to-[#06141B]' : 'from-[#06141B] to-[#11212D]'} rounded-3xl p-10 border border-white/10 shadow-2xl text-center transition-all duration-500`}>
                 <h3 className="text-2xl font-black text-white mb-4">Ready to start your project?</h3>
-                <p className="text-gray-400 mb-8">Let's discuss how our {service.title.toLowerCase()} expertise can help you achieve your business goals.</p>
+                <p className="text-gray-200 mb-8">Let's discuss how our {service.title.toLowerCase()} expertise can help you achieve your business goals.</p>
                 <div className="flex flex-col gap-4">
-                  <button onClick={() => setQuoteModalMode('calendly')} className="w-full bg-white text-[#06141B] py-4 rounded-xl font-bold text-lg hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(255,255,255,0.2)]">
+                  <button onClick={() => setQuoteModalMode('calendly')} className="w-full bg-white text-[#06141B] py-4 rounded-xl font-bold text-lg hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2 shadow-2xl">
                     Schedule a Discovery Call <ArrowRight size={20} />
                   </button>
-                  <button onClick={() => setQuoteModalMode('quote')} className="w-full bg-white/5 border border-white/10 text-white py-4 rounded-xl font-bold text-lg hover:bg-white/10 transition-all">
+                  <button onClick={() => setQuoteModalMode('quote')} className="w-full bg-white/10 border border-white/20 text-white py-4 rounded-xl font-bold text-lg hover:bg-white/20 transition-all backdrop-blur-sm shadow-lg">
                     Get a Free Quote
                   </button>
                 </div>

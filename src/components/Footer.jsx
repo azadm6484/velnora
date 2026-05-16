@@ -4,7 +4,7 @@ import { useRouter } from '../App';
 import logo from '../assets/velnora_favicon.png';
 
 const Footer = () => {
-  const { navigate } = useRouter();
+  const { navigate, theme } = useRouter();
 
   const quickLinks = [
     { label: 'Home', path: '/' },
@@ -24,19 +24,19 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-[#06141B] pt-20 pb-10 border-t border-white/5 relative">
+    <footer className={`transition-colors duration-500 ${theme === 'light' ? 'bg-[#F8F9FA]' : 'bg-[#06141B]'} pt-20 pb-10 border-t ${theme === 'light' ? 'border-gray-100' : 'border-white/5'} relative`}>
       <div className="w-full mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-4 gap-12 mb-16">
 
           {/* Brand */}
           <div className="col-span-1 md:col-span-1">
-            <a href="/" onClick={(e) => { e.preventDefault(); navigate('/'); }} className="flex items-center gap-3 text-2xl font-black text-white mb-6 group">
+            <a href="/" onClick={(e) => { e.preventDefault(); navigate('/'); }} className={`flex items-center gap-3 text-2xl font-black transition-colors duration-500 ${theme === 'light' ? 'text-[#06141B]' : 'text-white'} mb-6 group`}>
               <div className="w-12 h-12 flex items-center justify-center">
                 <img src={logo} alt="VelnoraTech Logo" className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500" />
               </div>
               <span>Velnora<span className="text-[#4A5C6A]">Tech</span></span>
             </a>
-            <p className="text-[#9BA8AB] text-sm leading-relaxed mb-6">
+            <p className={`transition-colors duration-500 ${theme === 'light' ? 'text-gray-600' : 'text-[#9BA8AB]'} text-sm leading-relaxed mb-6`}>
               Building scalable digital products for future businesses.
               Innovative software solutions for global enterprises.
             </p>
@@ -48,7 +48,7 @@ const Footer = () => {
                 { Icon: Github, href: '#' },
               ].map(({ Icon, href }, i) => (
                 <a key={i} href={href}
-                  className="w-9 h-9 bg-white/5 hover:bg-white/10 rounded-full flex items-center justify-center text-[#9BA8AB] hover:text-white transition-all">
+                  className={`w-9 h-9 ${theme === 'light' ? 'bg-[#06141B]/5' : 'bg-white/5'} hover:bg-[#4A5C6A] rounded-full flex items-center justify-center ${theme === 'light' ? 'text-[#06141B]' : 'text-[#9BA8AB]'} hover:text-white transition-all`}>
                   <Icon size={16} />
                 </a>
               ))}
@@ -58,11 +58,11 @@ const Footer = () => {
           {/* Quick Links */}
           <div>
             <h4 className="font-bold mb-6 uppercase text-xs tracking-widest text-[#4A5C6A]">Quick Links</h4>
-            <ul className="space-y-3 text-sm text-[#9BA8AB]">
+            <ul className={`space-y-3 text-sm ${theme === 'light' ? 'text-gray-600' : 'text-[#9BA8AB]'}`}>
               {quickLinks.map(({ label, path }) => (
                 <li key={label}>
                   <a href={path} onClick={(e) => { e.preventDefault(); navigate(path); }}
-                    className="hover:text-white transition-colors text-left block">
+                    className={`hover:text-[#4A5C6A] transition-colors text-left block`}>
                     {label}
                   </a>
                 </li>
@@ -73,11 +73,11 @@ const Footer = () => {
           {/* Services */}
           <div>
             <h4 className="font-bold mb-6 uppercase text-xs tracking-widest text-[#4A5C6A]">Services</h4>
-            <ul className="space-y-3 text-sm text-[#9BA8AB]">
+            <ul className={`space-y-3 text-sm ${theme === 'light' ? 'text-gray-600' : 'text-[#9BA8AB]'}`}>
               {serviceLinks.map(({ label, path }) => (
                 <li key={label}>
                   <a href={path} onClick={(e) => { e.preventDefault(); navigate(path); }}
-                    className="hover:text-white transition-colors text-left block">
+                    className={`hover:text-[#4A5C6A] transition-colors text-left block`}>
                     {label}
                   </a>
                 </li>
@@ -88,20 +88,20 @@ const Footer = () => {
           {/* Contact Info */}
           <div>
             <h4 className="font-bold mb-6 uppercase text-xs tracking-widest text-[#4A5C6A]">Contact Info</h4>
-            <ul className="space-y-4 text-sm text-[#9BA8AB]">
+            <ul className={`space-y-4 text-sm ${theme === 'light' ? 'text-gray-600' : 'text-[#9BA8AB]'}`}>
               <li className="flex items-start gap-3">
                 <MapPin size={16} className="text-[#4A5C6A] shrink-0 mt-0.5" />
                 <span className="leading-relaxed">NX-One, Tech, Amrapali Dream Valley, B-114, Zone IV, Greater Noida, Uttar Pradesh 201318</span>
               </li>
               <li className="flex items-center gap-3">
                 <Mail size={16} className="text-[#4A5C6A] shrink-0" />
-                <a href="mailto:info@velnorasoftware.com" className="hover:text-white transition-colors">
+                <a href="mailto:info@velnorasoftware.com" className="hover:text-[#4A5C6A] transition-colors">
                   info@velnorasoftware.com
                 </a>
               </li>
               <li className="flex items-center gap-3">
                 <MessageCircle size={16} className="text-[#4A5C6A] shrink-0" />
-                <a href="tel:+918383895123" className="hover:text-white transition-colors">
+                <a href="tel:+918383895123" className="hover:text-[#4A5C6A] transition-colors">
                   +91 8383895123
                 </a>
               </li>
@@ -109,11 +109,11 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-[#9BA8AB]">
+        <div className={`pt-8 border-t ${theme === 'light' ? 'border-gray-100' : 'border-white/5'} flex flex-col md:flex-row justify-between items-center gap-4 text-xs ${theme === 'light' ? 'text-gray-500' : 'text-[#9BA8AB]'}`}>
           <p>© {new Date().getFullYear()} VelnoraTech Software Pvt Ltd. All rights reserved.</p>
           <div className="flex gap-6">
-            <a href="/privacy-policy" onClick={(e) => { e.preventDefault(); navigate('/privacy-policy'); }} className="hover:text-white transition-colors">Privacy Policy</a>
-            <a href="/terms-of-service" onClick={(e) => { e.preventDefault(); navigate('/terms-of-service'); }} className="hover:text-white transition-colors">Terms of Service</a>
+            <a href="/privacy-policy" onClick={(e) => { e.preventDefault(); navigate('/privacy-policy'); }} className="hover:text-[#4A5C6A] transition-colors">Privacy Policy</a>
+            <a href="/terms-of-service" onClick={(e) => { e.preventDefault(); navigate('/terms-of-service'); }} className="hover:text-[#4A5C6A] transition-colors">Terms of Service</a>
           </div>
         </div>
       </div>
@@ -123,10 +123,10 @@ const Footer = () => {
         {/* Call Button */}
         <a
           href="tel:+918383895123"
-          className="p-4 bg-[#4A5C6A] text-white rounded-full shadow-[0_10px_30px_rgba(74,92,106,0.5)] hover:scale-110 transition-transform flex items-center justify-center group relative"
+          className="p-4 bg-[#4A5C6A] text-white rounded-full shadow-2xl hover:scale-110 transition-transform flex items-center justify-center group relative"
           title="Call Us"
         >
-          <div className="absolute right-full mr-4 bg-[#06141B] text-white text-[10px] font-bold px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap border border-white/10">
+          <div className={`absolute right-full mr-4 ${theme === 'light' ? 'bg-white text-[#06141B] border-gray-100 shadow-xl' : 'bg-[#06141B] text-white border-white/10'} text-[10px] font-bold px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap border`}>
             Call Us
           </div>
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
@@ -137,10 +137,10 @@ const Footer = () => {
           href="https://wa.me/918383895123"
           target="_blank"
           rel="noopener noreferrer"
-          className="p-4 bg-[#25D366] text-white rounded-full shadow-[0_10px_30px_rgba(37,211,102,0.5)] hover:scale-110 transition-transform flex items-center justify-center group relative"
+          className="p-4 bg-[#25D366] text-white rounded-full shadow-2xl hover:scale-110 transition-transform flex items-center justify-center group relative"
           title="WhatsApp Us"
         >
-          <div className="absolute right-full mr-4 bg-[#06141B] text-white text-[10px] font-bold px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap border border-white/10">
+          <div className={`absolute right-full mr-4 ${theme === 'light' ? 'bg-white text-[#06141B] border-gray-100 shadow-xl' : 'bg-[#06141B] text-white border-white/10'} text-[10px] font-bold px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap border`}>
             WhatsApp
           </div>
           <MessageCircle size={26} />

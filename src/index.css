@@ -33,8 +33,31 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --bg-main: #06141B;
+    --bg-secondary: #11212D;
+    --text-main: #FFFFFF;
+    --text-muted: #9BA8AB;
+    --accent: #4A5C6A;
+    --glass-bg: rgba(255, 255, 255, 0.1);
+    --glass-border: rgba(255, 255, 255, 0.1);
+  }
+
+  .light-mode {
+    --bg-main: #FFFFFF;
+    --bg-secondary: #F8F9FA;
+    --text-main: #06141B;
+    --text-muted: #4A5C6A;
+    --accent: #9BA8AB;
+    --glass-bg: rgba(255, 255, 255, 0.3);
+    --glass-border: rgba(255, 255, 255, 0.5);
+  }
+
   html, body {
-    @apply bg-[#F8F9FA] text-[#0A0A0A] overflow-x-hidden;
+    @apply transition-colors duration-500;
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    overflow-x: hidden;
     width: 100%;
     height: 100%;
     margin: 0;

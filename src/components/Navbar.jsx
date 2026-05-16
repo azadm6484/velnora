@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ChevronDown, Globe, Laptop, Smartphone, Palette, Code, Server, Layers, Shield, Landmark, HeartPulse, ShoppingCart, GraduationCap, Truck, Home, Database, Cloud, Cpu, Phone, Megaphone, Scissors } from 'lucide-react';
+import { Menu, X, ChevronDown, Globe, Laptop, Smartphone, Palette, Code, Server, Layers, Shield, Landmark, HeartPulse, ShoppingCart, GraduationCap, Truck, Home, Database, Cloud, Cpu, Phone, Megaphone, Scissors, Sun, Moon } from 'lucide-react';
 import { useRouter } from '../App';
 import logo from '../assets/velnora_favicon.png';
 
 const Navbar = () => {
-  const { currentPath, navigate, setQuoteModalMode } = useRouter();
+  const { currentPath, navigate, setQuoteModalMode, theme, toggleTheme } = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeMenu, setActiveMenu] = useState(null);
@@ -79,15 +79,15 @@ const Navbar = () => {
   return (
     <nav className={`fixed w-full z-50 transition-all duration-500 ${scrolled ? 'py-3' : 'py-5'}`}>
       <div className="w-full mx-auto px-2 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center bg-white/85 backdrop-blur-md border border-gray-200/60 rounded-full px-5 py-2.5 shadow-lg shadow-black/5">
+        <div className={`flex justify-between items-center bg-white/90 border-white/20 shadow-xl shadow-black/5 backdrop-blur-xl border rounded-full px-5 py-2.5 transition-all duration-500`}>
 
           {/* Logo */}
           <a href="/" onClick={(e) => { e.preventDefault(); go('/'); }} className="flex items-center space-x-2 shrink-0 group">
             <div className="w-12 h-12 flex items-center justify-center">
               <img src={logo} alt="VelnoraTech Logo" className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500" />
             </div>
-            <span className="text-lg font-black tracking-tight text-[#06141B]">
-              Velnora<span className="text-[#4A5C6A] font-semibold">Tech</span>
+            <span className={`text-lg font-black tracking-tight text-[#06141B]`}>
+              Velnora<span className={`text-[#4A5C6A] font-semibold`}>Tech</span>
             </span>
           </a>
 
@@ -103,7 +103,9 @@ const Navbar = () => {
                   onClick={(e) => { e.preventDefault(); go(item.path); }}
                   onMouseEnter={() => item.mega && setActiveMenu(item.name)}
                   className={`flex items-center gap-1 px-3 xl:px-4 py-2 rounded-full text-sm font-semibold transition-all duration-200 ${
-                    isActive(item.path) ? 'bg-[#06141B] text-white' : 'text-[#555] hover:bg-gray-100 hover:text-[#06141B]'
+                    isActive(item.path) 
+                      ? 'bg-[#06141B] text-white shadow-lg' 
+                      : 'text-[#06141B]/70 hover:bg-[#06141B]/5 hover:text-[#06141B]'
                   }`}
                 >
                   {item.name}
@@ -117,17 +119,17 @@ const Navbar = () => {
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       exit={{ opacity: 0, y: 8, scale: 0.97 }}
                       transition={{ duration: 0.15 }}
-                      className="absolute left-1/2 -translate-x-1/2 mt-3 w-[400px] bg-white rounded-2xl p-3 grid grid-cols-2 gap-1 shadow-2xl shadow-black/10 border border-gray-100"
+                      className={`absolute left-1/2 -translate-x-1/2 mt-3 w-[400px] bg-white/95 border-white shadow-2xl backdrop-blur-2xl rounded-2xl p-3 grid grid-cols-2 gap-1 border transition-all duration-500`}
                     >
                       {item.items.map((sub) => (
-                        <a href={sub.path} onClick={(e) => { e.preventDefault(); go(sub.path); }}
-                          className="p-3 rounded-xl hover:bg-gray-50 transition-all group text-left w-full block"
+                        <a href={sub.path} key={sub.name} onClick={(e) => { e.preventDefault(); go(sub.path); }}
+                          className={`p-3 rounded-xl hover:bg-[#06141B]/5 transition-all group text-left w-full block`}
                         >
                           <div className="flex items-center mb-0.5">
-                            {sub.icon && <span className="text-[#4A5C6A] mr-2 group-hover:scale-110 transition-transform">{sub.icon}</span>}
-                            <span className="font-bold text-[#06141B] text-xs">{sub.name}</span>
+                            {sub.icon && <span className={`text-[#4A5C6A] mr-2 group-hover:scale-110 transition-transform`}>{sub.icon}</span>}
+                            <span className={`font-bold text-[#06141B] text-xs`}>{sub.name}</span>
                           </div>
-                          {sub.desc && <p className="text-[10px] text-[#888] pl-6">{sub.desc}</p>}
+                          {sub.desc && <p className={`text-[10px] text-gray-500 pl-6`}>{sub.desc}</p>}
                         </a>
                       ))}
                     </motion.div>
@@ -139,27 +141,43 @@ const Navbar = () => {
 
           {/* Right CTA */}
           <div className="hidden xl:flex items-center gap-3">
+            <button
+              onClick={toggleTheme}
+              className={`p-2.5 rounded-full transition-all duration-300 bg-[#06141B]/5 text-[#06141B] hover:bg-[#06141B]/10`}
+              title={theme === 'light' ? 'Switch to Dark Mode' : 'Switch to Light Mode'}
+            >
+              {theme === 'light' ? <Moon size={18} /> : <Sun size={18} />}
+            </button>
             <a
               href="tel:+918383895123"
-              className="flex items-center gap-2 text-[#06141B] font-bold text-sm px-4 py-2.5 hover:text-[#4A5C6A] transition-colors"
+              className={`flex items-center gap-2 text-[#06141B]/80 hover:text-[#06141B] font-bold text-sm px-4 py-2.5 transition-colors`}
             >
               <Phone size={18} />
               <span>+91 8383895123</span>
             </a>
             <button
               onClick={() => setQuoteModalMode('quote')}
-              className="bg-[#06141B] text-white text-sm font-bold px-5 py-2.5 rounded-full hover:bg-[#253745] transition-all shadow-lg shadow-black/20 hover:shadow-xl hover:scale-[1.02] active:scale-[0.98]"
+              className={`bg-[#06141B] text-white hover:bg-[#253745] text-sm font-bold px-5 py-2.5 rounded-full transition-all shadow-lg hover:shadow-xl hover:scale-[1.02] active:scale-[0.98]`}
             >
               Get Quote
             </button>
           </div>
 
-          {/* Mobile Hamburger */}
-          <button onClick={() => setIsOpen(!isOpen)}
-            className="xl:hidden text-[#06141B] p-2 rounded-full hover:bg-gray-100 transition-colors"
-          >
-            {isOpen ? <X size={22} /> : <Menu size={22} />}
-          </button>
+          {/* Mobile Actions */}
+          <div className="flex xl:hidden items-center gap-2">
+            <button
+              onClick={toggleTheme}
+              className={`p-2.5 rounded-full transition-all duration-300 bg-[#06141B]/5 text-[#06141B] hover:bg-[#06141B]/10`}
+              title={theme === 'light' ? 'Switch to Dark Mode' : 'Switch to Light Mode'}
+            >
+              {theme === 'light' ? <Moon size={18} /> : <Sun size={18} />}
+            </button>
+            <button onClick={() => setIsOpen(!isOpen)}
+              className={`text-[#06141B] p-2 rounded-full hover:bg-gray-100/50 transition-colors`}
+            >
+              {isOpen ? <X size={22} /> : <Menu size={22} />}
+            </button>
+          </div>
         </div>
       </div>
       
@@ -183,7 +201,7 @@ const Navbar = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="xl:hidden relative z-10 mx-4 mt-2 bg-white backdrop-blur-xl rounded-2xl border border-gray-100 shadow-2xl overflow-y-auto max-h-[calc(100dvh-140px)] custom-scrollbar"
+            className={`xl:hidden relative z-10 mx-4 mt-2 bg-white/95 backdrop-blur-2xl rounded-2xl border border-gray-200 shadow-2xl overflow-y-auto max-h-[calc(100dvh-140px)] custom-scrollbar transition-all duration-500`}
           >
             <div className="px-3 pt-4 pb-8 space-y-1">
               {menuItems.map((item) => (
@@ -199,7 +217,7 @@ const Navbar = () => {
                     <div className="grid grid-cols-1 gap-1 px-2 pb-2">
                       {item.items.map((sub) => (
                         <a key={sub.name} href={sub.path} onClick={(e) => { e.preventDefault(); go(sub.path); }}
-                          className="flex items-center w-full text-left py-3 px-4 text-[13px] font-medium text-[#555] hover:text-[#06141B] rounded-lg hover:bg-gray-50 transition-colors"
+                          className={`flex items-center w-full text-left py-3 px-4 text-[13px] font-bold rounded-lg transition-colors text-gray-700 hover:text-[#06141B] hover:bg-gray-100`}
                         >
                           <span className="mr-3 text-[#4A5C6A]">{sub.icon}</span>
                           {sub.name}

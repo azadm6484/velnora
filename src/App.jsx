@@ -39,11 +39,18 @@ const routes = {
 function App() {
   const [currentPath, setCurrentPath] = useState(window.location.pathname);
   const [quoteModalMode, setQuoteModalMode] = useState(null); // null, 'quote', 'hire', 'calendly'
+  const [theme, setTheme] = useState(() => localStorage.getItem('theme') || 'dark');
 
   const navigate = (path) => {
     window.history.pushState({}, '', path);
     setCurrentPath(path);
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const toggleTheme = () => {
+    const newTheme = theme === 'dark' ? 'light' : 'dark';
+    setTheme(newTheme);
+    localStorage.setItem('theme', newTheme);
   };
 
   useEffect(() => {
@@ -112,8 +119,8 @@ function App() {
   }
 
   return (
-    <RouterContext.Provider value={{ currentPath, navigate, quoteModalMode, setQuoteModalMode }}>
-      <div className="min-h-[100dvh] bg-[#F8F9FA] selection:bg-[#4A5C6A]/30">
+    <RouterContext.Provider value={{ currentPath, navigate, quoteModalMode, setQuoteModalMode, theme, toggleTheme }}>
+      <div className={`min-h-[100dvh] ${theme === 'light' ? 'light-mode' : ''} selection:bg-[#4A5C6A]/30`}>
         <Navbar />
         <main>
           <PageComponent />
