@@ -1,6 +1,7 @@
 import React, { useState, useEffect, createContext, useContext } from 'react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import SEOKeywords from './components/SEOKeywords';
 
 // Pages
 import Home from './pages/Home';
@@ -121,6 +122,7 @@ function App() {
   return (
     <RouterContext.Provider value={{ currentPath, navigate, quoteModalMode, setQuoteModalMode, theme, toggleTheme }}>
       <div className={`min-h-[100dvh] ${theme === 'light' ? 'light-mode' : ''} selection:bg-[#4A5C6A]/30`}>
+        <SEOKeywords />
         <Navbar />
         <main>
           <PageComponent />
