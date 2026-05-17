@@ -1,5 +1,5 @@
 import React from 'react';
-import { MessageCircle, Mail, MapPin, Facebook, Twitter, Linkedin, Github } from 'lucide-react';
+import { MessageCircle, Mail, MapPin, Facebook, Twitter, Linkedin, Github, Instagram } from 'lucide-react';
 import { useRouter } from '../App';
 import logo from '../assets/velnora_favicon.png';
 
@@ -42,12 +42,13 @@ const Footer = () => {
             </p>
             <div className="flex space-x-3">
               {[
-                { Icon: Facebook, href: '#' },
+                { Icon: Facebook, href: 'https://www.facebook.com/profile.php?id=61589929679410' },
+                { Icon: Instagram, href: 'https://www.instagram.com/velnoratechsoftware' },
                 { Icon: Twitter, href: '#' },
                 { Icon: Linkedin, href: '#' },
                 { Icon: Github, href: '#' },
               ].map(({ Icon, href }, i) => (
-                <a key={i} href={href}
+                <a key={i} href={href} target="_blank" rel="noopener noreferrer"
                   className={`w-9 h-9 ${theme === 'light' ? 'bg-[#06141B]/5' : 'bg-white/5'} hover:bg-[#4A5C6A] rounded-full flex items-center justify-center ${theme === 'light' ? 'text-[#06141B]' : 'text-[#9BA8AB]'} hover:text-white transition-all`}>
                   <Icon size={16} />
                 </a>
