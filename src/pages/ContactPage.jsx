@@ -1,37 +1,38 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, MapPin, Phone, Send, MessageCircle, Clock } from 'lucide-react';
+import { Mail, MapPin, Phone, Send, MessageCircle, Clock, Loader2 } from 'lucide-react';
 import { useRouter } from '../App';
+import { sendContactInquiry } from '../services/api';
 
 const ContactPage = () => {
   const { setQuoteModalMode, theme } = useRouter();
   const [form, setForm] = useState({ name: '', email: '', phone: '', subject: '', message: '' });
   const [sent, setSent] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
 
     try {
-      const response = await fetch('https://n8n-lxyp.onrender.com/webhook/7ccecc54-64fb-4184-bfef-a4569c04c2d4', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          ...form,
-          source: 'Contact Page'
-        }),
+      await sendContactInquiry({
+        name: form.name,
+        email: form.email,
+        phone: form.phone,
+        subject: form.subject,
+        message: form.message,
+        source: 'Contact Page',
       });
 
-      if (response.ok) {
-        setSent(true);
-        setForm({ name: '', email: '', phone: '', subject: '', message: '' });
-        // Auto-reset after 5 seconds
-        setTimeout(() => setSent(false), 5000);
-      } else {
-        alert('Something went wrong. Please try again.');
-      }
+      setSent(true);
+      setForm({ name: '', email: '', phone: '', subject: '', message: '' });
+      // Auto-reset after 5 seconds
+      setTimeout(() => setSent(false), 5000);
     } catch (error) {
       console.error('Submission error:', error);
-      alert('Network error. Please check your connection.');
+      alert(error.message || 'Something went wrong. Please try again.');
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -160,9 +161,17 @@ const ContactPage = () => {
                     placeholder="Type your message here..." />
                 </div>
 
-                <button type="submit"
-                  className={`w-full ${theme === 'light' ? 'bg-[#06141B] text-white' : 'bg-white text-[#06141B]'} font-black uppercase tracking-[0.2em] py-5 rounded-2xl transition-all flex items-center justify-center gap-3 shadow-xl hover:scale-[1.01] active:scale-[0.99] mt-4 shrink-0`}>
-                  <Send size={20} /> Send Message
+                <button type="submit" disabled={loading}
+                  className={`w-full ${theme === 'light' ? 'bg-[#06141B] text-white' : 'bg-white text-[#06141B]'} ${loading ? 'opacity-70 cursor-not-allowed' : 'hover:scale-[1.01] active:scale-[0.99]'} font-black uppercase tracking-[0.2em] py-5 rounded-2xl transition-all flex items-center justify-center gap-3 shadow-xl mt-4 shrink-0`}>
+                  {loading ? (
+                    <>
+                      <Loader2 size={20} className="animate-spin" /> Sending...
+                    </>
+                  ) : (
+                    <>
+                      <Send size={20} /> Send Message
+                    </>
+                  )}
                 </button>
               </form>
             )}

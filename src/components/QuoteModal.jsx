@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Send, CheckCircle2 } from 'lucide-react';
+import { X, Send, CheckCircle2, Loader2 } from 'lucide-react';
 import { useRouter } from '../App';
+import { sendContactInquiry } from '../services/api';
 
 const QuoteModal = ({ mode, isOpen, onClose }) => {
   const { theme } = useRouter();
   const [sent, setSent] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [turnstileToken, setTurnstileToken] = useState(null);
   const [form, setForm] = useState({ name: '', email: '', phone: '', project: '', details: '', honeypot: '' });
@@ -89,32 +91,34 @@ const QuoteModal = ({ mode, isOpen, onClose }) => {
       return;
     }
 
+    setLoading(true);
     try {
-      const response = await fetch('https://n8n-lxyp.onrender.com/webhook/7ccecc54-64fb-4184-bfef-a4569c04c2d4', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          ...form,
-          turnstileToken,
-          source: isHireMode ? 'Talent Inquiry' : 'Quote Request',
-          mode: mode
-        }),
+      const selectedProjectObj = projectTypes.find((p) => p.value === form.project);
+      const projectLabel = selectedProjectObj ? selectedProjectObj.label : form.project;
+      const sourceLabel = isHireMode ? 'Talent Inquiry' : 'Quote Request';
+
+      await sendContactInquiry({
+        name: form.name,
+        email: form.email,
+        phone: form.phone,
+        project: projectLabel,
+        subject: `New ${sourceLabel}: ${projectLabel || 'General'}`,
+        message: form.details,
+        source: sourceLabel,
       });
 
-      if (response.ok) {
-        setSent(true);
-        setTimeout(() => {
-          onClose();
-          setSent(false);
-          setForm({ name: '', email: '', phone: '', project: '', details: '', honeypot: '' });
-          resetTurnstile();
-        }, 3000);
-      } else {
-        alert('Failed to send request. Please try again.');
-      }
+      setSent(true);
+      setTimeout(() => {
+        onClose();
+        setSent(false);
+        setForm({ name: '', email: '', phone: '', project: '', details: '', honeypot: '' });
+        resetTurnstile();
+      }, 3000);
     } catch (error) {
-      console.error('Webhook Error:', error);
-      alert('Connection error. Please check your network.');
+      console.error('Submission Error:', error);
+      alert(error.message || 'Failed to send request. Please try again.');
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -270,9 +274,18 @@ const QuoteModal = ({ mode, isOpen, onClose }) => {
 
                   <button
                     type="submit"
-                    className={`w-full font-black uppercase tracking-widest py-4 rounded-2xl transition-all flex items-center justify-center gap-2 shadow-xl mt-4 ${theme === 'light' ? 'bg-[#06141B] text-white shadow-[#06141B]/20 hover:scale-[1.01]' : 'bg-white text-[#06141B] shadow-white/10 hover:bg-gray-200 hover:scale-[1.01]'}`}
+                    disabled={loading}
+                    className={`w-full font-black uppercase tracking-widest py-4 rounded-2xl transition-all flex items-center justify-center gap-2 shadow-xl mt-4 ${theme === 'light' ? 'bg-[#06141B] text-white shadow-[#06141B]/20' : 'bg-white text-[#06141B] shadow-white/10 hover:bg-gray-200'} ${loading ? 'opacity-70 cursor-not-allowed' : 'hover:scale-[1.01]'}`}
                   >
-                    <Send size={18} /> {isHireMode ? 'Submit Inquiry' : 'Submit Request'}
+                    {loading ? (
+                      <>
+                        <Loader2 size={18} className="animate-spin" /> Submitting...
+                      </>
+                    ) : (
+                      <>
+                        <Send size={18} /> {isHireMode ? 'Submit Inquiry' : 'Submit Request'}
+                      </>
+                    )}
                   </button>
                 </form>
               </div>
