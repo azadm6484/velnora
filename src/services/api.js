@@ -3,7 +3,7 @@
  */
 
 export const BACKEND_URL =
-  import.meta.env.VITE_BACKEND_URL || 'https://velnora-backend.vercel.app';
+  import.meta.env.BACKEND_URL || 'https://velnora-backend.vercel.app';
 
 /**
  * Sends a contact or quote inquiry to the email backend
