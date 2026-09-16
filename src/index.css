@@ -81,3 +81,31 @@
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
   background: rgba(74, 92, 106, 0.4);
 }
+
+.calendly-embed {
+  width: 100%;
+  min-width: 0;
+}
+
+.calendly-embed--calendar {
+  height: min(36.5rem, calc(100dvh - 3.5rem - env(safe-area-inset-top) - env(safe-area-inset-bottom)));
+}
+
+.calendly-embed--times {
+  height: calc(100dvh - 3.5rem - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+}
+
+@media (min-width: 640px) {
+  .calendly-embed--calendar,
+  .calendly-embed--times {
+    height: min(42rem, calc(90dvh - 3rem));
+  }
+}
+
+.calendly-embed .calendly-inline-widget,
+.calendly-embed iframe {
+  width: 100% !important;
+  min-width: 0 !important;
+  height: 100% !important;
+  min-height: 0 !important;
+}
